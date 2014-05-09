@@ -1,0 +1,12 @@
+module System.Attribute;
+
+//TODO
+public class Attribute {
+
+this() {
+
+}
+
+this(int a) {
+}
+}
