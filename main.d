@@ -13,24 +13,22 @@ int main()
 	string t = "t てすと";
 	writeln("test" ~ t);
 
-
 	return 0;
 }
 
 unittest
 {
 	writeln("unitest");
+
+	import System;
+
+	Action!int aa;// = 50;
+	Action!(int, string) bb;
 }
 
-import System;
-abstract class Test : IObserver!Test
-{
-
-}
 
 
-
-
+//alias void delegate(Object a) EventHandler;
 
 
 /*

@@ -1,13 +1,13 @@
 module System._Interface.IComparable;
 
 
-public interface IComparable
+public interface IComparable()
 {
 	int CompareTo(Object obj);
 }
 
 
-public interface IComparableT(T)
+public interface IComparable(T)
 {
 	int CompareTo(T other);
 }

@@ -24,3 +24,6 @@ public import System._Struct.DateTime;
 
 
 public import System._Enum.TypeCode;
+
+
+public import System._Delegate.Action;
