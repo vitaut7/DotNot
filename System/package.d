@@ -18,6 +18,9 @@ public import System._Interface.IServiceProvider;
 
 
 public import System._Class.Type;
+public import System._Class.EventArgs;
+public import System._Class.AppDomain;
+public import System._Class.ConsoleCancelEventArgs;
 
 
 public import System._Struct.DateTime;
@@ -27,3 +30,14 @@ public import System._Enum.TypeCode;
 
 
 public import System._Delegate.Action;
+public import System._Delegate.AsyncCallback;
+public import System._Delegate.EventHandler;
+public import System._Delegate.UnhandledExceptionEventHandler;
+
+
+
+//Public or wat
+class UnhandledExceptionEventArgs : EventArgs {}
+class AssemblyLoadEventArgs : EventArgs {}
+class ResolveEventArgs {}
+class Assembly {}

@@ -6,6 +6,8 @@ import std.stdio;
 IAsyncResult - NEED WaitHandle
 _Class.Type - Deklarovat!
 _Struct.DateTime - Deklarovat
+_CLass.AppDomain - Deklarovat
+_Class.ConsoleCancelEventArgs - Deklarovat
 */
 
 int main()
@@ -34,6 +36,10 @@ unittest
 /*
 System:
 	Interface - HOTOVO
+	Delegaty - HOTOVO
+
+
+
 */
 
 
