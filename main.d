@@ -1,18 +1,31 @@
 import std.stdio;
 //Sealed = final
+//decimal = real
 
+/**
+IAsyncResult - NEED WaitHandle
+_Class.Type - Deklarovat!
+_Struct.DateTime - Deklarovat
+*/
 
-
-
-int main() {
-	writeln("test ");
+int main()
+{
+	string t = "t てすと";
+	writeln("test" ~ t);
 
 
 	return 0;
 }
 
-unittest {
+unittest
+{
 	writeln("unitest");
+}
+
+import System;
+abstract class Test : IObserver!Test
+{
+
 }
 
 
@@ -20,13 +33,10 @@ unittest {
 
 
 
-
-
-
-
-
-
-
+/*
+System:
+	Interface - HOTOVO
+*/
 
 
 
