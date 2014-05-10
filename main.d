@@ -7,7 +7,10 @@ IAsyncResult - NEED WaitHandle
 _Class.Type - Deklarovat!
 _Struct.DateTime - Deklarovat
 _CLass.AppDomain - Deklarovat
-_Class.ConsoleCancelEventArgs - Deklarovat
+_Class.Convert - Deklarovat vssetko ostatne
+_Class.GC - Dorobit
+_Class.GenericUriParser - Deklarovat triedu
+_cLASS.LoaderOptimizationAttribute - Deklarovat triedu
 */
 
 int main()
@@ -38,6 +41,13 @@ System:
 	Interface - HOTOVO
 	Delegaty - HOTOVO
 
+
+	Enumy:
+	ActivationContext.ContextForm ???
+	AppDomainManagerInitializationOptions ???
+	Environment.SpecialFolder ???
+	Environment.SpecialFolderOption ???
+	EnvironmentVariableTarget ???
 
 
 */
