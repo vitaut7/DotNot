@@ -54,6 +54,12 @@ public import System._Delegate.EventHandler;
 public import System._Delegate.UnhandledExceptionEventHandler;
 
 
+public import System._Class.Exception;
+public import System._Class.SystemException;
+public import System._Class.AccessViolationException;
+
+public import System._Class.__HResults;
+
 
 //Public or wat
 class UnhandledExceptionEventArgs : EventArgs {}
@@ -98,6 +104,9 @@ public abstract class ValueType
 {
 	@internal static int GetHashCodeOfPtr(IntPtr ptr) { return 0;}//TODO extern
 }
+
+public struct StreamingContext {}
+public final class SerializationInfo {}
 
 class Environment
 {

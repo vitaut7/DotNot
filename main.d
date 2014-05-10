@@ -2,12 +2,14 @@ import std.stdio;
 /**
 Sealed  = final
 decimal = real
+
+scope c = new C(); // alokovanie na stacku
 */
 
 /**
 IAsyncResult - NEED WaitHandle
 _Class.Type - Deklarovat!
-_Struct.DateTime - Deklarovat
+_Struct.DateTime - Deklarovat -> class
 _CLass.AppDomain - Deklarovat
 _Class.Convert - Deklarovat vssetko ostatne
 _Class.GC - Dorobit
@@ -15,6 +17,8 @@ _Class.GenericUriParser - Deklarovat triedu
 _cLASS.LoaderOptimizationAttribute - Deklarovat triedu
 _Classs.String - deklarovat
 _struct.ArgIterator - doplnit externy
+_class.Int32 - dorobit
+_Class.Exception - dorobit
 */
 
 import System;
@@ -40,32 +44,6 @@ unittest
 }
 
 
-/*
-
-
-/*
-final class Int
-{
-	int value;
-
-	alias value this;
-
-	static Int opCall(int value) {
-		Int ret = new Int();
-		ret.value = value;
-		return ret;
-	}
-
-	int opCast()
-	{
-		return value;
-	}
-
-	void fce() {
-
-	}
-}*/
-
 //alias void delegate(Object a) EventHandler;
 
 
@@ -82,6 +60,11 @@ System:
 	Environment.SpecialFolder ???
 	Environment.SpecialFolderOption ???
 	EnvironmentVariableTarget ???
+
+	Exceptions:
+		(Base)Exception - Dorobit
+		SystemException - OK
+			AccessViolationException - OK
 
 
 */
