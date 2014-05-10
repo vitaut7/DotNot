@@ -6,7 +6,7 @@ public class EventArgs
 	public static immutable(EventArgs) Empty = cast(immutable(EventArgs))new EventArgs();
 
 
-	this()
+	public this()
 	{
 		
 	}

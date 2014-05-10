@@ -1,6 +1,8 @@
 import std.stdio;
-//Sealed = final
-//decimal = real
+/**
+Sealed  = final
+decimal = real
+*/
 
 /**
 IAsyncResult - NEED WaitHandle
@@ -11,27 +13,58 @@ _Class.Convert - Deklarovat vssetko ostatne
 _Class.GC - Dorobit
 _Class.GenericUriParser - Deklarovat triedu
 _cLASS.LoaderOptimizationAttribute - Deklarovat triedu
+_Classs.String - deklarovat
+_struct.ArgIterator - doplnit externy
 */
+
+import System;
+
 
 int main()
 {
-	string t = "t てすと";
+	string t = " てすと";
 	writeln("test" ~ t);
+
+	//new Int32();
 
 	return 0;
 }
 
+
 unittest
 {
-	writeln("unitest");
-
-	import System;
-
-	Action!int aa;// = 50;
-	Action!(int, string) bb;
+	auto var1 = new Object();
+	auto var2 = new Object();
+	assert(var1.ToString() == "object.Object");
+	assert(!var1.Equals(var2));
 }
 
 
+/*
+
+
+/*
+final class Int
+{
+	int value;
+
+	alias value this;
+
+	static Int opCall(int value) {
+		Int ret = new Int();
+		ret.value = value;
+		return ret;
+	}
+
+	int opCast()
+	{
+		return value;
+	}
+
+	void fce() {
+
+	}
+}*/
 
 //alias void delegate(Object a) EventHandler;
 
@@ -39,7 +72,8 @@ unittest
 /*
 System:
 	Interface - HOTOVO
-	Delegaty - HOTOVO
+	Delegats  - HOTOVO
+	Enums     - SKORO HOTOVO
 
 
 	Enumy:

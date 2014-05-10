@@ -6,11 +6,18 @@ _D += $(wildcard System/_Struct/*.[d])
 _D += $(wildcard System/_Delegate/*.[d])
 _D += $(wildcard System/_Interface/*.[d])
 
-DFLAGS = -g -unittest -debug -ofFramework.exe $(_D)
+DFLAGS += -g -debug -unittest -vtls -map Linker.map
+DFLAGS += -wi -m64 -O -property -Idruntime/src -ofBuild/Framework.exe druntime\lib\druntime64.lib $(_D)
+#DFLAGS += -release
 
 all:
 	@echo Compiling...
-	@dmd $(DFLAGS)
+	
+#	@rd /Q /S druntime\\lib
+#	#@rd /Q /S druntime\\import
+#	@cd druntime && make -f win64.mak
+
+#	@dmd $(DFLAGS)
 	@echo O.K.
 
 run:

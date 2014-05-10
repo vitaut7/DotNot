@@ -25,9 +25,13 @@ public import System._Class.ConsoleCancelEventArgs;
 public import System._Class.Convert;
 public import System._Class.GenericUriParser;
 public import System._Class.LoaderOptimizationAttribute;
+public import System._Class.String;
+public import System._Class.Int32;
 
 
 public import System._Struct.DateTime;
+public import System._Struct.RuntimeArgumentHandle;
+public import System._Struct.ArgIterator;
 
 
 public import System._Enum.TypeCode;
@@ -41,6 +45,7 @@ public import System._Enum.DayOfWeek;
 public import System._Enum.MidpointRounding;
 public import System._Enum.PlatformID;
 public import System._Enum.StringComparison;
+public import System._Enum.UriEnumTypes;
 
 
 public import System._Delegate.Action;
@@ -55,3 +60,53 @@ class UnhandledExceptionEventArgs : EventArgs {}
 class AssemblyLoadEventArgs : EventArgs {}
 class ResolveEventArgs {}
 class Assembly {}
+
+public struct IntPtr { //ISerializable
+	public static immutable IntPtr Zero;
+
+	public void* testik;
+}
+
+final class RuntimeTypeHandle { //ISerializable
+	RuntimeType GetRuntimeType() { return null; }
+
+	this() {}
+	this(RuntimeType) {}
+}
+struct TypedReference {}
+
+class ArgumentNullException : Exception
+{
+	this() { super("lol"); }
+}
+
+class ArgumentException : Exception
+{
+	this(string l) { super(l);}
+	this() { super("lol"); }
+}
+
+class NotSupportedException : Exception
+{
+	this() {super("lol");}
+	this(string l) { super(l);}
+}
+
+class RuntimeType {}
+
+public abstract class ValueType
+{
+	@internal static int GetHashCodeOfPtr(IntPtr ptr) { return 0;}//TODO extern
+}
+
+class Environment
+{
+	static string GetResourceString(string key)
+	{
+		return key;
+	}
+}
+
+
+//UDA
+public const enum internal = "Internal";

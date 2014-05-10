@@ -20,9 +20,18 @@ public final class ConsoleCancelEventArgs : EventArgs
 	}
 
 
-	this(ConsoleSpecialKey type)
+	public this(ConsoleSpecialKey type)
 	{
 		_type = type;
 		_cancel = false;
 	}
+}
+
+
+unittest
+{
+	ConsoleCancelEventArgs var = new ConsoleCancelEventArgs(ConsoleSpecialKey.ControlC);
+
+	assert(var != EventArgs.Empty);
+	assert(var.SpecialKey == ConsoleSpecialKey.ControlC);
 }

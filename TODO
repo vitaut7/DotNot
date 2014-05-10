@@ -1,3 +1,5 @@
 Niekedy v buducnu dorobit :D
 IConvertable - Toint128 (cent), ToInfinite
 triedu Infinite, tj. nekonecne velke cislo
+
+Ak to hadze nejake chyby s nejako libkou 120.dll tak staci v sc.ini zmenit link z 86_amd na amd
