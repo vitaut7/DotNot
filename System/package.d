@@ -57,6 +57,16 @@ public import System._Delegate.UnhandledExceptionEventHandler;
 public import System._Class.Exception;
 public import System._Class.SystemException;
 public import System._Class.AccessViolationException;
+public import System._Class.AppDomainUnloadedException;
+public import System._Class.ArgumentException;
+public import System._Class.ArithmeticException;
+public import System._Class.ArrayTypeMismatchException;
+public import System._Class.CannotUnloadAppDomainException;
+public import System._Class.ContextMarshalException;
+public import System._Class.DataMisalignedException;
+public import System._Class.ExecutionEngineException;
+public import System._Class.FormatException;
+
 
 public import System._Class.__HResults;
 

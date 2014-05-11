@@ -1,26 +1,26 @@
-module System._Class.AccessViolationException;
+module System._Class.FormatException;
 
 import System;
 
 
-public class AccessViolationException : BaseException
+public class FormatException : BaseException
 {
 	public this()
 	{
-		super(Environment.GetResourceString("Arg_AccessViolationException"));
-		SetErrorCode(__HResults.E_POINTER);
+		super(Environment.GetResourceString("Arg_FormatException"));
+		SetErrorCode(__HResults.COR_E_FORMAT);
 	}
 
 	public this(string message)
 	{
 		super(message);
-		SetErrorCode(__HResults.E_POINTER);
+		SetErrorCode(__HResults.COR_E_FORMAT);
 	}
 
 	public this(string message, Exception innerException)
 	{
 		super(message, innerException);
-		SetErrorCode(__HResults.E_POINTER);
+		SetErrorCode(__HResults.COR_E_FORMAT);
 	}
 
 	protected this(SerializationInfo info, StreamingContext context)

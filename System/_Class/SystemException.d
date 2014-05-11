@@ -25,7 +25,6 @@ public class SystemException : BaseException
 
 	protected this(SerializationInfo info, StreamingContext context)
 	{
-		SetErrorCode(__HResults.COR_E_SYSTEM);
 		super(info, context);
 	}
 }

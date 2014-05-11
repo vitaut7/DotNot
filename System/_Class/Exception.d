@@ -10,10 +10,7 @@ public class BaseException : Exception
 
 	@property
 	{
-		public int HResult()
-		{
-			return _hResult;
-		}
+		public int HResult() { return _hResult; }
 	}
 
 
