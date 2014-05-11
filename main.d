@@ -63,19 +63,26 @@ System:
 
 	Exceptions:
 		(Base)Exception - Dorobit
-		SystemException - OK
-			AccessViolationException       - OK
-			AppDomainUnloadedException     - OK
-			ArgumentException              - TODO
-			ArithmeticException            - OK
-			ArrayTypeMismatchException     - OK
-			BadImageFormatException        - IMPL
-			CannotUnloadAppDomainException - OK
-			KeyNotFoundException           - IMPL
-			ContextMarshalException        - OK
-			DataMisalignedException        - OK
-			ExecutionEngineException       - OK
-			FormatException                - OK
+			SystemException - OK
+				AccessViolationException       - OK
+				AppDomainUnloadedException     - OK
+				ArgumentException              - TODO
+				ArithmeticException            - OK
+				ArrayTypeMismatchException     - OK
+				BadImageFormatException        - IMPL
+				CannotUnloadAppDomainException - OK
+				KeyNotFoundException           - IMPL
+				ContextMarshalException        - OK
+				DataMisalignedException        - OK
+				ExecutionEngineException       - OK
+				FormatException                - OK
+				IndexOutOfRangeException       - OK
+				InsufficientExecutionStackException - OK
+				InvalidCastException           - OK
+				InvalidOperationException      - OK
+				InvalidProgramException        - OK
+				IOException                    - OK
+
 
 
 */

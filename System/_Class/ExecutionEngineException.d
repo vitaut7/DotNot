@@ -3,7 +3,7 @@ module System._Class.ExecutionEngineException;
 import System;
 
 
-public final class ExecutionEngineException : BaseException
+public final class ExecutionEngineException : SystemException
 {
 	public this()
 	{

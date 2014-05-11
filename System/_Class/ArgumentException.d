@@ -3,7 +3,7 @@ module System._Class.ArgumentException;
 import System;
 
 
-public class ArgumentException : BaseException
+public class ArgumentException : SystemException
 {
 	private string _paramName;
 

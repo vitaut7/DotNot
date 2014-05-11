@@ -3,7 +3,7 @@ module System._Class.ContextMarshalException;
 import System;
 
 
-public class ContextMarshalException : BaseException
+public class ContextMarshalException : SystemException
 {
 	public this()
 	{

@@ -3,7 +3,7 @@ module System._Class.FormatException;
 import System;
 
 
-public class FormatException : BaseException
+public class FormatException : SystemException
 {
 	public this()
 	{

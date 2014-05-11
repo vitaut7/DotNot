@@ -3,7 +3,7 @@ module System._Class.AccessViolationException;
 import System;
 
 
-public class AccessViolationException : BaseException
+public class AccessViolationException : SystemException
 {
 	public this()
 	{

@@ -66,6 +66,12 @@ public import System._Class.ContextMarshalException;
 public import System._Class.DataMisalignedException;
 public import System._Class.ExecutionEngineException;
 public import System._Class.FormatException;
+public import System._Class.IndexOutOfRangeException;
+public import System._Class.InsufficientExecutionStackException;
+public import System._Class.InvalidCastException;
+public import System._Class.InvalidOperationException;
+public import System._Class.InvalidProgramException;
+public import System._Class.IOException;
 
 
 public import System._Class.__HResults;

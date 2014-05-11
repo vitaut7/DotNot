@@ -3,7 +3,7 @@ module System._Class.ArithmeticException;
 import System;
 
 
-public class ArithmeticException : BaseException
+public class ArithmeticException : SystemException
 {
 	public this()
 	{

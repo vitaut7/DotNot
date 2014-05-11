@@ -3,7 +3,7 @@ module System._Class.AppDomainUnloadedException;
 import System;
 
 
-public class AppDomainUnloadedException : BaseException
+public class AppDomainUnloadedException : SystemException
 {
 	public this()
 	{

@@ -3,7 +3,7 @@ module System._Class.DataMisalignedException;
 import System;
 
 
-public final class DataMisalignedException : BaseException
+public final class DataMisalignedException : SystemException
 {
 	public this()
 	{

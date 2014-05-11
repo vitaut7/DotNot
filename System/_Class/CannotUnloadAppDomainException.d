@@ -3,7 +3,7 @@ module System._Class.CannotUnloadAppDomainException;
 import System;
 
 
-public class CannotUnloadAppDomainException : BaseException
+public class CannotUnloadAppDomainException : SystemException
 {
 	public this()
 	{

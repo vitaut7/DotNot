@@ -6,6 +6,8 @@ _D += $(wildcard System/_Struct/*.[d])
 _D += $(wildcard System/_Delegate/*.[d])
 _D += $(wildcard System/_Interface/*.[d])
 
+_D += $(wildcard System/IO/*.[d])
+
 DFLAGS += -g -debug -unittest -vtls -map Linker.map
 DFLAGS += -wi -m64 -O -property -Idruntime/src -ofBuild/Framework.exe druntime\lib\druntime64.lib $(_D)
 #DFLAGS += -release

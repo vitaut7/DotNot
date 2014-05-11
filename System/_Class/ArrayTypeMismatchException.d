@@ -3,7 +3,7 @@ module System._Class.ArrayTypeMismatchException;
 import System;
 
 
-public class ArrayTypeMismatchException : BaseException
+public class ArrayTypeMismatchException : SystemException
 {
 	public this()
 	{
