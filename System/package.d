@@ -27,6 +27,7 @@ public import System._Class.GenericUriParser;
 public import System._Class.LoaderOptimizationAttribute;
 public import System._Class.String;
 public import System._Class.Int32;
+public import System._Class.UnhandledExceptionEventArgs;
 
 
 public import System._Struct.DateTime;
@@ -88,9 +89,6 @@ public import System._Class.__HResults;
 
 
 //Public or wat
-class UnhandledExceptionEventArgs : EventArgs {}
-class AssemblyLoadEventArgs : EventArgs {}
-class ResolveEventArgs {}
 class Assembly {}
 
 public struct IntPtr { //ISerializable
