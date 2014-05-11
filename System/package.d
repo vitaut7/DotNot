@@ -78,7 +78,10 @@ public import System._Class.NotSupportedException;
 public import System._Class.NullReferenceException;
 public import System._Class.OutOfMemoryException;
 public import System._Class.RankException;
-
+public import System._Class.StackOverflowException;
+public import System._Class.TimeoutException;
+public import System._Class.TypeUnloadedException;
+public import System._Class.UnauthorizedAccessException;
 
 public import System._Class.__HResults;
 

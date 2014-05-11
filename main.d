@@ -73,7 +73,7 @@ System:
 				ArrayTypeMismatchException          - OK
 				BadImageFormatException             - IMPL
 				CannotUnloadAppDomainException      - OK
-				KeyNotFoundException                - IMPL Collections/Generic
+				KeyNotFoundException                - IMPL
 				ContextMarshalException             - OK
 				DataMisalignedException             - OK
 				ExecutionEngineException            - OK
@@ -93,10 +93,10 @@ System:
 				OutOfMemoryException                - TODO
 				RankException                       - OK
 				AmbiguousMatchException             - OK
-				ReflectionTypeLoadException         - TODO LEVEL ASIAN -> Reflection
+				ReflectionTypeLoadException         - TODO LEVEL ASIAN
 				MissingManifestResourceException    - OK
 				MissingSatelliteAssemblyException   - OK
-				ExternalException                   - TODO EASY -> runtime.interlop
+				ExternalException                   - TODO EASY
 				InvalidComObjectException           - NETREBA
 				InvalidOleVariantTypeException      - NETREBA
 				MarshalDirectiveException           - OK
@@ -106,9 +106,26 @@ System:
 					RemotingTimeoutException        - OK
 					ServerException                 - OK
 				SerializationException              - OK
-
-
-
+				CryptographicException              - IMPL
+				HostProtectionException             - IMPL
+				PolicyException                     - OK
+				IdentityReferenceCollection         - IMPL
+				SecurityException                   - TODO LEVEL GROUP OF ASIANS
+				VerificationException               - OK
+				XmlSyntaxException                  - IMPL
+				StackOverflowException              - OK
+				AbandonedMutexException             - IMPL
+				SemaphoreFullException              - OK
+				SynchronizationLockException        - OK
+				ThreadAbortException                - TODO
+				ThreadInterruptedException          - TODO
+				ThreadStartException                - OK
+				ThreadStateException                - OK
+				TimeoutException                    - OK
+				TypeInitializationException         - IMPL
+				TypeLoadException                   - IMPL
+				TypeUnloadedException               - OK
+				UnauthorizedAccessException         - OK
 */
 
 

@@ -29,12 +29,23 @@ _D += $(wildcard System/Runtime/Serialization/*.[d])
 _D += $(wildcard System/Runtime/Serialization/_Class/*.[d])
 
 
+_D += $(wildcard System/Security/*.[d])
+_D += $(wildcard System/Security/_Class/*.[d])
+
+_D += $(wildcard System/Security/Policy/*.[d])
+_D += $(wildcard System/Security/Policy/_Class/*.[d])
+
+
+_D += $(wildcard System/Threading/*.[d])
+_D += $(wildcard System/Threading/_Class/*.[d])
+
+
 DFLAGS += -g -debug -unittest -vtls -map Build/Linker.map
 DFLAGS += -wi -m64 -O -property -Idruntime/src -ofBuild/Framework.exe druntime\lib\druntime64.lib $(_D)
 #DFLAGS += -release
 
 all:
-	@echo Compiling...
+	@echo Compilingg...
 	
 #	@rd /Q /S druntime\\lib
 #	#@rd /Q /S druntime\\import
@@ -44,5 +55,5 @@ all:
 	@echo O.K.
 
 run:
-	@rdmd $(DFLAGS)
+	@dmd $(DFLAGS)
 	@echo Debuging...
