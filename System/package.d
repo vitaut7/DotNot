@@ -71,7 +71,13 @@ public import System._Class.InsufficientExecutionStackException;
 public import System._Class.InvalidCastException;
 public import System._Class.InvalidOperationException;
 public import System._Class.InvalidProgramException;
-public import System._Class.IOException;
+public import System._Class.MemberAccessException;
+public import System._Class.MulticastNotSupportedException;
+public import System._Class.NotImplementedException;
+public import System._Class.NotSupportedException;
+public import System._Class.NullReferenceException;
+public import System._Class.OutOfMemoryException;
+public import System._Class.RankException;
 
 
 public import System._Class.__HResults;

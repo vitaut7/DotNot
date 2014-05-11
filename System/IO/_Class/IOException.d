@@ -1,4 +1,4 @@
-module System._Class.IOException;
+module System.IO._Class.IOException;
 
 import System;
 

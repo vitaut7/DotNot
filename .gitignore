@@ -2,3 +2,8 @@
 /Framework.obj
 
 /Build/Framework.exe
+
+/Build/*.ilk
+
+/Build/*.pdb
+/Build/Linker.map

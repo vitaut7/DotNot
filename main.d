@@ -19,6 +19,7 @@ _Classs.String - deklarovat
 _struct.ArgIterator - doplnit externy
 _class.Int32 - dorobit
 _Class.Exception - dorobit
+_Class.__HResults dorobit
 */
 
 import System;
@@ -29,7 +30,8 @@ int main()
 	string t = " てすと";
 	writeln("test" ~ t);
 
-	//new Int32();
+	import System.Runtime.Remoting;
+	new RemotingException();
 
 	return 0;
 }
@@ -64,24 +66,46 @@ System:
 	Exceptions:
 		(Base)Exception - Dorobit
 			SystemException - OK
-				AccessViolationException       - OK
-				AppDomainUnloadedException     - OK
-				ArgumentException              - TODO
-				ArithmeticException            - OK
-				ArrayTypeMismatchException     - OK
-				BadImageFormatException        - IMPL
-				CannotUnloadAppDomainException - OK
-				KeyNotFoundException           - IMPL
-				ContextMarshalException        - OK
-				DataMisalignedException        - OK
-				ExecutionEngineException       - OK
-				FormatException                - OK
-				IndexOutOfRangeException       - OK
+				AccessViolationException            - OK
+				AppDomainUnloadedException          - OK
+				ArgumentException                   - TODO
+				ArithmeticException                 - OK
+				ArrayTypeMismatchException          - OK
+				BadImageFormatException             - IMPL
+				CannotUnloadAppDomainException      - OK
+				KeyNotFoundException                - IMPL Collections/Generic
+				ContextMarshalException             - OK
+				DataMisalignedException             - OK
+				ExecutionEngineException            - OK
+				FormatException                     - OK
+				IndexOutOfRangeException            - OK
 				InsufficientExecutionStackException - OK
-				InvalidCastException           - OK
-				InvalidOperationException      - OK
-				InvalidProgramException        - OK
-				IOException                    - OK
+				InvalidCastException                - OK
+				InvalidOperationException           - OK
+				InvalidProgramException             - OK
+				IOException                         - OK
+				MemberAccessException               - OK
+				MulticastNotSupportedException      - OK
+				NotImplementedException             - OK
+				NotSupportedException               - OK
+				NullReferenceException              - OK
+				OperationCanceledException          - TODO EASY
+				OutOfMemoryException                - TODO
+				RankException                       - OK
+				AmbiguousMatchException             - OK
+				ReflectionTypeLoadException         - TODO LEVEL ASIAN -> Reflection
+				MissingManifestResourceException    - OK
+				MissingSatelliteAssemblyException   - OK
+				ExternalException                   - TODO EASY -> runtime.interlop
+				InvalidComObjectException           - NETREBA
+				InvalidOleVariantTypeException      - NETREBA
+				MarshalDirectiveException           - OK
+				SafeArrayRankMismatchException      - OK
+				SafeArrayTypeMismatchException      - OK
+				RemotingException                   - OK
+					RemotingTimeoutException        - OK
+					ServerException                 - OK
+				SerializationException              - OK
 
 
 
