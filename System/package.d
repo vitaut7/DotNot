@@ -82,6 +82,7 @@ public import System._Class.StackOverflowException;
 public import System._Class.TimeoutException;
 public import System._Class.TypeUnloadedException;
 public import System._Class.UnauthorizedAccessException;
+public import System._Class.ArgumentNullException;
 
 public import System._Class.__HResults;
 
@@ -105,33 +106,12 @@ final class RuntimeTypeHandle { //ISerializable
 	this(RuntimeType) {}
 }
 struct TypedReference {}
-
-class ArgumentNullException : Exception
-{
-	this() { super("lol"); }
-}
-
-class ArgumentException : Exception
-{
-	this(string l) { super(l);}
-	this() { super("lol"); }
-}
-
-class NotSupportedException : Exception
-{
-	this() {super("lol");}
-	this(string l) { super(l);}
-}
-
 class RuntimeType {}
 
 public abstract class ValueType
 {
 	@internal static int GetHashCodeOfPtr(IntPtr ptr) { return 0;}//TODO extern
 }
-
-public struct StreamingContext {}
-public final class SerializationInfo {}
 
 class Environment
 {

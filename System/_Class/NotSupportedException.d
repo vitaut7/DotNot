@@ -1,6 +1,7 @@
 module System._Class.NotSupportedException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class NotSupportedException : SystemException

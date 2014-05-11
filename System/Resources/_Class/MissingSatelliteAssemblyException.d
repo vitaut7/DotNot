@@ -1,6 +1,7 @@
 module System.Resources._Class.MissingSatelliteAssemblyException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class MissingSatelliteAssemblyException : SystemException

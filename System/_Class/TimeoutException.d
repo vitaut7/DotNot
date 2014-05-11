@@ -1,6 +1,7 @@
 module System._Class.TimeoutException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class TimeoutException : SystemException

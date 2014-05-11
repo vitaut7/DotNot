@@ -1,6 +1,7 @@
 module System._Class.IndexOutOfRangeException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class IndexOutOfRangeException : SystemException

@@ -1,6 +1,7 @@
 module System.Threading._Class.ThreadStartException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class ThreadStartException : SystemException

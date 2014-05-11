@@ -1,6 +1,7 @@
 module System.Runtime.Remoting._Class.RemotingException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class RemotingException : SystemException

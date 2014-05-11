@@ -1,6 +1,7 @@
 module System.Threading._Class.SemaphoreFullException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class SemaphoreFullException : SystemException

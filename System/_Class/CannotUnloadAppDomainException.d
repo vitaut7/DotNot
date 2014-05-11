@@ -1,6 +1,7 @@
 module System._Class.CannotUnloadAppDomainException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class CannotUnloadAppDomainException : SystemException

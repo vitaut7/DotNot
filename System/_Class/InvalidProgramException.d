@@ -1,6 +1,7 @@
 module System._Class.InvalidProgramException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class InvalidProgramException : SystemException

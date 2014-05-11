@@ -1,6 +1,7 @@
 module System.Threading._Class.ThreadStateException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class ThreadStateException : SystemException

@@ -1,6 +1,7 @@
 module System._Class.NullReferenceException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class NullReferenceException : SystemException

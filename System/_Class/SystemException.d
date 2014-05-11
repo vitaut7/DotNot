@@ -1,6 +1,7 @@
 module System._Class.SystemException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class SystemException : BaseException

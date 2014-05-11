@@ -1,6 +1,7 @@
 module System.Reflection._Class.AmbiguousMatchException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class AmbiguousMatchException : SystemException

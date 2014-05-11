@@ -1,6 +1,7 @@
 module System.Runtime.InteropServices._Class.SafeArrayTypeMismatchException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class SafeArrayTypeMismatchException : SystemException

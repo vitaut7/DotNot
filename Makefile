@@ -27,6 +27,7 @@ _D += $(wildcard System/Runtime/Remoting/_Class/*.[d])
 
 _D += $(wildcard System/Runtime/Serialization/*.[d])
 _D += $(wildcard System/Runtime/Serialization/_Class/*.[d])
+_D += $(wildcard System/Runtime/Serialization/_Interface/*.[d])
 
 
 _D += $(wildcard System/Security/*.[d])

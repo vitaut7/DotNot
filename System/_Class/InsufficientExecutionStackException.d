@@ -1,6 +1,7 @@
 module System._Class.InsufficientExecutionStackException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class InsufficientExecutionStackException : SystemException

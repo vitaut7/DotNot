@@ -1,6 +1,7 @@
 module System._Class.InvalidCastException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class InvalidCastException : SystemException

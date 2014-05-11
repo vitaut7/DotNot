@@ -1,6 +1,7 @@
 module System._Class.ArgumentException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class ArgumentException : SystemException
@@ -50,8 +51,8 @@ public class ArgumentException : SystemException
 	protected this(SerializationInfo info, StreamingContext context)
 	{
 		super(info, context);
-		//info.GetString("ParamName"); TODO
+		_paramName = info.GetString("ParamName");
 	}
 
-	//Message, ParamName
+	//Message, override GetObjectData
 }

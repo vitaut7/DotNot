@@ -1,6 +1,7 @@
 module System._Class.ArrayTypeMismatchException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class ArrayTypeMismatchException : SystemException

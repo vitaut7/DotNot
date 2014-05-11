@@ -1,6 +1,7 @@
 module System._Class.TypeUnloadedException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class TypeUnloadedException : SystemException

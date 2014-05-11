@@ -1,6 +1,7 @@
 module System._Class.NotImplementedException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class NotImplementedException : SystemException

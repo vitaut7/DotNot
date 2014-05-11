@@ -1,6 +1,7 @@
 module System.Resources._Class.MissingManifestResourceException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class MissingManifestResourceException : SystemException

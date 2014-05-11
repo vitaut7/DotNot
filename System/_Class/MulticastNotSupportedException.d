@@ -1,6 +1,7 @@
 module System._Class.MulticastNotSupportedException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class MulticastNotSupportedException : SystemException

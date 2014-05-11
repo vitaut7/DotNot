@@ -1,6 +1,7 @@
 module System._Class.DataMisalignedException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class DataMisalignedException : SystemException

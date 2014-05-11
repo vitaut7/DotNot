@@ -1,6 +1,7 @@
 module System.Threading._Class.SynchronizationLockException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class SynchronizationLockException : SystemException

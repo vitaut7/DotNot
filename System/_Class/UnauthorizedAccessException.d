@@ -1,6 +1,7 @@
 module System._Class.UnauthorizedAccessException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class UnauthorizedAccessException : SystemException

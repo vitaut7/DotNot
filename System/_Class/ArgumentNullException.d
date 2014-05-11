@@ -1,20 +1,20 @@
-module System._Class.AccessViolationException;
+module System._Class.ArgumentNullException;
 
 import System;
 import System.Runtime.Serialization;
 
 
-public class AccessViolationException : SystemException
+public class ArgumentNullException : ArgumentException
 {
 	public this()
 	{
-		super(Environment.GetResourceString("Arg_AccessViolationException"));
+		super(Environment.GetResourceString("ArgumentNull_Generic"));
 		SetErrorCode(__HResults.E_POINTER);
 	}
 
-	public this(string message)
+	public this(string paramName)
 	{
-		super(message);
+		super(Environment.GetResourceString("ArgumentNull_Generic"), paramName);
 		SetErrorCode(__HResults.E_POINTER);
 	}
 
@@ -22,6 +22,11 @@ public class AccessViolationException : SystemException
 	{
 		super(message, innerException);
 		SetErrorCode(__HResults.E_POINTER);
+	}
+
+	public this(string message, string paramName)
+	{
+		super(message, paramName);
 	}
 
 	protected this(SerializationInfo info, StreamingContext context)

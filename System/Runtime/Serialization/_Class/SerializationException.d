@@ -1,6 +1,7 @@
 module System.Runtime.Serialization._Class.SerializationException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class SerializationException : SystemException

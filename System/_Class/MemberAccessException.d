@@ -1,6 +1,7 @@
 module System._Class.MemberAccessException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class MemberAccessException : SystemException

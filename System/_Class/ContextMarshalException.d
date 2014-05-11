@@ -1,6 +1,7 @@
 module System._Class.ContextMarshalException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class ContextMarshalException : SystemException

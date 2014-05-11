@@ -1,6 +1,7 @@
 module System.Security._Class.VerificationException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class VerificationException : SystemException

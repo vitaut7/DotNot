@@ -1,6 +1,7 @@
 module System.Security.Policy._Class.PolicyException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class PolicyException : SystemException

@@ -1,6 +1,7 @@
 module System.Threading._Class.ThreadInterruptedException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class ThreadInterruptedException : SystemException

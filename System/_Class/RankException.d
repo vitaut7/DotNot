@@ -1,6 +1,7 @@
 module System._Class.RankException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class AccessViolationException : SystemException

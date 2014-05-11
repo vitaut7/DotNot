@@ -1,6 +1,7 @@
 module System.Runtime.InteropServices._Class.MarshalDirectiveException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class MarshalDirectiveException : SystemException

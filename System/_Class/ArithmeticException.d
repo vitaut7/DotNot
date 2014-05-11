@@ -1,6 +1,7 @@
 module System._Class.ArithmeticException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class ArithmeticException : SystemException

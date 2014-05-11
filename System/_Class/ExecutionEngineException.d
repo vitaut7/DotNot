@@ -1,6 +1,7 @@
 module System._Class.ExecutionEngineException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class ExecutionEngineException : SystemException

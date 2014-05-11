@@ -1,6 +1,7 @@
 module System._Class.InvalidOperationException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class InvalidOperationException : SystemException

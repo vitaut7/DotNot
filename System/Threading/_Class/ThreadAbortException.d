@@ -1,6 +1,7 @@
 module System.Threading._Class.ThreadAbortException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public final class ThreadAbortException : SystemException

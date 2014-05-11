@@ -1,6 +1,7 @@
 module System.IO._Class.IOException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class IOException : SystemException

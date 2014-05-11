@@ -1,6 +1,7 @@
 module System._Class.FormatException;
 
 import System;
+import System.Runtime.Serialization;
 
 
 public class FormatException : SystemException
