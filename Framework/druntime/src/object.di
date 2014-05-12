@@ -32,7 +32,7 @@ alias immutable(dchar)[] dstring;
 
 class Object
 {
-    public int GetType();
+    public string GetType();
     public string ToString();
     public int GetHashCode();
     protected void Finalize();
@@ -334,7 +334,7 @@ class Throwable : Object
 
 class Exception : Throwable
 {
-    @safe pure nothrow this(string msg, string file = __FILE__, size_t line = __LINE__, Throwable next = null)
+    @safe pure nothrow this(string msg = "Unknown exception", string file = __FILE__, size_t line = __LINE__, Throwable next = null)
     {
         super(msg, file, line, next);
     }

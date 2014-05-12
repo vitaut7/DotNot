@@ -77,7 +77,7 @@ class Object
 /**
 
  */
-    public int/*extern Type*/ GetType() { return 20; }
+    public string/*extern Type*/ GetType() { return typeid(this).name; }
 
     public string ToString()
     {
@@ -106,7 +106,7 @@ class Object
 
     public bool Equals(Object obj)
     {
-        return this is obj;
+        return this is obj; //TODO
     }
 
 
@@ -169,7 +169,7 @@ class Object
      */
     bool opEquals(Object o)
     {
-        return this is o;
+        return this is o; //TODO na FW
     }
 
     interface Monitor
@@ -1513,7 +1513,7 @@ class Exception : Throwable
      * This constructor does not automatically throw the newly-created
      * Exception; the $(D throw) statement should be used for that purpose.
      */
-    @safe pure nothrow this(string msg, string file = __FILE__, size_t line = __LINE__, Throwable next = null)
+    @safe pure nothrow this(string msg = "Unknown exception", string file = __FILE__, size_t line = __LINE__, Throwable next = null)
     {
         super(msg, file, line, next);
     }

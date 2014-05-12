@@ -150,9 +150,11 @@
     <Compile Include="System\_Interface\IServiceProvider.d" />
     <Compile Include="System\_Struct\ArgIterator.d" />
     <Compile Include="System\_Struct\RuntimeArgumentHandle.d" />
+    <Compile Include="System\Runtime\Serialization\_Struct\StreamingContext.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
+    <Folder Include="System\Runtime\Serialization\_Struct\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="System\Attribute.dx" />
