@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BEA7AA74-182F-4C24-A9BF-C8066F5D30A0}</ProjectGuid>
+    <UseDefaultCompiler>true</UseDefaultCompiler>
+    <IncrementalLinking>true</IncrementalLinking>
+    <PreferOneStepBuild>true</PreferOneStepBuild>
+    <Compiler>DMD2</Compiler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <LinkinThirdPartyLibraries>false</LinkinThirdPartyLibraries>
+    <ObjectsDirectory>obj\Debug</ObjectsDirectory>
+    <DebugLevel>0</DebugLevel>
+    <UnittestMode>false</UnittestMode>
+    <Externalconsole>true</Externalconsole>
+    <Target>Executable</Target>
+    <OutputName>Framework</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <LinkinThirdPartyLibraries>false</LinkinThirdPartyLibraries>
+    <ObjectsDirectory>obj\Release</ObjectsDirectory>
+    <DebugLevel>0</DebugLevel>
+    <UnittestMode>false</UnittestMode>
+    <Externalconsole>true</Externalconsole>
+    <Target>Executable</Target>
+    <OutputName>Framework</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Unittest|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Unittest</OutputPath>
+    <LinkinThirdPartyLibraries>false</LinkinThirdPartyLibraries>
+    <ObjectsDirectory>obj\Unittest</ObjectsDirectory>
+    <DebugLevel>0</DebugLevel>
+    <UnittestMode>true</UnittestMode>
+    <Externalconsole>true</Externalconsole>
+    <Target>Executable</Target>
+    <OutputName>Framework</OutputName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="main.d" />
+    <Compile Include="System\package.d" />
+    <Compile Include="System\IO\package.d" />
+    <Compile Include="System\IO\_Class\IOException.d" />
+    <Compile Include="System\IO\_Class\__HResults.d" />
+    <Compile Include="System\Reflection\package.d" />
+    <Compile Include="System\Reflection\_Class\AmbiguousMatchException.d" />
+    <Compile Include="System\Resources\package.d" />
+    <Compile Include="System\Resources\_Class\MissingManifestResourceException.d" />
+    <Compile Include="System\Resources\_Class\MissingSatelliteAssemblyException.d" />
+    <Compile Include="System\Runtime\InteropServices\package.d" />
+    <Compile Include="System\Runtime\InteropServices\_Class\MarshalDirectiveException.d" />
+    <Compile Include="System\Runtime\InteropServices\_Class\SafeArrayRankMismatchException.d" />
+    <Compile Include="System\Runtime\InteropServices\_Class\SafeArrayTypeMismatchException.d" />
+    <Compile Include="System\Runtime\InteropServices\_Interface\_Exception.d" />
+    <Compile Include="System\Runtime\Remoting\package.d" />
+    <Compile Include="System\Runtime\Remoting\_Class\RemotingException.d" />
+    <Compile Include="System\Runtime\Remoting\_Class\__HResults.d" />
+    <Compile Include="System\Runtime\Serialization\package.d" />
+    <Compile Include="System\Runtime\Serialization\_Class\SerializationException.d" />
+    <Compile Include="System\Runtime\Serialization\_Interface\ISerializable.d" />
+    <Compile Include="System\Security\package.d" />
+    <Compile Include="System\Security\Policy\package.d" />
+    <Compile Include="System\Security\Policy\_Class\PolicyException.d" />
+    <Compile Include="System\Security\_Class\VerificationException.d" />
+    <Compile Include="System\Threading\package.d" />
+    <Compile Include="System\Threading\_Class\SemaphoreFullException.d" />
+    <Compile Include="System\Threading\_Class\SynchronizationLockException.d" />
+    <Compile Include="System\Threading\_Class\ThreadAbortException.d" />
+    <Compile Include="System\Threading\_Class\ThreadInterruptedException.d" />
+    <Compile Include="System\Threading\_Class\ThreadStartException.d" />
+    <Compile Include="System\Threading\_Class\ThreadStateException.d" />
+    <Compile Include="System\xxx TODOCollections\Generic\package.d" />
+    <Compile Include="System\_Class\AccessViolationException.d" />
+    <Compile Include="System\_Class\AppDomain.d" />
+    <Compile Include="System\_Class\AppDomainUnloadedException.d" />
+    <Compile Include="System\_Class\ArgumentException.d" />
+    <Compile Include="System\_Class\ArgumentNullException.d" />
+    <Compile Include="System\_Class\ArgumentOutOfRangeException.d" />
+    <Compile Include="System\_Class\ArithmeticException.d" />
+    <Compile Include="System\_Class\ArrayTypeMismatchException.d" />
+    <Compile Include="System\_Class\CannotUnloadAppDomainException.d" />
+    <Compile Include="System\_Class\ConsoleCancelEventArgs.d" />
+    <Compile Include="System\_Class\ContextMarshalException.d" />
+    <Compile Include="System\_Class\Convert.d" />
+    <Compile Include="System\_Class\DataMisalignedException.d" />
+    <Compile Include="System\_Class\DateTime.d" />
+    <Compile Include="System\_Class\EventArgs.d" />
+    <Compile Include="System\_Class\Exception.d" />
+    <Compile Include="System\_Class\ExecutionEngineException.d" />
+    <Compile Include="System\_Class\FormatException.d" />
+    <Compile Include="System\_Class\GC.d" />
+    <Compile Include="System\_Class\GenericUriParser.d" />
+    <Compile Include="System\_Class\IndexOutOfRangeException.d" />
+    <Compile Include="System\_Class\InsufficientExecutionStackException.d" />
+    <Compile Include="System\_Class\Int32.d" />
+    <Compile Include="System\_Class\InvalidCastException.d" />
+    <Compile Include="System\_Class\InvalidOperationException.d" />
+    <Compile Include="System\_Class\InvalidProgramException.d" />
+    <Compile Include="System\_Class\LoaderOptimizationAttribute.d" />
+    <Compile Include="System\_Class\MemberAccessException.d" />
+    <Compile Include="System\_Class\MulticastNotSupportedException.d" />
+    <Compile Include="System\_Class\NotImplementedException.d" />
+    <Compile Include="System\_Class\NotSupportedException.d" />
+    <Compile Include="System\_Class\NullReferenceException.d" />
+    <Compile Include="System\_Class\OutOfMemoryException.d" />
+    <Compile Include="System\_Class\RankException.d" />
+    <Compile Include="System\_Class\StackOverflowException.d" />
+    <Compile Include="System\_Class\String.d" />
+    <Compile Include="System\_Class\SystemException.d" />
+    <Compile Include="System\_Class\TimeoutException.d" />
+    <Compile Include="System\_Class\Type.d" />
+    <Compile Include="System\_Class\TypeUnloadedException.d" />
+    <Compile Include="System\_Class\UnauthorizedAccessException.d" />
+    <Compile Include="System\_Class\UnhandledExceptionEventArgs.d" />
+    <Compile Include="System\_Class\__HResults.d" />
+    <Compile Include="System\_Delegate\Action.d" />
+    <Compile Include="System\_Delegate\AsyncCallback.d" />
+    <Compile Include="System\_Delegate\EventHandler.d" />
+    <Compile Include="System\_Delegate\UnhandledExceptionEventHandler.d" />
+    <Compile Include="System\_Enum\AttributeTargets.d" />
+    <Compile Include="System\_Enum\ConsoleColor.d" />
+    <Compile Include="System\_Enum\ConsoleKey.d" />
+    <Compile Include="System\_Enum\ConsoleModifiers.d" />
+    <Compile Include="System\_Enum\ConsoleSpecialKey.d" />
+    <Compile Include="System\_Enum\DateTimeKind.d" />
+    <Compile Include="System\_Enum\DayOfWeek.d" />
+    <Compile Include="System\_Enum\MidpointRounding.d" />
+    <Compile Include="System\_Enum\PlatformID.d" />
+    <Compile Include="System\_Enum\StringComparison.d" />
+    <Compile Include="System\_Enum\TypeCode.d" />
+    <Compile Include="System\_Enum\UriEnumTypes.d" />
+    <Compile Include="System\_Interface\IAppDomainSetup.d" />
+    <Compile Include="System\_Interface\IAsyncResult.d" />
+    <Compile Include="System\_Interface\ICloneable.d" />
+    <Compile Include="System\_Interface\IComparable.d" />
+    <Compile Include="System\_Interface\IConvertible.d" />
+    <Compile Include="System\_Interface\ICustomFormatter.d" />
+    <Compile Include="System\_Interface\IDisposable.d" />
+    <Compile Include="System\_Interface\IEquatable.d" />
+    <Compile Include="System\_Interface\IFormatProvider.d" />
+    <Compile Include="System\_Interface\IFormattable.d" />
+    <Compile Include="System\_Interface\IObservable.d" />
+    <Compile Include="System\_Interface\IObserver.d" />
+    <Compile Include="System\_Interface\IProgress.d" />
+    <Compile Include="System\_Interface\IServiceProvider.d" />
+    <Compile Include="System\_Struct\ArgIterator.d" />
+    <Compile Include="System\_Struct\RuntimeArgumentHandle.d" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="System\Attribute.dx" />
+  </ItemGroup>
+</Project>
