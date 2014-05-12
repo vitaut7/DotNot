@@ -44,5 +44,9 @@ struct StreamingContext
 
 		return false;
 	}
-}
 
+	public int GetHashCode()
+	{
+		return cast(int)_state;
+	}
+}

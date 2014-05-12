@@ -123,7 +123,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return _className;
 	}
 
-	public override Exception GetBaseException()
+	public Exception GetBaseException()
 	{
 		Exception inner = InnerException;
 		Exception back = this;

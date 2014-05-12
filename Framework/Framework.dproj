@@ -151,6 +151,7 @@
     <Compile Include="System\_Struct\ArgIterator.d" />
     <Compile Include="System\_Struct\RuntimeArgumentHandle.d" />
     <Compile Include="System\Runtime\Serialization\_Struct\StreamingContext.d" />
+    <Compile Include="System\_Class\DBNull.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
