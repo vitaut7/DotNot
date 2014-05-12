@@ -71,12 +71,13 @@ alias immutable(dchar)[] dstring;
 /**
  * All D class objects inherit from Object.
  */
+
 class Object
 {
 /**
 
  */
-    //public extern Type GetType();
+    public int/*extern Type*/ GetType() { return 20; }
 
     public string ToString()
     {
@@ -1382,7 +1383,8 @@ class Throwable : Object
      */
     Throwable   next;
 
-    @safe pure nothrow this(string msg, Throwable next = null)
+
+    @safe pure nothrow this(string msg = "Unknown Exception", Throwable next = null)
     {
         this.msg = msg;
         this.next = next;

@@ -2,6 +2,7 @@
 /**
 Sealed  = final
 decimal = real
+Miesto Type pouzit TypeInfo
 
 scope c = new C(); // alokovanie na stacku
 */

@@ -121,6 +121,7 @@ class Environment
 	}
 }
 
+interface IDictionary {}
 
 //UDA
 public const enum internal = "Internal";

@@ -176,5 +176,12 @@ Global
 		$28.IncludeStaticEntities = True
 		$0.VersionControlPolicy = $30
 		$30.inheritsSet = Mono
+		$0.TextStylePolicy = $31
+		$31.inheritsSet = null
+		$31.scope = text/x-d
+		$0.DFormattingPolicy = $32
+		$32.inheritsSet = Mono
+		$32.inheritsScope = text/x-d
+		$32.scope = text/x-d
 	EndGlobalSection
 EndGlobal

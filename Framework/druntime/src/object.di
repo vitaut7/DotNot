@@ -29,9 +29,10 @@ alias immutable(char)[]  string;
 alias immutable(wchar)[] wstring;
 alias immutable(dchar)[] dstring;
 
+
 class Object
 {
-   //public extern Type GetType();
+    public int GetType();
     public string ToString();
     public int GetHashCode();
     protected void Finalize();
@@ -324,7 +325,7 @@ class Throwable : Object
     TraceInfo   info;
     Throwable   next;
 
-    @safe pure nothrow this(string msg, Throwable next = null);
+    @safe pure nothrow this(string msg = "Unknown Exception", Throwable next = null);
     @safe pure nothrow this(string msg, string file, size_t line, Throwable next = null);
     override string toString();
     void toString(scope void delegate(in char[]) sink) const;
