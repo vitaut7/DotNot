@@ -19,8 +19,15 @@ _Class.GenericUriParser - Deklarovat triedu
 _cLASS.LoaderOptimizationAttribute - Deklarovat triedu
 _Classs.String - deklarovat
 _struct.ArgIterator - doplnit externy
-_class.Int32 - dorobit
 _Class.Exception - dorobit
+
+mozno este nejake operatory:
+_Class.Boolean - Dorobit TryParse, ostatne hotovo
+_Class.Byte - Dorobit TryParse, stringy, ostatne hotovo
+_Class.UByte - Dorobit TryParse, stringy, ostatne hotovo
+_Class.Int16 - Dorobit TryParse, stringy, ostatne hotovo
+_Class.UInt16 - Dorobit TryParse, stringy, ostatne hotovo
+_Class.Int32 - Dorobit TryParse, stringy, ostatne hotovo
 */
 
 import System;

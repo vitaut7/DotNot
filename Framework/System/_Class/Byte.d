@@ -1,52 +1,25 @@
-﻿module System._Class.Boolean;
+﻿module System._Class.Byte;
 
 import System;
 
 
-public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
+public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 {
-	@internal public static const True = 1;
-	@internal public static const False = 0;
-
-	@internal public static const TrueLiteral = "True";
-	@internal public static const FalseLiteral = "False";
-
-	public static immutable TrueString = TrueLiteral;
-	public static immutable FalseString = FalseLiteral;
+	public static const MaxValue = cast(byte)0x7F;
+	public static const MinValue = cast(byte)0x80;
 
 	alias _value this;
-	private bool _value;
+	private byte _value;
 
 
-	static Boolean opCall(bool value)
+	static Byte opCall(byte value)
 	{
-		Boolean ret = new Boolean();
+		Byte ret = new Byte();
 		ret._value = value;
 		return ret;
 	}
 
-	public static Boolean Parse(string value)
-	{
-		if (!value)
-			throw new ArgumentNullException("value");
-
-		Boolean result;
-		if (!TryParse(value, result))
-	    	throw new FormatException(Environment.GetResourceString("Format_BadBoolean"));
-
-		return result;
-	}
-	
-	public static bool TryParse(string value, out Boolean result)
-	{
-		result = false;
-
-		if (!value)
-			return false;
-
-
-		return false; //TODO
-	}
+	//TODO: parsery
 
 	private this()
 	{
@@ -55,113 +28,110 @@ public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 	// Override Objct's methods
 	public override int GetHashCode()
 	{
-		return _value ? True : False;
+		return (cast(int)_value ^ cast(int)_value << 8);
 	}
-
+	
 	public override bool Equals(Object obj)
 	{
-		if (obj.GetType() != Boolean.GetType())
+		if (obj.GetType() != Byte.GetType())
 			return false;
 
-		return (cast(Boolean)obj)._value == _value;
+		return (cast(Byte)obj)._value == _value;
 	}
-
+	
 	// Implement interface methods
-	public bool Equals(bool other)
+	public bool Equals(byte other)
 	{
 		return _value == other;
 	}
-
-	public int CompareTo(bool value)
+	
+	public int CompareTo(byte value)
 	{
-		if (_value == value)
-			return 0;
-		if (!_value)
-			return -1;
-
-		return 1;
+		return _value - value;
 	}
 
 	TypeCode GetTypeCode()
 	{
-		return TypeCode.Boolean;
+		return TypeCode.Byte;
 	}
 	
 	bool ToBoolean(IFormatProvider provider = null)
 	{
-		return _value;
+		return Convert.ToBoolean(_value);
 	}
-
+	
 	char ToChar(IFormatProvider provider = null)
 	{
-		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Boolean", "Char"));
+		return Convert.ToChar(_value);
 	}
-
+	
 	byte ToByte(IFormatProvider provider = null)
 	{
-		return Convert.ToByte(_value);
+		return _value;
 	}
-
+	
 	ubyte ToUByte(IFormatProvider provider = null)
 	{
 		return Convert.ToUByte(_value);
 	}
-
+	
 	short ToInt16(IFormatProvider provider = null)
 	{
 		return Convert.ToInt16(_value);
 	}
-
+	
 	ushort ToUInt16(IFormatProvider provider = null)
 	{
 		return Convert.ToUInt16(_value);
 	}
-
+	
 	int ToInt32(IFormatProvider provider = null)
 	{
 		return Convert.ToInt32(_value);
 	}
-
+	
 	uint ToUInt32(IFormatProvider provider = null)
 	{
 		return Convert.ToUInt32(_value);
 	}
-
+	
 	long ToInt64(IFormatProvider provider = null)
 	{
 		return Convert.ToInt64(_value);
 	}
-
+	
 	ulong ToUInt64(IFormatProvider provider = null)
 	{
 		return Convert.ToUInt64(_value);
 	}
-
+	
 	float ToFloat(IFormatProvider provider = null)
 	{
 		return Convert.ToFloat(_value);
 	}
-
+	
 	double ToDouble(IFormatProvider provider = null)
 	{
 		return Convert.ToDouble(_value);
 	}
-
+	
 	real ToReal(IFormatProvider provider = null)
 	{
 		return Convert.ToReal(_value);
 	}
-
+	
 	DateTime ToDateTime(IFormatProvider provider = null)
 	{
-		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Boolean", "DateTime"));
+		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Byte", "DateTime"));
 	}
-
+	
 	string ToString(IFormatProvider provider = null)
 	{
-		return _value ? TrueLiteral : FalseLiteral;
+		return "";// TODO
 	}
 
+	//TODO nejake stringy
+	
 	Object ToType(Type conversionType, IFormatProvider provider = null)
 	{
 		return Convert.DefaultToType(this, conversionType, provider);

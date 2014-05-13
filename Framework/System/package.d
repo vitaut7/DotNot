@@ -110,6 +110,12 @@ public import System._Class.DivideByZeroException;
 public import System._Class.NotFiniteNumberException;
 public import System._Class.OverflowException;
 
+public import System._Class.Boolean;
+public import System._Class.Byte;
+public import System._Class.UByte;
+public import System._Class.Int16;
+public import System._Class.UInt16;
+
 
 //Public or wat
 class Assembly {}
@@ -142,6 +148,11 @@ class Environment
 		return key;
 	}
 
+	static string GetResourceString(string key, string, string)
+	{
+		return key;
+	}
+
 	static string GetRuntimeResourceString(string key, Object[] values) { return key; }
 }
 
@@ -154,15 +165,6 @@ class Contract
 	public static void EndContractBlock() { }
 }
 
-
-class Boolean
-{
-	public static const True = 1;
-	public static const False = 0;
-	static Boolean opCall(bool value) { return new Boolean(); }
-	char ToChar(IFormatProvider p = null) { return 'a'; }
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
 
 class Double
 {
@@ -182,38 +184,6 @@ class Real
 {
 	static Real opCall(real value) { return new Real(); }
 		char ToChar(IFormatProvider p = null) { return 'a'; }
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class Byte
-{
-	static Byte opCall(byte value) { return new Byte(); }
-	public static const MaxValue = 123;
-	public static const MinValue = -123;
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class UByte
-{
-	static UByte opCall(ubyte value) { return new UByte(); }
-	public static const MaxValue = 123;
-	public static const MinValue = 0;
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class Int16
-{
-	static Int16 opCall(short value) { return new Int16(); }
-	public static const MaxValue = 123;
-	public static const MinValue = 0;
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class UInt16
-{
-	static UInt16 opCall(ushort value) { return new UInt16(); }
-	public static const MaxValue = 123;
-	public static const MinValue = 0;
 	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 

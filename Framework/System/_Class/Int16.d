@@ -1,20 +1,20 @@
-module System._Class.Int32;
+﻿module System._Class.Int16;
 
 import System;
 
 
-public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatable!int
+public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquatable!short
 {
-	public static const MaxValue = cast(int)0x7FFFFFFF;
-	public static const MinValue = cast(int)0x80000000;
+	public static const MaxValue = cast(short)0x7FFF;
+	public static const MinValue = cast(short)0x8000;
 	
 	alias _value this;
-	private int _value;
+	private short _value;
 	
 	
-	static Int32 opCall(int value)
+	static Int16 opCall(short value)
 	{
-		Int32 ret = new Int32();
+		Int16 ret = new Int16();
 		ret._value = value;
 		return ret;
 	}
@@ -28,33 +28,31 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 	// Override Objct's methods
 	public override int GetHashCode()
 	{
-		return _value;
+		return (cast(short)_value | (cast(int)_value << 8));
 	}
 	
 	public override bool Equals(Object obj)
 	{
-		if (obj.GetType() != Int32.GetType())
+		if (obj.GetType() != Int16.GetType())
 			return false;
 		
-		return (cast(Int32)obj)._value == _value;
+		return (cast(Int16)obj)._value == _value;
 	}
 	
 	// Implement interface methods
-	public bool Equals(int other)
+	public bool Equals(short other)
 	{
 		return _value == other;
 	}
 	
-	public int CompareTo(int value)
+	public int CompareTo(short value)
 	{
-		if (_value < value) return -1;
-		if (_value > value) return 1;
-		return 0;
+		return _value - value;
 	}
 	
 	TypeCode GetTypeCode()
 	{
-		return TypeCode.Int32;
+		return TypeCode.Int16;
 	}
 	
 	bool ToBoolean(IFormatProvider provider = null)
@@ -79,7 +77,7 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 	
 	short ToInt16(IFormatProvider provider = null)
 	{
-		return Convert.ToInt16(_value);
+		return _value;
 	}
 	
 	ushort ToUInt16(IFormatProvider provider = null)
@@ -89,7 +87,7 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 	
 	int ToInt32(IFormatProvider provider = null)
 	{
-		return _value;
+		return Convert.ToInt32(_value);
 	}
 	
 	uint ToUInt32(IFormatProvider provider = null)
@@ -124,14 +122,14 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 	
 	DateTime ToDateTime(IFormatProvider provider = null)
 	{
-		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Int32", "DateTime"));
+		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Int16", "DateTime"));
 	}
 	
 	string ToString(IFormatProvider provider = null)
 	{
 		return "";// TODO
 	}
-	
+
 	string ToString(string format, IFormatProvider provider = null)
 	{
 		return ""; //TODO

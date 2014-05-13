@@ -1,12 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Unittest" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Framework\System\package.d">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Framework\System\_Class\Byte.d">
     <Files>
-      <File FileName="Framework\main.d" Line="23" Column="27" />
-      <File FileName="Framework\System\package.d" Line="258" Column="25" />
+      <File FileName="Framework\main.d" Line="25" Column="50" />
+      <File FileName="Framework\System\package.d" Line="190" Column="38" />
       <File FileName="Framework\System\_Class\Convert.d" Line="101" Column="15" />
-      <File FileName="Framework\System\_Interface\IConvertible.d" Line="10" Column="50" />
-      <File FileName="Framework\System\_Class\Boolean.d" Line="9" Column="2" />
+      <File FileName="Framework\System\_Class\Boolean.d" Line="85" Column="1" />
+      <File FileName="Framework\System\_Interface\IConvertible.d" Line="8" Column="1" />
+      <File FileName="Framework\System\_Class\Byte.d" Line="31" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

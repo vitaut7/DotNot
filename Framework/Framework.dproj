@@ -155,6 +155,10 @@
     <Compile Include="System\_Class\NotFiniteNumberException.d" />
     <Compile Include="System\_Class\OverflowException.d" />
     <Compile Include="System\_Class\Boolean.d" />
+    <Compile Include="System\_Class\Byte.d" />
+    <Compile Include="System\_Class\UByte.d" />
+    <Compile Include="System\_Class\Int16.d" />
+    <Compile Include="System\_Class\UInt16.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
