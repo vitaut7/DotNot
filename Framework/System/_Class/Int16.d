@@ -18,6 +18,11 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 		ret._value = value;
 		return ret;
 	}
+
+	bool opEquals(short value)
+	{
+		return Equals(value);
+	}
 	
 	//TODO: parsery
 	

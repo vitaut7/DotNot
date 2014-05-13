@@ -18,7 +18,12 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 		ret._value = value;
 		return ret;
 	}
-	
+
+	bool opEquals(int value)
+	{
+		return Equals(value);
+	}
+
 	//TODO: parsery
 	
 	private this()

@@ -18,6 +18,11 @@ public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEqu
 		ret._value = value;
 		return ret;
 	}
+
+	bool opEquals(ushort value)
+	{
+		return Equals(value);
+	}
 	
 	//TODO: parsery
 	

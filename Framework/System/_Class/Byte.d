@@ -19,6 +19,11 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		return ret;
 	}
 
+	bool opEquals(byte value)
+	{
+		return Equals(value);
+	}
+
 	//TODO: parsery
 
 	private this()

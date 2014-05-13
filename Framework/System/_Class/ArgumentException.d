@@ -11,8 +11,20 @@ public class ArgumentException : SystemException
 	@property
 	{
 		string ParamName() { return _paramName; }
-	}
 
+		public override string Message()
+		{
+			string s = super.Message();
+
+			if (!String.IsNullOrEmpty(_paramName))
+			{
+				string resourceString = Environment.GetRuntimeResourceString("Arg_ParamName_Name", [String(_paramName)]);
+				return s ~ Environment.NewLine ~ resourceString;
+			}
+
+			return s;
+		}
+	}
 
 	public this()
 	{
@@ -54,5 +66,13 @@ public class ArgumentException : SystemException
 		_paramName = info.GetString("ParamName");
 	}
 
-	//Message, override GetObjectData
+	public override void GetObjectData(SerializationInfo info, StreamingContext context)
+	{
+		if (info is null)
+			throw new ArgumentNullException("info");
+
+		Contract.EndContractBlock();
+		super.GetObjectData(info, context);
+		info.AddValue("ParamName", String(_paramName), typeid(String));
+	}
 }

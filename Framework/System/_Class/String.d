@@ -19,6 +19,12 @@ class String
 	static String opCall(string value) { return new String(); }
 
 	int Length;
+
+
+
+	public static bool IsNullOrEmpty(string value) {
+		return (value == null || value.Length == 0);
+	}
 }
 
 

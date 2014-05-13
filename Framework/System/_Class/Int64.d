@@ -18,6 +18,11 @@ public final class Int64 : IConvertible, IFormattable, IComparable!long, IEquata
 		ret._value = value;
 		return ret;
 	}
+
+	bool opEquals(long value)
+	{
+		return Equals(value);
+	}
 	
 	//TODO: parsery
 	

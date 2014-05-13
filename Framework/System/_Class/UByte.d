@@ -18,6 +18,11 @@ public final class UByte : IConvertible, IComparable!ubyte, IEquatable!ubyte
 		ret._value = value;
 		return ret;
 	}
+
+	bool opEquals(ubyte value)
+	{
+		return Equals(value);
+	}
 	
 	//TODO: parsery
 	

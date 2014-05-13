@@ -10,10 +10,22 @@ public class ArgumentOutOfRangeException : ArgumentException
 
 	@property
 	{
-		//Message
 		public Object ActualValue() { return _actualValue; }
-	}
 
+		public override string Message()
+		{
+			string s = super.Message();
+			if (_actualValue !is null)
+			{
+				string valueMessage = Environment.GetRuntimeResourceString("ArgumentOutOfRange_ActualValue", [String(_actualValue.ToString())]);
+				if (!s)
+					return valueMessage;
+				return s ~ Environment.NewLine ~ valueMessage;
+			}
+
+			return s;
+		}
+	}
 
 	public this()
 	{
@@ -50,8 +62,16 @@ public class ArgumentOutOfRangeException : ArgumentException
 	protected this(SerializationInfo info, StreamingContext context)
 	{
 		super(info, context);
-		//_actualValue = info.GetValue("ActualValue", typeof(Object));
+		_actualValue = info.GetValue("ActualValue", typeid(Object));
 	}
 
-	//Override GetObjectData TODO
+	public override void GetObjectData(SerializationInfo info, StreamingContext context)
+	{
+		if (info is null)
+			throw new ArgumentNullException("info");
+		
+		Contract.EndContractBlock();
+		super.GetObjectData(info, context);
+		info.AddValue("ActualValue", _actualValue, typeid(Object));
+	}
 }

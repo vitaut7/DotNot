@@ -18,7 +18,12 @@ public final class UInt32 : IConvertible, IFormattable, IComparable!uint, IEquat
 		ret._value = value;
 		return ret;
 	}
-	
+
+	bool opEquals(uint value)
+	{
+		return Equals(value);
+	}
+
 	//TODO: parsery
 	
 	private this()

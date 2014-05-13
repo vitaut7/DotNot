@@ -61,7 +61,7 @@ System:
 System.Collections:
 	Delegats  - NENI
 	Enums     - NENI
-	Struct    - HOTOVO
+	Struct    - nope
 
 
 	Enumy:
@@ -77,9 +77,9 @@ System.Collections:
 			SystemException - OK
 				AccessViolationException            - OK
 				AppDomainUnloadedException          - OK
-				ArgumentException                   - TODO
+				ArgumentException                   - OK
 					ArgumentNullException           - OK
-					ArgumentOutOfRangeException     - TODO
+					ArgumentOutOfRangeException     - OK
 				ArithmeticException                 - OK
 					DivideByZeroException           - OK
 					NotFiniteNumberException        - OK

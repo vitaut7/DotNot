@@ -157,6 +157,13 @@ class Environment
 	}
 
 	static string GetRuntimeResourceString(string key, Object[] values) { return key; }
+
+
+	@property public static string NewLine()
+	{
+		//Contract.Ensures(Contract.Result<String>() != null);
+		return "\r\n";
+	}
 }
 
 interface IDictionary {}

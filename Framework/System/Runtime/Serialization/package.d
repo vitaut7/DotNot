@@ -8,7 +8,7 @@ public import System.Runtime.Serialization._Struct.StreamingContext;
 public import System.Runtime.Serialization._Class.SerializationException;
 
 
-//TODO
+//TODO, nepouzivat typeinfo nammiesto type!
 public final class SerializationInfo {
 	public string GetString(string name) { return name; }
 	public Object GetValueNoThrow(string name, TypeInfo type) { return null; }

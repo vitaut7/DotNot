@@ -25,6 +25,11 @@ public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 		return ret;
 	}
 
+	bool opEquals(bool value)
+	{
+		return Equals(value);
+	}
+
 	public static Boolean Parse(string value)
 	{
 		if (!value)
@@ -216,4 +221,16 @@ public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 	{
 		return Convert.DefaultToType(this, conversionType, provider);
 	}
+}
+
+unittest
+{
+	Boolean test = Boolean(true);
+	bool a = test;
+
+	assert(test == true);
+	assert(test.ToInt32() == Boolean.True);
+
+	test = false;
+	assert(test.ToString() == Boolean.FalseLiteral);
 }

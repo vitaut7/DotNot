@@ -18,6 +18,11 @@ public final class UInt64 : IConvertible, IFormattable, IComparable!ulong, IEqua
 		ret._value = value;
 		return ret;
 	}
+
+	bool opEquals(ulong value)
+	{
+		return Equals(value);
+	}
 	
 	//TODO: parsery
 	
