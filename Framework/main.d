@@ -22,12 +22,14 @@ _struct.ArgIterator - doplnit externy
 _Class.Exception - dorobit
 
 mozno este nejake operatory:
-_Class.Boolean - Dorobit TryParse, ostatne hotovo
 _Class.Byte - Dorobit TryParse, stringy, ostatne hotovo
 _Class.UByte - Dorobit TryParse, stringy, ostatne hotovo
 _Class.Int16 - Dorobit TryParse, stringy, ostatne hotovo
 _Class.UInt16 - Dorobit TryParse, stringy, ostatne hotovo
 _Class.Int32 - Dorobit TryParse, stringy, ostatne hotovo
+_Class.UInt32 - Dorobit TryParse, stringy, ostatne hotovo
+_Class.Int64 - Dorobit TryParse, stringy, ostatne hotovo
+_Class.UInt64 - Dorobit TryParse, stringy, ostatne hotovo
 */
 
 import System;

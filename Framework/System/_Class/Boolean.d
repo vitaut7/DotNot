@@ -44,8 +44,58 @@ public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 		if (!value)
 			return false;
 
+		if (TrueLiteral.Equals(value, StringComparison.OrdinalIgnoreCase))
+		{
+			result = true;
+			return true;
+		}
 
-		return false; //TODO
+		if (FalseLiteral.Equals(value, StringComparison.OrdinalIgnoreCase))
+		{
+			result = false;
+			return true;
+		}
+
+		value = TrimWhiteSpaceAndNull(value);
+
+		if (TrueLiteral.Equals(value, StringComparison.OrdinalIgnoreCase))
+		{
+			result = true;
+			return true;
+		}
+		
+		if (FalseLiteral.Equals(value, StringComparison.OrdinalIgnoreCase))
+		{
+			result = false;
+			return true;
+		}
+
+		return false;
+	}
+
+	private static string TrimWhiteSpaceAndNull(string value)
+	{
+		int start = 0;
+		int end = value.Length - 1;
+		char nullChar = 0x0000;
+
+		while (start < value.Length)
+		{
+			if (!Char.IsWhiteSpace(value[start]) && value[start] != nullChar)
+				break;
+
+			start++;
+		}
+
+		while (end >= start)
+		{
+			if (!Char.IsWhiteSpace(value[end]) && value[end] != nullChar)
+				break;
+
+			end--;
+		}
+
+		return value.Substring(start, end - start + 1);
 	}
 
 	private this()

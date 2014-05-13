@@ -181,17 +181,3 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		}
 	}
 }
-
-unittest
-{
-	throw new BaseException();
-	try
-	{
-		throw new BaseException("testicek");
-	}
-	catch (BaseException e)
-	{
-		import std.stdio;
-		"excp".writeln();
-	}
-}

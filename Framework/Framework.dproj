@@ -159,6 +159,9 @@
     <Compile Include="System\_Class\UByte.d" />
     <Compile Include="System\_Class\Int16.d" />
     <Compile Include="System\_Class\UInt16.d" />
+    <Compile Include="System\_Class\UInt32.d" />
+    <Compile Include="System\_Class\Int64.d" />
+    <Compile Include="System\_Class\UInt64.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />

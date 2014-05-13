@@ -65,7 +65,6 @@ public import System._Struct.RuntimeArgumentHandle;
 
 public import System._Class.GC;
 public import System._Class.Type;
-public import System._Class.Int32;
 public import System._Class.String;
 public import System._Class.Convert;
 public import System._Class.DateTime;
@@ -115,6 +114,10 @@ public import System._Class.Byte;
 public import System._Class.UByte;
 public import System._Class.Int16;
 public import System._Class.UInt16;
+public import System._Class.Int32;
+public import System._Class.UInt32;
+public import System._Class.Int64;
+public import System._Class.UInt64;
 
 
 //Public or wat
@@ -187,31 +190,6 @@ class Real
 	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
-class UInt32
-{
-	static UInt32 opCall(uint value) { return new UInt32(); }
-	public static const MaxValue = 123;
-	public static const MinValue = 0;
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class Int64
-{
-	static Int64 opCall(long value) { return new Int64(); }
-	public static const MaxValue = 123;
-	public static const MinValue = 0;
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class UInt64
-{
-	static UInt64 opCall(ulong value) { return new UInt64(); }
-	public static const MaxValue = 123;
-	public static const MinValue = 0;
-
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
 class Char
 {
 	public static const MaxValue = 123;
@@ -223,6 +201,8 @@ class Char
 	real ToReal(IFormatProvider p = null) { return 123.123; }
 
 	DateTime ToDateTime(IFormatProvider p = null) { return null; }
+
+	public static bool IsWhiteSpace(char c) { return false; }
 }
 
 class RuntimeAssembly {}
