@@ -13,4 +13,8 @@ class String
 	string a;
 	alias a this;
 	public static immutable String Empty;
+
+	static String opCall(string value) { return new String(); }
+
+	int Length;
 }

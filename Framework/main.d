@@ -3,6 +3,8 @@
 Sealed  = final
 decimal = real
 Miesto Type pouzit TypeInfo
+miesto IHashCodeProvider pouzit IEqualityComparer
+Vyjebat sa na klasicke kolekce a pouzit iba generic
 
 scope c = new C(); // alokovanie na stacku
 */
@@ -48,6 +50,11 @@ System:
 	Delegats  - HOTOVO
 	Enums     - SKORO HOTOVO
 
+System.Collections:
+	Delegats  - NENI
+	Enums     - NENI
+	Struct    - HOTOVO
+
 
 	Enumy:
 	ActivationContext.ContextForm ???
@@ -66,6 +73,9 @@ System:
 					ArgumentNullException           - OK
 					ArgumentOutOfRangeException     - TODO
 				ArithmeticException                 - OK
+					DivideByZeroException           - OK
+					NotFiniteNumberException        - OK
+					OverflowException               - OK
 				ArrayTypeMismatchException          - OK
 				BadImageFormatException             - IMPL
 				CannotUnloadAppDomainException      - OK

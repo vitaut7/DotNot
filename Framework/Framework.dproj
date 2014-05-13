@@ -74,7 +74,6 @@
     <Compile Include="System\Threading\_Class\ThreadInterruptedException.d" />
     <Compile Include="System\Threading\_Class\ThreadStartException.d" />
     <Compile Include="System\Threading\_Class\ThreadStateException.d" />
-    <Compile Include="System\xxx TODOCollections\Generic\package.d" />
     <Compile Include="System\_Class\AccessViolationException.d" />
     <Compile Include="System\_Class\AppDomain.d" />
     <Compile Include="System\_Class\AppDomainUnloadedException.d" />
@@ -152,6 +151,9 @@
     <Compile Include="System\_Struct\RuntimeArgumentHandle.d" />
     <Compile Include="System\Runtime\Serialization\_Struct\StreamingContext.d" />
     <Compile Include="System\_Class\DBNull.d" />
+    <Compile Include="System\_Class\DivideByZeroException.d" />
+    <Compile Include="System\_Class\NotFiniteNumberException.d" />
+    <Compile Include="System\_Class\OverflowException.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />

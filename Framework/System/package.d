@@ -106,6 +106,9 @@ public import System._Class.TypeUnloadedException;
 public import System._Class.UnauthorizedAccessException;
 public import System._Class.ArgumentNullException;
 public import System._Class.ArgumentOutOfRangeException;
+public import System._Class.DivideByZeroException;
+public import System._Class.NotFiniteNumberException;
+public import System._Class.OverflowException;
 
 
 //Public or wat
@@ -143,6 +146,93 @@ class Environment
 }
 
 interface IDictionary {}
+
+public abstract class Array {}
+
+class Contract
+{
+	public static void EndContractBlock() { }
+}
+
+
+class Boolean
+{
+	public static const True = 1;
+	public static const False = 0;
+	static Boolean opCall(bool value) { return new Boolean(); }
+	char ToChar(IFormatProvider p = null) { return 'a'; }
+}
+
+class Double
+{
+	static Double opCall(double value) { return new Double(); }
+	char ToChar(IFormatProvider p = null) { return 'a'; }
+}
+
+class Float
+{
+	static Float opCall(float value) { return new Float(); }
+		char ToChar(IFormatProvider p = null) { return 'a'; }
+}
+
+class Real
+{
+	static Real opCall(real value) { return new Real(); }
+		char ToChar(IFormatProvider p = null) { return 'a'; }
+}
+
+class Byte
+{
+	public static const MaxValue = 123;
+	public static const MinValue = -123;
+}
+
+class UByte
+{
+	public static const MaxValue = 123;
+	public static const MinValue = 0;
+}
+
+class Int16
+{
+	public static const MaxValue = 123;
+	public static const MinValue = 0;
+}
+
+class UInt16
+{
+	public static const MaxValue = 123;
+	public static const MinValue = 0;
+}
+
+class UInt32
+{
+	public static const MaxValue = 123;
+	public static const MinValue = 0;
+}
+
+class Int64
+{
+	public static const MaxValue = 123;
+	public static const MinValue = 0;
+}
+
+class UInt64
+{
+	public static const MaxValue = 123;
+	public static const MinValue = 0;
+}
+
+class Char
+{
+	public static const MaxValue = 123;
+	public static const MinValue = 0;
+
+	static Char opCall(char value) { return new Char(); }
+	float ToFloat(IFormatProvider p = null) { return 123.123; }
+	double ToDouble(IFormatProvider p = null) { return 123.123; }
+	real ToReal(IFormatProvider p = null) { return 123.123; }
+}
 
 //UDA
 public const enum internal = "Internal";
