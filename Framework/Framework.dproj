@@ -154,6 +154,7 @@
     <Compile Include="System\_Class\DivideByZeroException.d" />
     <Compile Include="System\_Class\NotFiniteNumberException.d" />
     <Compile Include="System\_Class\OverflowException.d" />
+    <Compile Include="System\_Class\Boolean.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />

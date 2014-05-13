@@ -66,5 +66,6 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
         private ulong dateData;
 
 
+	this(long) {}
         this(long, int) {}
 }

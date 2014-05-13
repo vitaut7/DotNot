@@ -40,11 +40,73 @@ public static class Convert
 		return false;
 	}
 
-	//change type...
-	//change type...
+	public static Object ChangeType(Object value, TypeCode typeCode)
+	{
+		return ChangeType(value, typeCode, null); //TODO: Thread.Currentthresd...
+	}
+
+	public static Object ChangeType(Object value, TypeCode typeCode, IFormatProvider provider)
+	{
+		if (value is null && (typeCode == TypeCode.Empty || typeCode == TypeCode.String || typeCode == TypeCode.Object))
+			return null;
+
+		IConvertible v = cast(IConvertible)value;
+		if (v is null)
+			throw new InvalidCastException(Environment.GetResourceString("InvalidCast_IConvertible"));
+
+		switch (typeCode)
+		{
+			case TypeCode.Boolean:
+				return Boolean(v.ToBoolean(provider));
+			case TypeCode.Char:
+				return Char(v.ToChar(provider));
+			case TypeCode.Byte:
+				return Byte(v.ToByte(provider));
+			case TypeCode.UByte:
+				return UByte(v.ToUByte(provider));
+			case TypeCode.Int16:
+				return Int16(v.ToInt16(provider));
+			case TypeCode.UInt16:
+				return UInt16(v.ToUInt16(provider));
+			case TypeCode.Int32:
+				return Int32(v.ToInt32(provider));
+			case TypeCode.UInt32:
+				return UInt32(v.ToUInt32(provider));
+			case TypeCode.Int64:
+				return Int64(v.ToInt64(provider));
+			case TypeCode.UInt64:
+				return UInt64(v.ToUInt64(provider));
+			case TypeCode.Float:
+				return Float(v.ToFloat(provider));
+			case TypeCode.Double:
+				return Double(v.ToDouble(provider));
+			case TypeCode.Real:
+				return Real(v.ToReal(provider));
+			case TypeCode.DateTime:
+				return v.ToDateTime(provider);
+			case TypeCode.String:
+				return String(v.ToString(provider));
+			case TypeCode.Object:
+				return value;
+			case TypeCode.DBNull:
+				throw new InvalidCastException(Environment.GetResourceString("InvalidCast_DBNull"));
+			case TypeCode.Empty:
+				throw new InvalidCastException(Environment.GetResourceString("InvalidCast_Empty"));
+			default:
+				throw new InvalidCastException(Environment.GetResourceString("Arg_UnknownTypeCode"));
+		}
+	}
+
+	@internal public static Object DefaultToType(IConvertible value, Type targetType, IFormatProvider provider) {
+		return null;
+	}
 	//default to type
 	//change type...
 	//change type...
+	public static Object ToSwag(byte[] someHomosexuals, byte age = 8)
+	{
+		return null; //Just trolling
+	}
 
 
 	// Conversions to Boolean
@@ -1313,7 +1375,7 @@ public static class Convert
 	}
 
 
-	// Conversion to Real
+	// Conversions to Real
 
 	public static real ToReal(Object value, IFormatProvider provider = null)
 	{
@@ -1396,6 +1458,92 @@ public static class Convert
 	public static real ToReal(DateTime value)
 	{
 		return (cast(IConvertible)value).ToReal();
+	}
+
+
+	// Conversions to DateTime
+
+	public static DateTime ToDateTime(Object value, IFormatProvider provider = null)
+	{
+		return value is null ? cast(DateTime)DateTime.MinValue : (cast(IConvertible)value).ToDateTime(provider);
+	}
+	
+	public static DateTime ToDateTime(bool value)
+	{
+		return Boolean(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(char value)
+	{
+		return Char(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(byte value)
+	{
+		return Byte(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(ubyte value)
+	{
+		return UByte(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(short value)
+	{
+		return Int16(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(ushort value)
+	{
+		return UInt16(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(int value)
+	{
+		return Int32(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(uint value)
+	{
+		return UInt32(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(long value)
+	{
+		return Int64(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(ulong value)
+	{
+		return UInt64(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(string value, IFormatProvider provider)
+	{
+		if (!value)
+			return new DateTime(0);
+		
+		return new DateTime(-1); //TODO parse
+	}
+	
+	public static DateTime ToDateTime(float value)
+	{
+		return Float(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(double value)
+	{
+		return Double(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(real value)
+	{
+		return Real(value).ToDateTime();
+	}
+	
+	public static DateTime ToDateTime(DateTime value)
+	{
+		return value;
 	}
 
 

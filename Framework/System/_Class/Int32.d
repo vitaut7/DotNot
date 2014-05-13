@@ -4,7 +4,7 @@ import System;
 import std.stdio;
 
 
-public final class Int32 : IComparable, /*IFormattable, IConvertible,*/ IComparableT!(int), IEquatable!(int)
+public final class Int32 : /*IFormattable, IConvertible,*/ IComparable!int, IEquatable!int
 {
 	alias _value this;
 	public static const int MaxValue = int.max;
@@ -23,22 +23,6 @@ public final class Int32 : IComparable, /*IFormattable, IConvertible,*/ ICompara
 		Int32 ret = new Int32();
 		ret._value = value;
 		return ret;
-	}
-
-	public override int CompareTo(Object obj)
-	{
-		if (obj is null)
-			return 1;
-
-		if (obj.ToString() == Int32.ToString())
-		{
-			Int32 i = cast(Int32)obj;
-			if (_value < i._value) return -1;
-			if (_value > i._value) return 1;
-			return 0;
-		}
-
-		throw new ArgumentException (Environment.GetResourceString("Arg_MustBeInt32"));
 	}
 
 	public override int CompareTo(int other)
@@ -65,6 +49,10 @@ public final class Int32 : IComparable, /*IFormattable, IConvertible,*/ ICompara
 	{
 		return _value;
 	}
+
+
+
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 
@@ -72,7 +60,7 @@ unittest
 {
 	try
 	{
-		assert(Int32(70).CompareTo(new Object()));
+//		assert(Int32(70).CompareTo(new Object()));
 		assert(0);
 	}
 	catch

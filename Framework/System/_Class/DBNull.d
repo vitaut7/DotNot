@@ -19,7 +19,7 @@ public final class DBNull : ISerializable, IConvertible
 
 	public void GetObjectData(SerializationInfo info, StreamingContext context)
 	{
-		//TODO
+		UnitySerializationHolder.GetUnitySerializationInfo(info, UnitySerializationHolder.NullUnity, null, null);
 	}
 
 	public override string ToString()
@@ -109,7 +109,6 @@ public final class DBNull : ISerializable, IConvertible
 
 	Object ToType(Type conversionType, IFormatProvider provider)
 	{
-		return null;
-		//TODO
+		return Convert.DefaultToType(this, conversionType, provider);
 	}
 }

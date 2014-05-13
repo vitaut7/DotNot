@@ -21,7 +21,6 @@ _Classs.String - deklarovat
 _struct.ArgIterator - doplnit externy
 _class.Int32 - dorobit
 _Class.Exception - dorobit
-_Class.DBNull - dorobit 1fci z Convert
 */
 
 import System;

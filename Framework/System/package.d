@@ -161,66 +161,85 @@ class Boolean
 	public static const False = 0;
 	static Boolean opCall(bool value) { return new Boolean(); }
 	char ToChar(IFormatProvider p = null) { return 'a'; }
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class Double
 {
 	static Double opCall(double value) { return new Double(); }
 	char ToChar(IFormatProvider p = null) { return 'a'; }
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class Float
 {
 	static Float opCall(float value) { return new Float(); }
 		char ToChar(IFormatProvider p = null) { return 'a'; }
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class Real
 {
 	static Real opCall(real value) { return new Real(); }
 		char ToChar(IFormatProvider p = null) { return 'a'; }
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class Byte
 {
+	static Byte opCall(byte value) { return new Byte(); }
 	public static const MaxValue = 123;
 	public static const MinValue = -123;
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class UByte
 {
+	static UByte opCall(ubyte value) { return new UByte(); }
 	public static const MaxValue = 123;
 	public static const MinValue = 0;
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class Int16
 {
+	static Int16 opCall(short value) { return new Int16(); }
 	public static const MaxValue = 123;
 	public static const MinValue = 0;
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class UInt16
 {
+	static UInt16 opCall(ushort value) { return new UInt16(); }
 	public static const MaxValue = 123;
 	public static const MinValue = 0;
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class UInt32
 {
+	static UInt32 opCall(uint value) { return new UInt32(); }
 	public static const MaxValue = 123;
 	public static const MinValue = 0;
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class Int64
 {
+	static Int64 opCall(long value) { return new Int64(); }
 	public static const MaxValue = 123;
 	public static const MinValue = 0;
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class UInt64
 {
+	static UInt64 opCall(ulong value) { return new UInt64(); }
 	public static const MaxValue = 123;
 	public static const MinValue = 0;
+
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
 }
 
 class Char
@@ -232,6 +251,19 @@ class Char
 	float ToFloat(IFormatProvider p = null) { return 123.123; }
 	double ToDouble(IFormatProvider p = null) { return 123.123; }
 	real ToReal(IFormatProvider p = null) { return 123.123; }
+
+	DateTime ToDateTime(IFormatProvider p = null) { return null; }
+}
+
+class RuntimeAssembly {}
+
+class UnitySerializationHolder
+{
+	@internal static const NullUnity        = 0x0002;
+	import System.Runtime.Serialization;
+	static void GetUnitySerializationInfo(SerializationInfo info, int unityType, String data, RuntimeAssembly assembly)
+	{
+	}
 }
 
 //UDA
