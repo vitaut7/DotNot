@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Unittest" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Framework\System\_Class\Boolean.d">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Framework\System\package.d">
     <Files>
-      <File FileName="Framework\main.d" Line="46" Column="1" />
-      <File FileName="Framework\System\package.d" Line="191" Column="2" />
-      <File FileName="Framework\System\_Class\String.d" Line="5" Column="1" />
-      <File FileName="Framework\System\_Class\Boolean.d" Line="59" Column="40" />
+      <File FileName="Framework\main.d" Line="82" Column="42" />
+      <File FileName="Framework\System\package.d" Line="149" Column="45" />
+      <File FileName="Framework\System\_Class\String.d" Line="25" Column="34" />
+      <File FileName="Framework\System\_Class\Exception.d" Line="18" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

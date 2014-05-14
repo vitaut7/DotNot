@@ -223,6 +223,7 @@ public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 	}
 }
 
+
 unittest
 {
 	Boolean test = Boolean(true);

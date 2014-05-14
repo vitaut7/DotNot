@@ -65,6 +65,7 @@ public import System._Struct.RuntimeArgumentHandle;
 
 public import System._Class.GC;
 public import System._Class.Type;
+public import System._Class.Event;
 public import System._Class.String;
 public import System._Class.Convert;
 public import System._Class.DateTime;
@@ -137,7 +138,14 @@ final class RuntimeTypeHandle { //ISerializable
 	this(RuntimeType) {}
 }
 struct TypedReference {}
-class RuntimeType {}
+
+@internal interface IRuntimeMethodInfo {}
+class RuntimeType
+{
+	import System.Reflection;
+	@internal static MethodBase GetMethodBase(IRuntimeMethodInfo methodHandle) { return null; }
+
+}
 
 public abstract class ValueType
 {
@@ -157,6 +165,7 @@ class Environment
 	}
 
 	static string GetRuntimeResourceString(string key, Object[] values) { return key; }
+	static string GetRuntimeResourceString(string key) { return key; }
 
 
 	@property public static string NewLine()
@@ -164,11 +173,14 @@ class Environment
 		//Contract.Ensures(Contract.Result<String>() != null);
 		return "\r\n";
 	}
+
+	@internal static string GetStackTrace(Exception e, bool needFileInfo)
+	{
+		return "LTODO";
+	}
 }
 
-interface IDictionary {}
-
-public abstract class Array {}
+interface IDictionary {};//(TKey, TValue) {}
 
 class Contract
 {

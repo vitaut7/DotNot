@@ -3,9 +3,9 @@ module System._Delegate.EventHandler;
 import System;
 
 
-alias void delegate(Object sender, EventArgs e) EventHandler;
+alias Event!(Object, EventArgs) EventHandler;
 
 template EventHandlerT(TEventArgs)
 {
-	alias void delegate(Object sender, TEventArgs e) EventHandler;
+	alias Event!(Object, TEventArgs) EventHandlerT;
 }
