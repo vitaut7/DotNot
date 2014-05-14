@@ -4,8 +4,10 @@ module System.Runtime.Serialization;
 public import System.Runtime.Serialization._Interface.ISerializable;
 
 public import System.Runtime.Serialization._Struct.StreamingContext;
+public import System.Runtime.Serialization._Interface.IObjectReference;
 
 public import System.Runtime.Serialization._Class.SerializationException;
+public import System.Runtime.Serialization._Class.SafeSerializationManager;
 
 
 //TODO, nepouzivat typeinfo nammiesto type!
@@ -19,5 +21,3 @@ public final class SerializationInfo {
 	
 
 }
-
-class SafeSerializationManager {}

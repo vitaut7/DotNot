@@ -35,6 +35,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 	private int _remoteStackIndex;
 
 	private SafeSerializationManager _safeSerializationManager;
+	protected EventHandlerT!SafeSerializationEventArgs SerializeObjectState;
 
 	private string _source;
 	private int _hResult;
@@ -242,6 +243,34 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		assert(0); //TODO
 	}
 
+	public override void GetObjectData(SerializationInfo info, StreamingContext context)
+	{
+		if (info is null)
+			throw new ArgumentNullException("info");
+		
+		Contract.EndContractBlock();
+		string tempStackTraceString = _stackTraceString;
+		
+		if (_stackTrace !is null)
+		{
+			if (!tempStackTraceString)
+				tempStackTraceString = Environment.GetStackTrace(this, true);
+			
+			if (_exceptionMethod is null)
+				_exceptionMethod = GetExceptionMethodFromStackTrace();
+		}
+		
+		if (!_source)
+			_source = Source;
+
+		info.AddValue("ClassName", String(GetClassName()), typeid(String));
+		info.AddValue("Message", String(_message), typeid(String));
+		//info.AddValue("Data", _data, typeid(IDictionary));
+		info.AddValue("InnerException", _innerException, typeid(Exception));
+		//TODO
+		
+		assert(0);
+	}
 
 
 
@@ -252,26 +281,19 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 
 	@internal static string GetMessageFromNativeResources(ExceptionMessageKind kind)
 	{
-		assert(0);
-	}
-
-	public override void GetObjectData(SerializationInfo info, StreamingContext context)
-	{
-		if (info is null)
-			throw new ArgumentNullException("info");
-
-		throw new BaseException("Tvoja matka je tak tlsta ze ju ani try-catch nezachyti");
+		string ret;
+		GetMessageFromNativeResources(kind); //TODO
+		return ret;
 	}
 
 	private void Init()
 	{
 		_message = null;
 		_stackTrace = null;
-		_safeSerializationManager = new SafeSerializationManager();
 		_hResult = __HResults.COR_E_EXCEPTION;
+		_safeSerializationManager = new SafeSerializationManager();
+		SerializeObjectState = _safeSerializationManager.SerializeObjectState;
 	}
-
-
 
 	private class __RestrictedErrorObject
 	{
@@ -298,7 +320,7 @@ unittest
 	}
 	catch (BaseException e)
 	{
-		import std.stdio;
-		writeln(e.ToString());
+		//import std.stdio;
+		//writeln(e.ToString());
 	}
 }

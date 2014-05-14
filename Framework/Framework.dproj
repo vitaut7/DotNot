@@ -164,6 +164,8 @@
     <Compile Include="System\_Class\UInt64.d" />
     <Compile Include="System\_Class\Event.d" />
     <Compile Include="System\_Class\OperationCanceledException.d" />
+    <Compile Include="System\Runtime\Serialization\_Class\SafeSerializationManager.d" />
+    <Compile Include="System\Runtime\Serialization\_Interface\IObjectReference.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />

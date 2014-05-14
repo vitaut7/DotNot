@@ -8,32 +8,36 @@ public final class Event(T...)
 	private alias void delegate(T) Handler;
 	private Handler[] _value;
 
+	@property
+	{
+		public int Count() { return cast(int)_value.length; }
+	}
 
-	this()
+	public this()
 	{
 	}
 	
-	this(Event!T value)
+	public this(Event!T value)
 	{
 		_value ~= value._value;
 	}
 	
-	this(Handler value)
+	public this(Handler value)
 	{
 		_value ~= value;
 	}
 	
-	void opAddAssign(Handler value)
+	public void opAddAssign(Handler value)
 	{
 		_value ~= value;
 	}
 
-	void opAddAssign(Event!T value)
+	public void opAddAssign(Event!T value)
 	{
 		_value ~= value._value;
 	}
 
-	void opSubAssign(Handler value)
+	public void opSubAssign(Handler value)
 	{
 		if (!_value.length)
 			return;
@@ -45,13 +49,13 @@ public final class Event(T...)
 		}
 	}
 	
-	void opSubAssign(Event!T value)
+	public void opSubAssign(Event!T value)
 	{
 		foreach (x; value._value)
 			opSubAssign(x);
 	}
 	
-	void opCall(T params)
+	public void opCall(T params)
 	{
 		foreach (x; _value)
 			if (x !is null)
@@ -64,24 +68,24 @@ unittest
 {
 	class Buttons
 	{
-		bool b1, b2, b3, b4;
+		public bool b1, b2, b3, b4;
 		
-		void myButton1_click(Object sender, EventArgs e)
+		public void myButton1_click(Object sender, EventArgs e)
 		{
 			b1 = true;
 		}
 		
-		void myButton2_click(Object sender, EventArgs e)
+		public void myButton2_click(Object sender, EventArgs e)
 		{
 			b2 = true;
 		}
 		
-		void myButton3_click(Object sender, EventArgs e)
+		public void myButton3_click(Object sender, EventArgs e)
 		{
 			b3 = true;
 		}
 		
-		void myButton4_click()
+		public void myButton4_click()
 		{
 			b4 = true;
 		}
@@ -106,9 +110,11 @@ unittest
 
 	alias Event!() TestHandler;
 	TestHandler th = new TestHandler();
+
+	assert(!th.Count);
 	th += &buttons.myButton4_click;
+	assert(th.Count);
 
 	th();
-
 	assert(buttons.b4);
 }
