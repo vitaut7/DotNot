@@ -10,6 +10,13 @@ import System.Runtime.InteropServices;
 // vsetky BaseException prerobit na Exception
 public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 {
+	@internal enum ExceptionMessageKind
+	{
+		ThreadAbort = 1,
+		ThreadInterrupted = 2,
+		OutOfMemory = 3
+	}
+
 	private static /*extern*/ bool IsImmutableAgileException(Exception e) { return true; } //TODO
 	private static /*extern*/ IRuntimeMethodInfo GetMethodFromStackTrace(Object stackTrace) { return null; }
 	private /*extern*/ string StripFileInfo(string stackTrace, bool isRemoteStackTrace) { return "TODO"; } //TODO
@@ -227,7 +234,12 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		if (methBase is null)
 			return null;
 
-		return "TODO"; //TODO
+		assert(0); //TODO
+	}
+
+	private MethodBase GetExceptionMethodFromString()
+	{
+		assert(0); //TODO
 	}
 
 
@@ -238,6 +250,10 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 
 
 
+	@internal static string GetMessageFromNativeResources(ExceptionMessageKind kind)
+	{
+		assert(0);
+	}
 
 	public override void GetObjectData(SerializationInfo info, StreamingContext context)
 	{
@@ -255,12 +271,6 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		_hResult = __HResults.COR_E_EXCEPTION;
 	}
 
-
-
-	private MethodBase GetExceptionMethodFromString()
-	{
-		return null;
-	}
 
 
 	private class __RestrictedErrorObject

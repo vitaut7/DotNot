@@ -22,7 +22,6 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
         private static const int DaysPer100Years = DaysPer4Years * 25 - 1;
         private static const int DaysPer400Years = DaysPer100Years * 4 + 1;
     
-        // TODO : WAT?
         private static const int DaysTo1601 = DaysPer400Years * 4;
         private static const int DaysTo1899 = DaysPer400Years * 4 + DaysPer100Years * 3 - 367;
         private static const int DaysTo10000 = DaysPer400Years * 25 - 366;

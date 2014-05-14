@@ -8,7 +8,7 @@ public class OutOfMemoryException : SystemException
 {
 	public this()
 	{
-		super(Environment.GetResourceString("TODO")); //TODO
+		super(GetMessageFromNativeResources(ExceptionMessageKind.OutOfMemory));
 		SetErrorCode(__HResults.COR_E_OUTOFMEMORY);
 	}
 

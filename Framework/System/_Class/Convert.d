@@ -186,7 +186,7 @@ public static class Convert
 		if (value is null)
 			return false; 
 		
-		return true; //TODO: (cast(IConvertible)value).ToBoolean(null);
+		assert(0); //TODO: (cast(IConvertible)value).ToBoolean(null);
 	}
 
 	public static bool ToBoolean(string value)
@@ -194,7 +194,7 @@ public static class Convert
 		if (value is null)
 			return false;
 		
-		return true; //TODO: Boolean.Parse(value);
+		assert(0); //TODO: Boolean.Parse(value);
 	}
 
 
@@ -411,7 +411,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static byte ToByte(float value)
@@ -426,7 +426,7 @@ public static class Convert
 
 	public static byte ToByte(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static byte ToByte(DateTime value)
@@ -529,7 +529,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return 1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static ubyte ToUByte(float value)
@@ -544,7 +544,7 @@ public static class Convert
 	
 	public static ubyte ToUByte(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static ubyte ToUByte(DateTime value)
@@ -635,7 +635,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static short ToInt16(float value)
@@ -650,7 +650,7 @@ public static class Convert
 	
 	public static short ToInt16(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static short ToInt16(DateTime value)
@@ -745,7 +745,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return 1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static ushort ToUInt16(float value)
@@ -760,7 +760,7 @@ public static class Convert
 	
 	public static ushort ToUInt16(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static ushort ToUInt16(DateTime value)
@@ -843,7 +843,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static int ToInt32(float value)
@@ -885,7 +885,7 @@ public static class Convert
 	
 	public static int ToInt32(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static int ToInt32(DateTime value)
@@ -976,7 +976,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static uint ToUInt32(float value)
@@ -1002,7 +1002,7 @@ public static class Convert
 	
 	public static uint ToUInt32(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static uint ToUInt32(DateTime value)
@@ -1077,7 +1077,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static long ToInt64(float value)
@@ -1087,12 +1087,12 @@ public static class Convert
 	
 	public static long ToInt64(double value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static long ToInt64(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static long ToInt64(DateTime value)
@@ -1179,7 +1179,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static ulong ToUInt64(float value)
@@ -1189,12 +1189,12 @@ public static class Convert
 	
 	public static ulong ToUInt64(double value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static ulong ToUInt64(real value)
 	{
-		return 0; //TODO
+		assert(0); //TODO
 	}
 	
 	public static ulong ToUInt64(DateTime value)
@@ -1265,7 +1265,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static float ToFloat(float value)
@@ -1351,7 +1351,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static double ToDouble(float value)
@@ -1437,7 +1437,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		return -1; //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static real ToReal(float value)
@@ -1523,7 +1523,7 @@ public static class Convert
 		if (!value)
 			return new DateTime(0);
 		
-		return new DateTime(-1); //TODO parse
+		assert(0); //TODO parse
 	}
 	
 	public static DateTime ToDateTime(float value)

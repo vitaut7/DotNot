@@ -163,6 +163,7 @@
     <Compile Include="System\_Class\Int64.d" />
     <Compile Include="System\_Class\UInt64.d" />
     <Compile Include="System\_Class\Event.d" />
+    <Compile Include="System\_Class\OperationCanceledException.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />

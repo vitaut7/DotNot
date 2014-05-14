@@ -109,6 +109,7 @@ public import System._Class.ArgumentOutOfRangeException;
 public import System._Class.DivideByZeroException;
 public import System._Class.NotFiniteNumberException;
 public import System._Class.OverflowException;
+public import System._Class.OperationCanceledException;
 
 public import System._Class.Boolean;
 public import System._Class.Byte;

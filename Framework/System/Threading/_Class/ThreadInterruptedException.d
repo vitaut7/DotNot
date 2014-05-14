@@ -8,7 +8,7 @@ public class ThreadInterruptedException : SystemException
 {
 	public this()
 	{
-		super("TODO"); // TODO: GetMessageFromNativeResources(ExceptionMessageKind.ThreadInterrupted)
+		super(GetMessageFromNativeResources(ExceptionMessageKind.ThreadInterrupted));
 		SetErrorCode(__HResults.COR_E_THREADINTERRUPTED);
 	}
 

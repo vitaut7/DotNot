@@ -103,8 +103,8 @@ System.Collections:
 				NotImplementedException             - OK
 				NotSupportedException               - OK
 				NullReferenceException              - OK
-				OperationCanceledException          - TODO EASY
-				OutOfMemoryException                - TODO
+				OperationCanceledException          - OK
+				OutOfMemoryException                - OK
 				RankException                       - OK
 				AmbiguousMatchException             - OK
 				ReflectionTypeLoadException         - TODO LEVEL ASIAN
@@ -131,8 +131,8 @@ System.Collections:
 				AbandonedMutexException             - IMPL
 				SemaphoreFullException              - OK
 				SynchronizationLockException        - OK
-				ThreadAbortException                - TODO
-				ThreadInterruptedException          - TODO
+				ThreadAbortException                - OK
+				ThreadInterruptedException          - OK
 				ThreadStartException                - OK
 				ThreadStateException                - OK
 				TimeoutException                    - OK
