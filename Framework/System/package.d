@@ -61,130 +61,73 @@ public import System._Interface.ICustomFormatter;
 public import System._Interface.IServiceProvider;
 
 public import System._Struct.ArgIterator;
+public import System._Struct.TypedReference;
 public import System._Struct.RuntimeArgumentHandle;
 
 public import System._Class.GC;
 public import System._Class.Type;
+public import System._Class.Byte;
+public import System._Class.UByte;
+public import System._Class.Int16;
+public import System._Class.Int32;
+public import System._Class.Int64;
 public import System._Class.Event;
+public import System._Class.IntPtr;
+public import System._Class.UInt16;
+public import System._Class.UInt32;
+public import System._Class.UInt64;
 public import System._Class.String;
+public import System._Class.Boolean;
 public import System._Class.Convert;
 public import System._Class.DateTime;
 public import System._Class.EventArgs;
 public import System._Class.AppDomain;
-public import System._Class.__HResults;
-public import System._Class.GenericUriParser;
-public import System._Class.ConsoleCancelEventArgs;
-public import System._Class.LoaderOptimizationAttribute;
-public import System._Class.UnhandledExceptionEventArgs;
 public import System._Class.Exception;
+public import System._Class.__HResults;
+public import System._Class.RuntimeType;
+public import System._Class.RankException;
+public import System._Class.RuntimeHandles;
+public import System._Class.FormatException;
 public import System._Class.SystemException;
-public import System._Class.AccessViolationException;
-public import System._Class.AppDomainUnloadedException;
+public import System._Class.TimeoutException;
+public import System._Class.GenericUriParser;
+public import System._Class.OverflowException;
 public import System._Class.ArgumentException;
 public import System._Class.ArithmeticException;
-public import System._Class.ArrayTypeMismatchException;
-public import System._Class.CannotUnloadAppDomainException;
+public import System._Class.InvalidCastException;
+public import System._Class.OutOfMemoryException;
+public import System._Class.NotSupportedException;
+public import System._Class.TypeUnloadedException;
+public import System._Class.ArgumentNullException;
+public import System._Class.DivideByZeroException;
+public import System._Class.MemberAccessException;
+public import System._Class.ConsoleCancelEventArgs;
+public import System._Class.NullReferenceException;
+public import System._Class.StackOverflowException;
 public import System._Class.ContextMarshalException;
 public import System._Class.DataMisalignedException;
-public import System._Class.ExecutionEngineException;
-public import System._Class.FormatException;
-public import System._Class.IndexOutOfRangeException;
-public import System._Class.InsufficientExecutionStackException;
-public import System._Class.InvalidCastException;
-public import System._Class.InvalidOperationException;
 public import System._Class.InvalidProgramException;
-public import System._Class.MemberAccessException;
-public import System._Class.MulticastNotSupportedException;
 public import System._Class.NotImplementedException;
-public import System._Class.NotSupportedException;
-public import System._Class.NullReferenceException;
-public import System._Class.OutOfMemoryException;
-public import System._Class.RankException;
-public import System._Class.StackOverflowException;
-public import System._Class.TimeoutException;
-public import System._Class.TypeUnloadedException;
-public import System._Class.UnauthorizedAccessException;
-public import System._Class.ArgumentNullException;
-public import System._Class.ArgumentOutOfRangeException;
-public import System._Class.DivideByZeroException;
 public import System._Class.NotFiniteNumberException;
-public import System._Class.OverflowException;
+public import System._Class.AccessViolationException;
+public import System._Class.ExecutionEngineException;
+public import System._Class.IndexOutOfRangeException;
+public import System._Class.InvalidOperationException;
 public import System._Class.OperationCanceledException;
+public import System._Class.AppDomainUnloadedException;
+public import System._Class.ArrayTypeMismatchException;
+public import System._Class.UnauthorizedAccessException;
+public import System._Class.ArgumentOutOfRangeException;
+public import System._Class.LoaderOptimizationAttribute;
+public import System._Class.UnhandledExceptionEventArgs;
+public import System._Class.CannotUnloadAppDomainException;
+public import System._Class.MulticastNotSupportedException;
+public import System._Class.InsufficientExecutionStackException;
 
-public import System._Class.Boolean;
-public import System._Class.Byte;
-public import System._Class.UByte;
-public import System._Class.Int16;
-public import System._Class.UInt16;
-public import System._Class.Int32;
-public import System._Class.UInt32;
-public import System._Class.Int64;
-public import System._Class.UInt64;
+public import System._Class.ValueType;
+public import System._Class.Environment;
+public import System._Class.UnitySerializationHolder;
 
-
-//Public or wat
-class Assembly {}
-class WaitHandle {}
-
-public struct IntPtr { //ISerializable
-	public static immutable IntPtr Zero;
-
-	public void* testik;
-}
-
-final class RuntimeTypeHandle { //ISerializable
-	RuntimeType GetRuntimeType() { return null; }
-
-	this() {}
-	this(RuntimeType) {}
-}
-struct TypedReference {}
-
-@internal interface IRuntimeMethodInfo {}
-class RuntimeType
-{
-	import System.Reflection;
-	@internal static MethodBase GetMethodBase(IRuntimeMethodInfo methodHandle) { return null; }
-
-}
-
-public abstract class ValueType
-{
-	@internal static int GetHashCodeOfPtr(IntPtr ptr) { return 0;}//TODO extern
-}
-
-class Environment
-{
-	static string GetResourceString(string key)
-	{
-		return key;
-	}
-
-	static string GetResourceString(string key, Object[] values)
-	{
-		return key;
-	}
-
-	static string GetResourceString(string key, string, string)
-	{
-		return key;
-	}
-
-	static string GetRuntimeResourceString(string key, Object[] values) { return key; }
-	static string GetRuntimeResourceString(string key) { return key; }
-
-
-	@property public static string NewLine()
-	{
-		//Contract.Ensures(Contract.Result<String>() != null);
-		return "\r\n";
-	}
-
-	@internal static string GetStackTrace(Exception e, bool needFileInfo)
-	{
-		return "LTODO";
-	}
-}
 
 interface IDictionary {};//(TKey, TValue) {}
 
@@ -237,21 +180,12 @@ class Char
 	public static bool IsWhiteSpace(char c) { return false; }
 }
 
-class RuntimeAssembly {}
-
-class UnitySerializationHolder
-{
-	@internal static const NullUnity        = 0x0002;
-	import System.Runtime.Serialization;
-	static void GetUnitySerializationInfo(SerializationInfo info, int unityType, String data, RuntimeAssembly assembly)
-	{
-	}
-}
 
 @property
 {
 	public int Length(byte[] b) { return cast(int)b.length; }
 	public int Length(string b) { return cast(int)b.length; }
+	public string Trim(string str) { return str; }
 }
 
 

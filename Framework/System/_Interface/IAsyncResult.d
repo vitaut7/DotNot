@@ -1,6 +1,7 @@
 module System._Interface.IAsyncResult;
 
 import System;
+import System.Threading;
 
 
 public interface IAsyncResult

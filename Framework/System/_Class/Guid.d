@@ -132,6 +132,179 @@ public final class Guid //: IFormattable, IComparable
 		_k = d[7];
 	}
 
+	public this(string g)
+	{
+		if (!g)
+			throw new ArgumentNullException("g");
+		Contract.EndContractBlock();
+
+		//this = cast(Guid)Guid.Empty;
+		//TODO
+
+		GuidResult* result = new GuidResult();
+		result.Init(GuidParseThrowStyle.All);
+	}
+
+	public static Guid Parse(string input)
+	{
+		if (!input)
+			throw new ArgumentNullException("input");
+		Contract.EndContractBlock();
+
+		GuidResult* result = new GuidResult();
+		result.Init(GuidParseThrowStyle.AllButOverflow);
+
+		if (TryParseGuid(input, GuidStyles.Any, *result))
+			return result.parsedGuid;
+
+		throw result.GetGuidParseException();
+	}
+
+	public static bool TryParse(string input, out Guid result)
+	{
+		GuidResult* parseResult = new GuidResult();
+		parseResult.Init(GuidParseThrowStyle.None);
+
+		if (TryParseGuid(input, GuidStyles.Any, *parseResult))
+		{
+			result = parseResult.parsedGuid;
+			return true;
+		}
+
+		result = cast(Guid)Guid.Empty;
+		return false;
+	}
+
+	public static Guid ParseExtract(string input, string format)
+	{
+		if (!input)
+			throw new ArgumentNullException("input");
+
+		if (!format)
+			throw new ArgumentNullException("format");
+
+		if (format.Length != 1)
+			throw new FormatException(Environment.GetResourceString("Format_InvalidGuidFormatSpecification"));
+
+		GuidStyles style;
+		char formatCh = format[0];
+
+		switch (formatCh)
+		{
+			case 'D':
+			case 'd':
+				style = GuidStyles.DigitFormat;
+				break;
+			case 'N':
+			case 'n':
+				style = GuidStyles.NumberFormat;
+				break;
+			case 'B':
+			case 'b':
+				style = GuidStyles.BraceFormat;
+				break;
+			case 'P':
+			case 'p':
+				style = GuidStyles.ParenthesisFormat;
+				break;
+			case 'X':
+			case 'x':
+				style = GuidStyles.HexFormat;
+				break;
+			default:
+				throw new FormatException(Environment.GetResourceString("Format_InvalidGuidFormatSpecification"));
+		}
+
+		GuidResult* result = new GuidResult();
+		result.Init(GuidParseThrowStyle.AllButOverflow);
+
+		if (TryParseGuid(input, style, *result))
+			return result.parsedGuid;
+
+		throw result.GetGuidParseException();
+	}
+
+	public static bool TryParseExtract(string input, string format, ref Guid result)
+	{
+		if (!format || format.Length != 1)
+		{
+			result = cast(Guid)Guid.Empty;
+			return false;
+		}
+
+		GuidStyles style;
+		char formatCh = format[0];
+		
+		switch (formatCh)
+		{
+			case 'D':
+			case 'd':
+				style = GuidStyles.DigitFormat;
+				break;
+			case 'N':
+			case 'n':
+				style = GuidStyles.NumberFormat;
+				break;
+			case 'B':
+			case 'b':
+				style = GuidStyles.BraceFormat;
+				break;
+			case 'P':
+			case 'p':
+				style = GuidStyles.ParenthesisFormat;
+				break;
+			case 'X':
+			case 'x':
+				style = GuidStyles.HexFormat;
+				break;
+			default:
+				result = cast(Guid)Guid.Empty;
+				return false;
+		}
+
+		GuidResult* parseResult = new GuidResult();
+		parseResult.Init(GuidParseThrowStyle.None);
+		
+		if (TryParseGuid(input, style, *parseResult))
+		{
+			result = parseResult.parsedGuid;
+			return true;
+		}
+
+		result = cast(Guid)Guid.Empty;
+		return false;
+	}
+
+	private static bool TryParseGuid(string g, GuidStyles flags, ref GuidResult result)
+	{
+		if (!g)
+		{
+			result.SetFailure(ParseFailureKind.Format, "Format_GuidUnrecognized");
+			return false;
+		}
+
+		string guidString = g.Trim();
+		if (!guidString.Length)
+		{
+			result.SetFailure(ParseFailureKind.Format, "Format_GuidUnrecognized");
+			return false;
+		}
+
+		//TODO
+
+		assert(0);
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 	private struct GuidResult

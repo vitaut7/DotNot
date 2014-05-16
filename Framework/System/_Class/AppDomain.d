@@ -1,6 +1,7 @@
 module System._Class.AppDomain;
 
 import System;
+import System.Reflection;
 
 alias void delegate(string[] args) AppDomainInitializer;
 alias void delegate(Object sender, AssemblyLoadEventArgs args) AssemblyLoadEventHandler;

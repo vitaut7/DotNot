@@ -10,17 +10,33 @@ scope c = new C(); // alokovanie na stacku
 */
 
 /**
-_Class.Type - Deklarovat!
-_Class.DateTime - Deklarovat
-_CLass.AppDomain - Deklarovat
+_Class:
+	Reflection.Assembly
+	Type
+	DateTime
+	AppDomain
+	GC
+	GenericUriParser
+	LoaderOptimizationAttribute
+	String
+	Reflection.ComInterfaces
+	Threading.WaitHandle
+	Reflection.MethodBase
+	Threading.CancellationToken
+	RuntimeType
+	RuntimeHandles
+	TypedReference - EASY
+	IRuntimeMethodInfo - TUTORIAL
+	ValueType
+	Environment
+	Reflection.RuntimeAssembly
+	UnitySerializationHolder
+
+
 _Class.Convert - Deklarovat vssetko ostatne
-_Class.GC - Dorobit
-_Class.GenericUriParser - Deklarovat triedu
-_cLASS.LoaderOptimizationAttribute - Deklarovat triedu
-_Classs.String - deklarovat
 _struct.ArgIterator - doplnit externy
 _Class.Exception - dorobit
-System.Reflection._Interface.ComInterfaces;
+_Class.Guid
 
 mozno este nejake operatory:
 _Class.Byte - Dorobit TryParse, stringy, ostatne hotovo
