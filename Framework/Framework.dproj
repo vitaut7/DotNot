@@ -166,10 +166,14 @@
     <Compile Include="System\_Class\OperationCanceledException.d" />
     <Compile Include="System\Runtime\Serialization\_Class\SafeSerializationManager.d" />
     <Compile Include="System\Runtime\Serialization\_Interface\IObjectReference.d" />
+    <Compile Include="System\Reflection\_Interface\ComInterfaces.d" />
+    <Compile Include="System\_Class\IntPtr.d" />
+    <Compile Include="System\_Class\Guid.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
     <Folder Include="System\Runtime\Serialization\_Struct\" />
+    <Folder Include="System\Reflection\_Interface\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="System\Attribute.dx" />

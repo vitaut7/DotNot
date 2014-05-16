@@ -20,6 +20,7 @@ _cLASS.LoaderOptimizationAttribute - Deklarovat triedu
 _Classs.String - deklarovat
 _struct.ArgIterator - doplnit externy
 _Class.Exception - dorobit
+System.Reflection._Interface.ComInterfaces;
 
 mozno este nejake operatory:
 _Class.Byte - Dorobit TryParse, stringy, ostatne hotovo
@@ -30,6 +31,7 @@ _Class.Int32 - Dorobit TryParse, stringy, ostatne hotovo
 _Class.UInt32 - Dorobit TryParse, stringy, ostatne hotovo
 _Class.Int64 - Dorobit TryParse, stringy, ostatne hotovo
 _Class.UInt64 - Dorobit TryParse, stringy, ostatne hotovo
+_Class.IntPtr - nejake divne operatory
 */
 
 import System;

@@ -2,7 +2,7 @@
 
 MODEL=64
 
-VCDIR=C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC
+VCDIR=\Program Files (x86)\Microsoft Visual Studio 10.0\VC
 SDKDIR=\Program Files (x86)\Microsoft SDKs\Windows\v7.0A
 
 DMD=dmd
@@ -17,7 +17,7 @@ IMPDIR=import
 
 DFLAGS=-m$(MODEL) -O -release -inline -w -Isrc -Iimport
 UDFLAGS=-m$(MODEL) -O -release -w -Isrc -Iimport
-DDOCFLAGS=-c -w -o- -Isrc -Iimport -version=CoreDdoc
+DDOCFLAGS=-c -w -o- -Isrc -Iimport
 
 #CFLAGS=/O2 /I"$(VCDIR)"\INCLUDE /I"$(SDKDIR)"\Include
 CFLAGS=/Z7 /I"$(VCDIR)"\INCLUDE /I"$(SDKDIR)"\Include
@@ -26,18 +26,15 @@ DRUNTIME_BASE=druntime64
 DRUNTIME=lib\$(DRUNTIME_BASE).lib
 GCSTUB=lib\gcstub64.obj
 
-DOCFMT=
-
-include mak/SRCS
-#include mak/COPY
-#include mak/DOCS
-#include mak/IMPORTS
-#include mak/MANIFEST
-
+DOCFMT=-version=CoreDdoc
 
 target : import copydir copy $(DRUNTIME) $(GCSTUB)
 
-
+$(mak\COPY)
+$(mak\DOCS)
+$(mak\IMPORTS)
+$(mak\MANIFEST)
+$(mak\SRCS)
 
 # NOTE: trace.d and cover.d are not necessary for a successful build
 #       as both are used for debugging features (profiling and coverage)
@@ -192,13 +189,10 @@ $(IMPDIR)\core\time.d : src\core\time.d
 $(IMPDIR)\core\vararg.d : src\core\vararg.d
 	copy $** $@
 
-$(IMPDIR)\core\internal\convert.d : src\core\internal\convert.d
-	copy $** $@
-
 $(IMPDIR)\core\internal\hash.d : src\core\internal\hash.d
 	copy $** $@
 
-$(IMPDIR)\core\internal\traits.d : src\core\internal\traits.d
+$(IMPDIR)\core\internal\convert.d : src\core\internal\convert.d
 	copy $** $@
 
 $(IMPDIR)\core\stdc\complex.d : src\core\stdc\complex.d
@@ -504,9 +498,9 @@ unittest : $(SRCS) $(DRUNTIME) src\unittest.d
 
 zip: druntime.zip
 
-druntime.zip: import
+druntime.zip: doc import
 	del druntime.zip
-	zip32 -T -ur druntime $(MANIFEST) $(IMPDIR) src\rt\minit.obj
+	zip32 -T -ur druntime $(MANIFEST) $(DOCS) $(IMPDIR) src\rt\minit.obj
 
 install: druntime.zip
 	unzip -o druntime.zip -d \dmd2\src\druntime

@@ -160,6 +160,11 @@ class Environment
 		return key;
 	}
 
+	static string GetResourceString(string key, Object[] values)
+	{
+		return key;
+	}
+
 	static string GetResourceString(string key, string, string)
 	{
 		return key;
@@ -183,9 +188,16 @@ class Environment
 
 interface IDictionary {};//(TKey, TValue) {}
 
+abstract class CultureInfo : IFormatProvider
+{
+	@property public static CultureInfo InvariantCulture() { assert(0); }
+}
+
 class Contract
 {
 	public static void EndContractBlock() { }
+
+	public static void Assert(bool condition, string userMessage) { assert(condition, userMessage); }
 }
 
 
@@ -235,6 +247,15 @@ class UnitySerializationHolder
 	{
 	}
 }
+
+@property
+{
+	public int Length(byte[] b) { return cast(int)b.length; }
+	public int Length(string b) { return cast(int)b.length; }
+}
+
+
+
 
 //UDA
 public const enum internal = "Internal";

@@ -200,7 +200,6 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		_hResult = hr;
 	}
 
-
 	public override string ToString()
 	{
 		return ToString(true, true);
@@ -271,7 +270,6 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		
 		assert(0);
 	}
-
 
 
 
