@@ -181,6 +181,11 @@
     <Compile Include="System\_Class\Environment.d" />
     <Compile Include="System\Reflection\_Class\RuntimeAssembly.d" />
     <Compile Include="System\_Class\UnitySerializationHolder.d" />
+    <Compile Include="System\_Class\Double.d" />
+    <Compile Include="System\_Class\Float.d" />
+    <Compile Include="System\_Class\Real.d" />
+    <Compile Include="System\_Class\Char.d" />
+    <Compile Include="System\_Class\Void.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />

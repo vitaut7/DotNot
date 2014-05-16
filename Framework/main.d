@@ -7,9 +7,13 @@ miesto IHashCodeProvider pouzit IEqualityComparer
 Vyjebat sa na klasicke kolekce a pouzit iba generic
 
 scope c = new C(); // alokovanie na stacku
-*/
 
-/**
+
+Zajtra spravit:
+	double, real, float, char triedy
+	opravit (u)int 16,32,64, tie parsery atd.
+	cominterface
+
 _Class:
 	Reflection.Assembly
 	Type
@@ -31,6 +35,10 @@ _Class:
 	Environment
 	Reflection.RuntimeAssembly
 	UnitySerializationHolder
+	Double
+	Real
+	Char
+	Float
 
 
 _Class.Convert - Deklarovat vssetko ostatne

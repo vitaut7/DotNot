@@ -127,6 +127,11 @@ public import System._Class.InsufficientExecutionStackException;
 public import System._Class.ValueType;
 public import System._Class.Environment;
 public import System._Class.UnitySerializationHolder;
+public import System._Class.Double;
+public import System._Class.Float;
+public import System._Class.Real;
+public import System._Class.Char;
+public import System._Class.Guid;
 
 
 interface IDictionary {};//(TKey, TValue) {}
@@ -142,44 +147,6 @@ class Contract
 
 	public static void Assert(bool condition, string userMessage) { assert(condition, userMessage); }
 }
-
-
-class Double
-{
-	static Double opCall(double value) { return new Double(); }
-	char ToChar(IFormatProvider p = null) { return 'a'; }
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class Float
-{
-	static Float opCall(float value) { return new Float(); }
-		char ToChar(IFormatProvider p = null) { return 'a'; }
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class Real
-{
-	static Real opCall(real value) { return new Real(); }
-		char ToChar(IFormatProvider p = null) { return 'a'; }
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-}
-
-class Char
-{
-	public static const MaxValue = 123;
-	public static const MinValue = 0;
-
-	static Char opCall(char value) { return new Char(); }
-	float ToFloat(IFormatProvider p = null) { return 123.123; }
-	double ToDouble(IFormatProvider p = null) { return 123.123; }
-	real ToReal(IFormatProvider p = null) { return 123.123; }
-
-	DateTime ToDateTime(IFormatProvider p = null) { return null; }
-
-	public static bool IsWhiteSpace(char c) { return false; }
-}
-
 
 @property
 {
