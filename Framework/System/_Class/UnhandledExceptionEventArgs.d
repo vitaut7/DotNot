@@ -8,12 +8,15 @@ public class UnhandledExceptionEventArgs : EventArgs
 	private Object _exception;
 	private bool _isTerminating;
 
-	@property
+	@property public Object ExceptionObject()
 	{
-		public Object ExceptionObject() { return _exception; }
-		public bool IsTerminating() { return _isTerminating; }
+		return _exception;
 	}
 
+	@property public bool IsTerminating()
+	{
+		return _isTerminating;
+	}
 
 	public this(Object exception, bool isTerminating)
 	{

@@ -10,10 +10,14 @@ public class OperationCanceledException : SystemException
 {
 	private System.Threading.CancellationToken _cancellationToken;
 
-	@property
+	@property System.Threading.CancellationToken CancellationToken()
 	{
-		System.Threading.CancellationToken CancellationToken() { return _cancellationToken; }
-		void CancellationToken(System.Threading.CancellationToken value) { _cancellationToken = value; }
+		return _cancellationToken;
+	}
+
+	@property void CancellationToken(System.Threading.CancellationToken value)
+	{
+		_cancellationToken = value;
 	}
 
 	public this()

@@ -8,9 +8,9 @@ public final class Event(T...)
 	private alias void delegate(T) Handler;
 	private Handler[] _value;
 
-	@property
+	@property public int Count()
 	{
-		public int Count() { return cast(int)_value.length; }
+		return cast(int)_value.length;
 	}
 
 	public this()

@@ -1,31 +1,4 @@
 module System;
-/*
-    Constant Fields
-    Fields
-    Constructors
-    Finalizers (Destructors)
-    Delegates
-    Events
-    Enums
-    Interfaces
-    Properties
-    Indexers
-    Methods
-    Structs
-    Classes
-
-    public
-    internal
-    protected internal
-    protected
-    private
-
-    static
-    non-static
-
-    readonly
-    non-readonly
-*/
 
 public import System._Delegate.Action;
 public import System._Delegate.AsyncCallback;
@@ -150,7 +123,7 @@ class Contract
 
 @property
 {
-	public int Length(byte[] b) { return cast(int)b.length; }
+	public int Length(T)(T[] b) { return cast(int)b.length; }
 	public int Length(string b) { return cast(int)b.length; }
 	public string Trim(string str) { return str; }
 }

@@ -8,11 +8,10 @@ public class MissingSatelliteAssemblyException : SystemException
 {
 	private string _cultureName;
 
-	@property
+	@property string CultureName()
 	{
-		string CultureName() { return _cultureName; }
+		return _cultureName;
 	}
-
 
 	public this()
 	{

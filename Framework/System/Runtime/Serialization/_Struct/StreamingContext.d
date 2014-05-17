@@ -20,10 +20,14 @@ struct StreamingContext
 	private Object _additionalContext;
 	private StreamingContextStates _state;
 
-	@property
+	@property public Object Context()
 	{
-		public Object Context() { return _additionalContext; }
-		public StreamingContextStates State() { return _state; }
+		return _additionalContext;
+	}
+
+	@property public StreamingContextStates State()
+	{
+		return _state;
 	}
 
 	public this(StreamingContextStates state)

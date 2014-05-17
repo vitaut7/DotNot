@@ -186,12 +186,17 @@
     <Compile Include="System\_Class\Real.d" />
     <Compile Include="System\_Class\Char.d" />
     <Compile Include="System\_Class\Void.d" />
+    <Compile Include="System\Reflection\_Enum\MemberTypes.d" />
+    <Compile Include="System\Reflection\_Class\Module.d" />
+    <Compile Include="System\Runtime\Serialization\_Interface\IFormatterConverter.d" />
+    <Compile Include="System\Runtime\Serialization\_Class\SerializationInfo.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
     <Folder Include="System\Runtime\Serialization\_Struct\" />
     <Folder Include="System\Reflection\_Interface\" />
     <Folder Include="System\Threading\_Struct\" />
+    <Folder Include="System\Reflection\_Enum\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="System\Attribute.dx" />

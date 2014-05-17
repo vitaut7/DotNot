@@ -6,11 +6,8 @@ import System.Threading;
 
 public interface IAsyncResult
 {
-	@property
-	{
-		Object Asyncstate();
-		WaitHandle AsyncWaitHandle();
-		bool CompletedSynchronously();
-		bool IsCompleted();
-	}
+	@property Object Asyncstate();
+	@property WaitHandle AsyncWaitHandle();
+	@property bool CompletedSynchronously();
+	@property bool IsCompleted();
 }

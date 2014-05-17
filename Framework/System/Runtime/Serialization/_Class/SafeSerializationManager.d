@@ -11,12 +11,11 @@ public final class SafeSerializationEventArgs : EventArgs
 	private System.Runtime.Serialization.StreamingContext _streamingContext;
 	//TODO: list<object>
 
-	@property
+	//TODO
+	@property public System.Runtime.Serialization.StreamingContext StreamingContextx()
 	{
-		//TODO
-		public System.Runtime.Serialization.StreamingContext StreamingContextx() { return _streamingContext; }
+		return _streamingContext;
 	}
-
 
 	@internal public this(System.Runtime.Serialization.StreamingContext streamingContext)
 	{
@@ -49,9 +48,9 @@ public final class SafeSerializationManager //: IObjectReference, ISerializable
 	private Object _realObject;
 	private RuntimeType _realType;
 
-	@property
+	@internal @property public bool IsActive()
 	{
-		@internal public bool IsActive() { return SerializeObjectState.Count != 0; }
+		return SerializeObjectState.Count != 0;
 	}
 
 	@internal public this()

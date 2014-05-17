@@ -3,16 +3,13 @@
 
 public final class Thread
 {
-	@property
+	@property public static Thread CurrentThread()
 	{
-		public static Thread CurrentThread()
-		{
-			assert(0);
-		}
-		
-		Object AbortReason()
-		{
-			assert(0);
-		}
+		assert(0);
+	}
+	
+	@property Object AbortReason()
+	{
+		assert(0);
 	}
 }

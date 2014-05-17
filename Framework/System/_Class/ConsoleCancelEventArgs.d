@@ -10,15 +10,20 @@ public final class ConsoleCancelEventArgs : EventArgs
 	private ConsoleSpecialKey _type;
 	private bool _cancel;
 
-
-	@property
+	@property public bool Cancel()
 	{
-		public bool Cancel() { return _cancel; }
-		public void Cancel(bool value) { _cancel = value; }
-
-		public ConsoleSpecialKey SpecialKey() { return _type; }
+		return _cancel;
 	}
 
+	@property public void Cancel(bool value)
+	{
+		_cancel = value;
+	}
+
+	@property public ConsoleSpecialKey SpecialKey() 
+	{
+		return _type;
+	}
 
 	public this(ConsoleSpecialKey type)
 	{

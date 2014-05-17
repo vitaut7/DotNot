@@ -3,36 +3,33 @@ module System._Interface.IAppDomainSetup;
 
 public interface IAppDomainSetup
 {
-	@property
-	{
-		string ApplicationBase();
-		void ApplicationBase(string);
+	@property string ApplicationBase();
+	@property void ApplicationBase(string);
 
-		string ApplicationName();
-		void ApplicationName(string);
+	@property string ApplicationName();
+	@property void ApplicationName(string);
 
-		string CachePath();
-		void CachePath(string);
+	@property string CachePath();
+	@property void CachePath(string);
 
-		string ConfigurationFile();
-		void ConfigurationFile(string);
+	@property string ConfigurationFile();
+	@property void ConfigurationFile(string);
 
-		string DynamicBase();
-		void DynamicBase(string);
+	@property string DynamicBase();
+	@property void DynamicBase(string);
 
-		string LicenseFile();
-		void LicenseFile(string);
+	@property string LicenseFile();
+	@property void LicenseFile(string);
 
-		string PrivateBinPath();
-		void PrivateBinPath(string);
+	@property string PrivateBinPath();
+	@property void PrivateBinPath(string);
 
-		string PrivateBinPathProbe();
-		void PrivateBinPathProbe(string);
+	@property string PrivateBinPathProbe();
+	@property void PrivateBinPathProbe(string);
 
-		string ShadowCopyDirectories();
-		void ShadowCopyDirectories(string);
+	@property string ShadowCopyDirectories();
+	@property void ShadowCopyDirectories(string);
 
-		string ShadowCopyFiles();
-		void ShadowCopyFiles(string);
-	}
+	@property string ShadowCopyFiles();
+	@property void ShadowCopyFiles(string);
 }

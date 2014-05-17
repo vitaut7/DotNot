@@ -14,12 +14,15 @@ public class ResolveEventArgs : EventArgs
 	private string _name;
 	private Assembly _requestingAssembly;
 
-	@property
+	@property public string Name() 
 	{
-		public string Name() { return _name; }
-		public Assembly RequestingAssembly() { return _requestingAssembly; }
+		return _name;
 	}
 
+	@property public Assembly RequestingAssembly()
+	{
+		return _requestingAssembly; 
+	}
 
 	public this(string name)
 	{
@@ -38,11 +41,10 @@ public class AssemblyLoadEventArgs : EventArgs
 {
 	private Assembly _loadedAssembly;
 
-	@property
+	@property public Assembly LoadedAssembly() 
 	{
-		public Assembly LoadedAssembly() { return _loadedAssembly; }
+		return _loadedAssembly; 
 	}
-
 
 	public this(Assembly loadedAssembly)
 	{

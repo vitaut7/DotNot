@@ -7,11 +7,10 @@ import System.Runtime.Serialization;
 
 public final class ThreadAbortException : SystemException
 {
-	@property
+	@property public Object ExceptionState()
 	{
-		public Object ExceptionState() { return Thread.CurrentThread.AbortReason; }
+		return Thread.CurrentThread.AbortReason;
 	}
-
 
 	public this()
 	{

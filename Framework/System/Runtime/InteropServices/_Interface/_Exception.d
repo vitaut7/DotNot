@@ -6,20 +6,17 @@ import System.Reflection;
 
 public interface _Exception
 {
-	@property
-	{
-		public string Message();
-		public string StackTrace();
+	@property public string Message();
+	@property public string StackTrace();
 
-		public string HelpLink();
-		public void HelpLink(string);
+	@property public string HelpLink();
+	@property public void HelpLink(string);
 
-		public string Source();
-		public void Source(string);
+	@property public string Source();
+	@property public void Source(string);
 
-		public Exception InnerException();
-		public MethodBase TargetSite();
-	}
+	@property public Exception InnerException();
+	@property public MethodBase TargetSite();
 
 	public Exception GetBaseException();
 }

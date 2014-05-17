@@ -38,7 +38,7 @@ bool Equals(string str, string value, StringComparison comparisonType)
 	return str == value;
 }
 
-@property
+@property public int Length(string str)
 {
-	public int Length(string str) { return cast(int)str.length; }
+	return cast(int)str.length;
 }

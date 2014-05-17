@@ -8,11 +8,10 @@ public class NotFiniteNumberException : ArithmeticException
 {
 	private double _offendingNumber;
 
-	@property
+	@property public double OffendingNumber()
 	{
-		public double OffendingNumber() { return _offendingNumber; }
+		return _offendingNumber;
 	}
-
 
 	public this()
 	{

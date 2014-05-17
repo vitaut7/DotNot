@@ -8,23 +8,23 @@ public class ArgumentOutOfRangeException : ArgumentException
 {
 	private Object _actualValue;
 
-	@property
+	@property public Object ActualValue()
 	{
-		public Object ActualValue() { return _actualValue; }
+		return _actualValue; 
+	}
 
-		public override string Message()
+	@property public override string Message()
+	{
+		string s = super.Message();
+		if (_actualValue !is null)
 		{
-			string s = super.Message();
-			if (_actualValue !is null)
-			{
-				string valueMessage = Environment.GetRuntimeResourceString("ArgumentOutOfRange_ActualValue", [String(_actualValue.ToString())]);
-				if (!s)
-					return valueMessage;
-				return s ~ Environment.NewLine ~ valueMessage;
-			}
-
-			return s;
+			string valueMessage = Environment.GetRuntimeResourceString("ArgumentOutOfRange_ActualValue", [String(_actualValue.ToString())]);
+			if (!s)
+				return valueMessage;
+			return s ~ Environment.NewLine ~ valueMessage;
 		}
+
+		return s;
 	}
 
 	public this()

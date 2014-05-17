@@ -166,4 +166,32 @@ System.Collections:
 				TypeLoadException                   - IMPL
 				TypeUnloadedException               - OK
 				UnauthorizedAccessException         - OK
+
+
+
+    Constant Fields
+    Fields
+    Constructors
+    Finalizers (Destructors)
+    Delegates
+    Events
+    Enums
+    Interfaces
+    Properties
+    Indexers
+    Methods
+    Structs
+    Classes
+
+    public
+    internal
+    protected internal
+    protected
+    private
+
+    static
+    non-static
+
+    readonly
+    non-readonly
 */

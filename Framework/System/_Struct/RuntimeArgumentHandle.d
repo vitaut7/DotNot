@@ -7,9 +7,8 @@ public struct RuntimeArgumentHandle
 {
 	private IntPtr _ptr;
 
-
-	@property
+	@internal @property IntPtr Value()
 	{
-		@internal IntPtr Value() { return _ptr; }
+		return _ptr;
 	}
 }

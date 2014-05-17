@@ -40,18 +40,44 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 	private string _source;
 	private int _hResult;
 
-	@property
+	@property public int HResult()
 	{
-		public int HResult() { return _hResult; }
-		public Exception InnerException() { return _innerException; }
-		public string StackTrace() { return GetStackTrace(true); }
-		public MethodBase TargetSite() { return GetTargetSiteInternal(); }
+		return _hResult;
+	}
 
-		public string HelpLink() { return _helpURL; }
-		public void HelpLink(string value) { _helpURL = value; }
+	@property public Exception InnerException()
+	{
+		return _innerException;
+	}
 
-		public string Source() { return _source; } //TODO
-		public void Source(string value) { _source = value; }
+	@property public string StackTrace()
+	{
+		return GetStackTrace(true);
+	}
+
+	@property public MethodBase TargetSite()
+	{
+		return GetTargetSiteInternal();
+	}
+
+	@property public string HelpLink()
+	{
+		return _helpURL;
+	}
+
+	@property public void HelpLink(string value)
+	{
+		_helpURL = value;
+	}
+
+	@property public string Source()
+	{
+		return _source;
+	} //TODO
+
+	@property public void Source(string value)
+	{
+		_source = value;
 	}
 
 	public this() 
@@ -297,9 +323,9 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 	{
 		private Object _realErrorObject;
 
-		@property
+		@property public Object RealErrorObject()
 		{
-			public Object RealErrorObject() { return _realErrorObject; }
+			return _realErrorObject;
 		}
 
 		public this(Object errorObject)

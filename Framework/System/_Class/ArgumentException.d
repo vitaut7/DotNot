@@ -8,22 +8,22 @@ public class ArgumentException : SystemException
 {
 	private string _paramName;
 
-	@property
+	@property string ParamName()
 	{
-		string ParamName() { return _paramName; }
+		return _paramName; 
+	}
 
-		public override string Message()
+	@property public override string Message()
+	{
+		string s = super.Message();
+
+		if (!String.IsNullOrEmpty(_paramName))
 		{
-			string s = super.Message();
-
-			if (!String.IsNullOrEmpty(_paramName))
-			{
-				string resourceString = Environment.GetRuntimeResourceString("Arg_ParamName_Name", [String(_paramName)]);
-				return s ~ Environment.NewLine ~ resourceString;
-			}
-
-			return s;
+			string resourceString = Environment.GetRuntimeResourceString("Arg_ParamName_Name", [String(_paramName)]);
+			return s ~ Environment.NewLine ~ resourceString;
 		}
+
+		return s;
 	}
 
 	public this()
