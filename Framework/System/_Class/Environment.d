@@ -15,7 +15,7 @@ public static class Environment //TODO
 		return key;
 	}
 	
-	static string GetResourceString(string key, string, string)
+	static string GetResourceString(string key, string, string a = null)
 	{
 		return key;
 	}

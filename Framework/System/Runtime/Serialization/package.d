@@ -9,6 +9,7 @@ public import System.Runtime.Serialization._Interface.IObjectReference;
 
 public import System.Runtime.Serialization._Class.SerializationException;
 public import System.Runtime.Serialization._Class.SafeSerializationManager;
+public import System.Runtime.Serialization._Class.SerializationInfoEnumerator;
 
 
 //TODO, nepouzivat typeinfo nammiesto type!

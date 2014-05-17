@@ -24,3 +24,9 @@ public abstract class Type
 		assert(0);
 	}
 }
+
+template Typeof(T)
+{
+	auto Typeof = null;//typeid(T);
+	//Typeof = null;
+}

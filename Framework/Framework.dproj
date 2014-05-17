@@ -190,6 +190,7 @@
     <Compile Include="System\Reflection\_Class\Module.d" />
     <Compile Include="System\Runtime\Serialization\_Interface\IFormatterConverter.d" />
     <Compile Include="System\Runtime\Serialization\_Class\SerializationInfo.d" />
+    <Compile Include="System\Runtime\Serialization\_Class\SerializationInfoEnumerator.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
