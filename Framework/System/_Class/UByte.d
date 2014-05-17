@@ -1,6 +1,7 @@
 ﻿module System._Class.UByte;
 
 import System;
+import System.Globalization;
 
 
 public final class UByte : IConvertible, IComparable!ubyte, IEquatable!ubyte
@@ -32,8 +33,73 @@ public final class UByte : IConvertible, IComparable!ubyte, IEquatable!ubyte
 	{
 		return Equals(value);
 	}
+
+	public static ubyte Parse(string s)
+	{
+		return Parse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
+	}
 	
-	//TODO: parsery
+	public static ubyte Parse(string s, NumberStyles style)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Parse(s, style, NumberFormatInfo.CurrentInfo);
+	}
+	
+	public static ubyte Parse(string s, IFormatProvider provider)
+	{
+		return Parse(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	public static ubyte Parse(string s, NumberStyles style, IFormatProvider provider)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Parse(s, style, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	private static ubyte Parse(string s, NumberStyles style, NumberFormatInfo info)
+	{
+		int i;
+		
+		try
+		{
+			i = Number.ParseInt32(s, style, info);
+		}
+		catch (OverflowException e)
+		{
+			throw new OverflowException(Environment.GetResourceString("Overflow_UByte"), e);
+		}
+		
+		if (i < MinValue || i > MaxValue)
+			throw new OverflowException(Environment.GetResourceString("Overflow_UByte"));
+		
+		return cast(ubyte)i;
+	}
+	
+	public static bool TryParse(string s, out ubyte result)
+	{
+		return TryParse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, result);
+	}
+	
+	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out ubyte result)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return TryParse(s, style, NumberFormatInfo.GetInstance(provider), result);
+	}
+	
+	private static bool TryParse(string s, NumberStyles style, NumberFormatInfo info, out ubyte result)
+	{
+		result = 0;
+		int i;
+		
+		if (!Number.TryParseInt32(s, style, info, i))
+			return false;
+		
+		if (i < MinValue || i > MaxValue)
+			return false;
+		
+		result = cast(ubyte)i;
+		return true;
+	}
 	
 	private this()
 	{
@@ -138,13 +204,18 @@ public final class UByte : IConvertible, IComparable!ubyte, IEquatable!ubyte
 	{
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "UByte", "DateTime"));
 	}
-	
+
 	string ToString(IFormatProvider provider = null)
 	{
-		return "";// TODO
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	//TODO nejake stringy
+	string ToString(string format, IFormatProvider provider = null)
+	{
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatInt32(_value, format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
+	}
 	
 	Object ToType(Type conversionType, IFormatProvider provider = null)
 	{

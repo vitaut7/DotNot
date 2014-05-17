@@ -11,7 +11,6 @@ scope c = new C(); // alokovanie na stacku
 
 Zajtra spravit:
 	double, real, float, char triedy
-	opravit (u)int 16,32,64, tie parsery atd.
 	cominterface
 
 _Class:
@@ -50,13 +49,6 @@ serializationinfo - nejake detaily AssemblyName atd.
 
 mozno este nejake operatory:
 Char...
-_Class.UByte - Dorobit TryParse, stringy, ostatne hotovo
-_Class.Int16 - Dorobit TryParse, stringy, ostatne hotovo
-_Class.UInt16 - Dorobit TryParse, stringy, ostatne hotovo
-_Class.Int32 - Dorobit TryParse, stringy, ostatne hotovo
-_Class.UInt32 - Dorobit TryParse, stringy, ostatne hotovo
-_Class.Int64 - Dorobit TryParse, stringy, ostatne hotovo
-_Class.UInt64 - Dorobit TryParse, stringy, ostatne hotovo
 _Class.IntPtr - nejake divne operatory
 */
 

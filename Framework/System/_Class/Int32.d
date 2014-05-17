@@ -1,6 +1,7 @@
 module System._Class.Int32;
 
 import System;
+import System.Globalization;
 
 
 public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatable!int
@@ -33,7 +34,38 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 		return Equals(value);
 	}
 
-	//TODO: parsery
+	public static int Parse(string s)
+	{
+		return Number.ParseInt32(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
+	}
+	
+	public static int Parse(string s, NumberStyles style)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Number.ParseInt32(s, style, NumberFormatInfo.CurrentInfo);
+	}
+	
+	public static int Parse(string s, IFormatProvider provider)
+	{
+		return Number.ParseInt32(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	public static int Parse(string s, NumberStyles style, IFormatProvider provider)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Number.ParseInt32(s, style, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	public static bool TryParse(string s, out int result)
+	{
+		return Number.TryParseInt32(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, result);
+	}
+	
+	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out int result)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Number.TryParseInt32(s, style, NumberFormatInfo.GetInstance(provider), result);
+	}
 	
 	private this()
 	{
@@ -140,18 +172,18 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 	{
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Int32", "DateTime"));
 	}
-	
+
 	string ToString(IFormatProvider provider = null)
 	{
-		return "";// TODO
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
 	string ToString(string format, IFormatProvider provider = null)
 	{
-		return ""; //TODO
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatInt32(_value, format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
-	
-	//TODO nejake stringy
 	
 	Object ToType(Type conversionType, IFormatProvider provider = null)
 	{

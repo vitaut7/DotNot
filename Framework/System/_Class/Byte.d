@@ -39,6 +39,12 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		return Parse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
 	}
 
+	public static byte Parse(string s, NumberStyles style)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Parse(s, style, NumberFormatInfo.CurrentInfo);
+	}
+
 	public static byte Parse(string s, IFormatProvider provider)
 	{
 		return Parse(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
@@ -60,19 +66,19 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		}
 		catch (OverflowException e)
 		{
-			throw new OverflowException(Environment.GetResourceString("Overflow_SByte"), e);
+			throw new OverflowException(Environment.GetResourceString("Overflow_Byte"), e);
 		}
 
 		if (style & NumberStyles.AllowHexSpecifier)
 		{
 			if (i < 0 || i > Byte.MaxValue)
-				throw new OverflowException(Environment.GetResourceString("Overflow_SByte"));
+				throw new OverflowException(Environment.GetResourceString("Overflow_Byte"));
 		
 			return cast(byte)i;
 		}
 
 		if (i < MinValue || i > MaxValue)
-			throw new OverflowException(Environment.GetResourceString("Overflow_SByte"));
+			throw new OverflowException(Environment.GetResourceString("Overflow_Byte"));
 
 		return cast(byte)i;
 	}

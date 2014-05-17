@@ -1,6 +1,7 @@
 ﻿module System._Class.UInt64;
 
 import System;
+import System.Globalization;
 
 
 public final class UInt64 : IConvertible, IFormattable, IComparable!ulong, IEquatable!ulong
@@ -33,7 +34,38 @@ public final class UInt64 : IConvertible, IFormattable, IComparable!ulong, IEqua
 		return Equals(value);
 	}
 	
-	//TODO: parsery
+	public static ulong Parse(string s)
+	{
+		return Number.ParseUInt64(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
+	}
+	
+	public static ulong Parse(string s, NumberStyles style)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Number.ParseUInt64(s, style, NumberFormatInfo.CurrentInfo);
+	}
+	
+	public static ulong Parse(string s, IFormatProvider provider)
+	{
+		return Number.ParseUInt64(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	public static ulong Parse(string s, NumberStyles style, IFormatProvider provider)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Number.ParseUInt64(s, style, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	public static bool TryParse(string s, out ulong result)
+	{
+		return Number.TryParseUInt64(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, result);
+	}
+	
+	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out ulong result)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Number.TryParseUInt64(s, style, NumberFormatInfo.GetInstance(provider), result);
+	}
 	
 	private this()
 	{
@@ -143,15 +175,15 @@ public final class UInt64 : IConvertible, IFormattable, IComparable!ulong, IEqua
 	
 	string ToString(IFormatProvider provider = null)
 	{
-		return "";// TODO
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatUInt64(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
 	string ToString(string format, IFormatProvider provider = null)
 	{
-		return ""; //TODO
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatUInt64(_value, format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
-	
-	//TODO nejake stringy
 	
 	Object ToType(Type conversionType, IFormatProvider provider = null)
 	{

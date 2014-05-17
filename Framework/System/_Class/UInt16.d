@@ -1,6 +1,7 @@
 ﻿module System._Class.UInt16;
 
 import System;
+import System.Globalization;
 
 
 public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEquatable!ushort
@@ -32,8 +33,73 @@ public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEqu
 	{
 		return Equals(value);
 	}
+
+	public static ushort Parse(string s)
+	{
+		return Parse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
+	}
 	
-	//TODO: parsery
+	public static ushort Parse(string s, NumberStyles style)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Parse(s, style, NumberFormatInfo.CurrentInfo);
+	}
+	
+	public static ushort Parse(string s, IFormatProvider provider)
+	{
+		return Parse(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	public static ushort Parse(string s, NumberStyles style, IFormatProvider provider)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Parse(s, style, NumberFormatInfo.GetInstance(provider));
+	}
+	
+	private static ushort Parse(string s, NumberStyles style, NumberFormatInfo info)
+	{
+		int i;
+		
+		try
+		{
+			i = Number.ParseInt32(s, style, info);
+		}
+		catch (OverflowException e)
+		{
+			throw new OverflowException(Environment.GetResourceString("Overflow_UInt16"), e);
+		}
+		
+		if (i < MinValue || i > MaxValue)
+			throw new OverflowException(Environment.GetResourceString("Overflow_UInt16"));
+		
+		return cast(ushort)i;
+	}
+	
+	public static bool TryParse(string s, out ushort result)
+	{
+		return TryParse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, result);
+	}
+	
+	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out ushort result)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return TryParse(s, style, NumberFormatInfo.GetInstance(provider), result);
+	}
+	
+	private static bool TryParse(string s, NumberStyles style, NumberFormatInfo info, out ushort result)
+	{
+		result = 0;
+		int i;
+		
+		if (!Number.TryParseInt32(s, style, info, i))
+			return false;
+		
+		if (i < MinValue || i > MaxValue)
+			return false;
+		
+		result = cast(ushort)i;
+		return true;
+	}
 	
 	private this()
 	{
@@ -141,15 +207,15 @@ public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEqu
 	
 	string ToString(IFormatProvider provider = null)
 	{
-		return "";// TODO
-	}
-
-	string ToString(string format, IFormatProvider provider = null)
-	{
-		return "";
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatUInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	//TODO nejake stringy
+	string ToString(string format, IFormatProvider provider = null)
+	{
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatUInt32(_value, format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
+	}
 	
 	Object ToType(Type conversionType, IFormatProvider provider = null)
 	{
