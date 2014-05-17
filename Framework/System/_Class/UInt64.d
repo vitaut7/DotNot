@@ -8,9 +8,18 @@ public final class UInt64 : IConvertible, IFormattable, IComparable!ulong, IEqua
 	public static const MaxValue = cast(int)0xffffffffffffffff;
 	public static const MinValue = cast(int)0x0000000000000000;
 	
-	alias _value this;
+	alias Value this;
 	private ulong _value;
+
+	@property ulong Value()
+	{
+		return _value;
+	}
 	
+	@property void Value(ulong value)
+	{
+		_value = value;
+	}
 	
 	static UInt64 opCall(ulong value)
 	{

@@ -62,7 +62,7 @@ public class ArgumentOutOfRangeException : ArgumentException
 	protected this(SerializationInfo info, StreamingContext context)
 	{
 		super(info, context);
-		_actualValue = info.GetValue("ActualValue", typeid(Object));
+		_actualValue = info.GetValue("ActualValue", Typeof!Object);
 	}
 
 	public override void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -72,6 +72,6 @@ public class ArgumentOutOfRangeException : ArgumentException
 		
 		Contract.EndContractBlock();
 		super.GetObjectData(info, context);
-		info.AddValue("ActualValue", _actualValue, typeid(Object));
+		info.AddValue("ActualValue", _actualValue, Typeof!Object);
 	}
 }

@@ -8,9 +8,18 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 	public static const MaxValue = cast(byte)0x7F;
 	public static const MinValue = cast(byte)0x80;
 
-	alias _value this;
+	alias Value this;
 	private byte _value;
 
+	@property byte Value()
+	{
+		return _value;
+	}
+	
+	@property void Value(byte value)
+	{
+		_value = value;
+	}
 
 	static Byte opCall(byte value)
 	{

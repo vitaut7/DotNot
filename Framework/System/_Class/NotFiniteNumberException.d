@@ -67,6 +67,6 @@ public class NotFiniteNumberException : ArithmeticException
 
 		Contract.EndContractBlock();
 		super.GetObjectData(info, context);
-		info.AddValue("OffendingNumber", Double(_offendingNumber), typeid(int));
+		info.AddValue("OffendingNumber", _offendingNumber);
 	}
 }

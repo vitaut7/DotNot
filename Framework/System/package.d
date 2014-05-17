@@ -128,6 +128,13 @@ class Contract
 	public string Trim(string str) { return str; }
 }
 
+abstract public class RealProxy {}
+public static class RemotingServices
+{
+	public static RealProxy GetRealProxy(Object proxy) { assert(0); }
+	static bool ProxyCheckCast(RealProxy rp, RuntimeType castType) { assert(0); }
+	public static bool IsTransparentProxy(Object proxy) { assert(0); }
+}
 
 
 

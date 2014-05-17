@@ -3,18 +3,12 @@
 import System;
 import System.Runtime.Serialization;
 
-/*
-		_members = new string[DefaultSize];
-		_data = new Object[DefaultSize];
-		_types = new Type[DefaultSize];
-		sa budu plnit _types ~= type;
-*/
+
 public final class SerializationInfo
 {
 	private string[] _members;
 	private Object[] _data;
 	private Type[] _types;
-	//private int _currMember;
 	private IFormatterConverter _converter;
 	private string _fullTypeName;
 	private string _assemName;
@@ -23,8 +17,25 @@ public final class SerializationInfo
 	private bool _isAssemblyNameSetExplicit;
 	private bool _requireSameTokenInPartialTrust;
 
-	@property public string FullTypeName() { return _fullTypeName; }
-	@property public string AssemblyName() { return _assemName; }
+	@property public string FullTypeName()
+	{
+		return _fullTypeName;
+	}
+
+	@property public string AssemblyName()
+	{
+		return _assemName;
+	}
+
+	@internal @property string[] MemberNames()
+	{
+		return _members;
+	}
+
+	@internal @property Object[] MemberValues()
+	{
+		return _data;
+	}
 
 	@property public void FullTypeName(string value)
 	{
@@ -234,6 +245,11 @@ public final class SerializationInfo
 		AddValue(name, value, Typeof!DateTime);
 	}
 
+	public void AddValue(string name, string value)
+	{
+		AddValue(name, String(value), Typeof!string);
+	}
+
 	@internal public void UpdateValue(string name, Object value, Type type)
 	{
 		Contract.Assert(name !is null, "[SerializationInfo.UpdateValue]name!=null");
@@ -277,6 +293,244 @@ public final class SerializationInfo
 		Contract.Assert(foundType !is null, "[SerializationInfo.GetElement]foundType!=null");
 		return _data[index];
 	}
-}
 
-//ExpandArrays netreba
+	private Object GetElementNoThrow(string name, out Type foundType)
+	{
+		try
+		{
+			return GetElement(name, foundType);
+		}
+		catch
+		{
+			foundType = null;
+			return null;
+		}
+	}
+
+	public Object GetValue(string name, Type type)
+	{
+		if (type is null)
+			throw new ArgumentNullException("type");
+		Contract.EndContractBlock();
+
+		Type foundType;
+		Object value = GetElement(name, foundType);
+
+		if (RemotingServices.IsTransparentProxy(value))
+		{
+			RealProxy proxy = RemotingServices.GetRealProxy(value);
+			if (RemotingServices.ProxyCheckCast(proxy, cast(RuntimeType)type))
+				return value;
+		}
+		else
+		{
+			if (foundType == type || type.IsAssignableFrom(foundType) || value is null)
+				return value;
+		}
+
+		Contract.Assert(_converter !is null, "[SerializationInfo.GetValue]_converter!=null");
+		return _converter.Convert(value, type);
+	}
+
+	public Object GetValueNoThrow(string name, Type type)
+	{
+		Contract.Assert(type !is null, "[SerializationInfo.GetValue]type ==null");
+		Contract.Assert(type.GetType() == RuntimeType.GetType(), "[SerializationInfo.GetValue]type is not a runtime type");
+
+		Type foundType;
+		Object value = GetElementNoThrow(name, foundType);
+		if (value is null)
+			return null;
+				
+		if (RemotingServices.IsTransparentProxy(value))
+		{
+			RealProxy proxy = RemotingServices.GetRealProxy(value);
+			if (RemotingServices.ProxyCheckCast(proxy, cast(RuntimeType)type))
+				return value;
+		}
+		else
+		{
+			if (foundType == type || type.IsAssignableFrom(foundType) || value is null)
+				return value;
+		}
+		
+		Contract.Assert(_converter !is null, "[SerializationInfo.GetValue]_converter!=null");
+		return _converter.Convert(value, type);
+	}
+
+	public bool GetBoolean(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+
+		if (foundType == Typeof!bool || foundType == Typeof!Boolean)
+			return cast(Boolean)value;
+
+		return _converter.ToBoolean(value);
+	}
+
+	public char GetChar(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!char || foundType == Typeof!Char)
+			return cast(Char)value;
+
+		return _converter.ToChar(value);
+	}
+
+	public byte GetByte(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+
+		if (foundType == Typeof!byte || foundType == Typeof!Byte)
+			return cast(Byte)value;
+		
+		return _converter.ToByte(value);
+	}
+
+	public ubyte GetUByte(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!ubyte || foundType == Typeof!UByte)
+			return cast(UByte)value;
+		
+		return _converter.ToUByte(value);
+	}
+
+	public short GetInt16(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+
+		if (foundType == Typeof!short || foundType == Typeof!Int16)
+			return cast(Int16)value;
+		
+		return _converter.ToInt16(value);
+	}
+
+	public ushort GetUInt16(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+
+		if (foundType == Typeof!ushort || foundType == Typeof!UInt16)
+			return cast(UInt16)value;
+		
+		return _converter.ToUInt16(value);
+	}
+
+	public int GetInt32(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!int || foundType == Typeof!Int32)
+			return cast(Int32)value;
+		
+		return _converter.ToInt32(value);
+	}
+	
+	public uint GetUInt32(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!uint || foundType == Typeof!UInt32)
+			return cast(UInt32)value;
+		
+		return _converter.ToUInt32(value);
+	}
+
+	public long GetInt64(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!long || foundType == Typeof!Int64)
+			return cast(Int64)value;
+		
+		return _converter.ToInt64(value);
+	}
+	
+	public ulong GetUInt64(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!ulong || foundType == Typeof!UInt64)
+			return cast(UInt64)value;
+		
+		return _converter.ToUInt64(value);
+	}
+
+	public float GetFloat(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+
+		if (foundType == Typeof!float || foundType == Typeof!Float)
+			return cast(Float)value;
+		
+		return _converter.ToFloat(value);
+	}
+
+	public double GetDouble(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!double || foundType == Typeof!Double)
+			return cast(Double)value;
+		
+		return _converter.ToDouble(value);
+	}
+
+	public real GetReal(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!real || foundType == Typeof!Real)
+			return cast(Real)value;
+		
+		return _converter.ToReal(value);
+	}
+
+	public DateTime GetDateTime(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!DateTime)
+			return cast(DateTime)value;
+		
+		return _converter.ToDateTime(value);
+	}
+
+	public double GetDouble(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+		
+		if (foundType == Typeof!double || foundType == Typeof!Double)
+			return cast(Double)value;
+		
+		return _converter.ToDouble(value);
+	}
+
+	public string GetString(string name)
+	{
+		Type foundType;
+		Object value = GetElement(name, foundType);
+
+		if (foundType == Typeof!string || foundType == Typeof!String || value is null)
+			return cast(String)value;
+		
+		return _converter.ToString(value);
+	}
+}

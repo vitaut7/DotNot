@@ -9,9 +9,18 @@ public final class IntPtr : ISerializable
 	public static immutable IntPtr Zero;
 	public static const Size = 8;
 
-	alias _value this;
+	alias Value this;
 	private void* _value;
 
+	@property void* Value()
+	{
+		return _value;
+	}
+	
+	@property void Value(void* value)
+	{
+		_value = value;
+	}
 
 	bool opEquals(IntPtr value)
 	{

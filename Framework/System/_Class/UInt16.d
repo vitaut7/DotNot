@@ -8,9 +8,18 @@ public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEqu
 	public static const MaxValue = cast(short)0xFFFF;
 	public static const MinValue = cast(short)0x0000;
 	
-	alias _value this;
+	alias Value this;
 	private ushort _value;
+
+	@property ushort Value()
+	{
+		return _value;
+	}
 	
+	@property void Value(ushort value)
+	{
+		_value = value;
+	}
 	
 	static UInt16 opCall(ushort value)
 	{

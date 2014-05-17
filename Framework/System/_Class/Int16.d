@@ -8,9 +8,18 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 	public static const MaxValue = cast(short)0x7FFF;
 	public static const MinValue = cast(short)0x8000;
 	
-	alias _value this;
+	alias Value this;
 	private short _value;
+
+	@property short Value()
+	{
+		return _value;
+	}
 	
+	@property void Value(short value)
+	{
+		_value = value;
+	}
 	
 	static Int16 opCall(short value)
 	{

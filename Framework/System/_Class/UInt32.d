@@ -8,9 +8,18 @@ public final class UInt32 : IConvertible, IFormattable, IComparable!uint, IEquat
 	public static const MaxValue = cast(int)0xFFFFFFFF;
 	public static const MinValue = cast(int)0x00000000;
 	
-	alias _value this;
+	alias Value this;
 	private uint _value;
+
+	@property uint Value()
+	{
+		return _value;
+	}
 	
+	@property void Value(uint value)
+	{
+		_value = value;
+	}
 	
 	static UInt32 opCall(uint value)
 	{

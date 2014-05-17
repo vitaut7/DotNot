@@ -106,15 +106,15 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 
 		_className = info.GetString("ClassName");
 		_message = info.GetString("Message");
-		_data = cast(IDictionary)info.GetValueNoThrow("Data", typeid(IDictionary));
-		_innerException = cast(BaseException)info.GetValue("InnerException", typeid(Exception));
+		_data = cast(IDictionary)info.GetValueNoThrow("Data", Typeof!IDictionary);
+		_innerException = cast(BaseException)info.GetValue("InnerException", Typeof!Exception);
 		_helpURL = info.GetString("HelpURL");
 
 		_stackTraceString = info.GetString("StackTraceString");
 		_remoteStackTraceString = info.GetString("RemoteStackTracing");
 		_remoteStackIndex = info.GetInt32("RemoteStackIndex");
 
-		_exceptionMethodString = info.GetValue("ExceptionMethod", typeid(string)).ToString();
+		_exceptionMethodString = info.GetValue("ExceptionMethod", Typeof!string).ToString();
 		_hResult = info.GetInt32("HResult");
 		_source = info.GetString("Source");
 
@@ -288,10 +288,10 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		if (!_source)
 			_source = Source;
 
-		info.AddValue("ClassName", String(GetClassName()), typeid(String));
-		info.AddValue("Message", String(_message), typeid(String));
-		//info.AddValue("Data", _data, typeid(IDictionary));
-		info.AddValue("InnerException", _innerException, typeid(Exception));
+		info.AddValue("ClassName", GetClassName());
+		info.AddValue("Message", _message);
+		info.AddValue("Data", cast(Object)_data, Typeof!IDictionary);
+		info.AddValue("InnerException", _innerException, Typeof!Exception);
 		//TODO
 		
 		assert(0);

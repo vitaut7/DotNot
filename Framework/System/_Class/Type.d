@@ -23,6 +23,11 @@ public abstract class Type
 	{
 		assert(0);
 	}
+
+	public bool IsAssignableFrom(Type c)
+	{
+		assert(0);
+	}
 }
 
 template Typeof(T)

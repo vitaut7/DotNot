@@ -8,9 +8,18 @@ public final class Int64 : IConvertible, IFormattable, IComparable!long, IEquata
 	public static const MaxValue = cast(int)0x7fffffffffffffff;
 	public static const MinValue = cast(int)0x8000000000000000;
 	
-	alias _value this;
+	alias Value this;
 	private long _value;
+
+	@property long Value()
+	{
+		return _value;
+	}
 	
+	@property void Value(long value)
+	{
+		_value = value;
+	}
 	
 	static Int64 opCall(long value)
 	{

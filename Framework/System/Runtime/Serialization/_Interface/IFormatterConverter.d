@@ -17,9 +17,9 @@ public interface IFormatterConverter
 	uint ToUInt32(Object value);
 	long ToInt64(Object value);
 	ulong ToUInt64(Object value);
-	float ToSingle(Object value);
+	float ToFloat(Object value);
 	double ToDouble(Object value);
-	real ToDecimal(Object value);
+	real ToReal(Object value);
 	DateTime ToDateTime(Object value);
 	string ToString(Object value);
 }

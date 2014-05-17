@@ -8,9 +8,18 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 	public static const MaxValue = cast(int)0x7FFFFFFF;
 	public static const MinValue = cast(int)0x80000000;
 	
-	alias _value this;
+	alias Value this;
 	private int _value;
+
+	@property int Value()
+	{
+		return _value;
+	}
 	
+	@property void Value(int value)
+	{
+		_value = value;
+	}
 	
 	static Int32 opCall(int value)
 	{

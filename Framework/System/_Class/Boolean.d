@@ -14,9 +14,18 @@ public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 	public static immutable TrueString = TrueLiteral;
 	public static immutable FalseString = FalseLiteral;
 
-	alias _value this;
+	alias Value this;
 	private bool _value;
 
+	@property bool Value()
+	{
+		return _value;
+	}
+
+	@property void Value(bool value)
+	{
+		_value = value;
+	}
 
 	static Boolean opCall(bool value)
 	{

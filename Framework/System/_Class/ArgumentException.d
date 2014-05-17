@@ -73,6 +73,6 @@ public class ArgumentException : SystemException
 
 		Contract.EndContractBlock();
 		super.GetObjectData(info, context);
-		info.AddValue("ParamName", String(_paramName), typeid(String));
+		info.AddValue("ParamName", _paramName);
 	}
 }

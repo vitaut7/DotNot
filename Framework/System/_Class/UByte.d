@@ -7,10 +7,19 @@ public final class UByte : IConvertible, IComparable!ubyte, IEquatable!ubyte
 {
 	public static const MaxValue = cast(byte)0xFF;
 	public static const MinValue = cast(byte)0x00;
-	
-	alias _value this;
+
+	alias Value this;
 	private ubyte _value;
 
+	@property ubyte Value()
+	{
+		return _value;
+	}
+	
+	@property void Value(ubyte value)
+	{
+		_value = value;
+	}
 	
 	static UByte opCall(ubyte value)
 	{
