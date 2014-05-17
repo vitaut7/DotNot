@@ -1,6 +1,7 @@
 ﻿module System._Class.Byte;
 
 import System;
+import System.Globalization;
 
 
 public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
@@ -33,7 +34,83 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		return Equals(value);
 	}
 
-	//TODO: parsery
+	public static byte Parse(string s)
+	{
+		return Parse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
+	}
+
+	public static byte Parse(string s, IFormatProvider provider)
+	{
+		return Parse(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
+	}
+
+	public static byte Parse(string s, NumberStyles style, IFormatProvider provider)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return Parse(s, style, NumberFormatInfo.GetInstance(provider));
+	}
+
+	private static byte Parse(string s, NumberStyles style, NumberFormatInfo info)
+	{
+		int i;
+
+		try
+		{
+			i = Number.ParseInt32(s, style, info);
+		}
+		catch (OverflowException e)
+		{
+			throw new OverflowException(Environment.GetResourceString("Overflow_SByte"), e);
+		}
+
+		if (style & NumberStyles.AllowHexSpecifier)
+		{
+			if (i < 0 || i > Byte.MaxValue)
+				throw new OverflowException(Environment.GetResourceString("Overflow_SByte"));
+		
+			return cast(byte)i;
+		}
+
+		if (i < MinValue || i > MaxValue)
+			throw new OverflowException(Environment.GetResourceString("Overflow_SByte"));
+
+		return cast(byte)i;
+	}
+
+	public static bool TryParse(string s, out byte result)
+	{
+		return TryParse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, result);
+	}
+
+	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out byte result)
+	{
+		NumberFormatInfo.ValidateParseStyleInteger(style);
+		return TryParse(s, style, NumberFormatInfo.GetInstance(provider), result);
+	}
+
+	private static bool TryParse(string s, NumberStyles style, NumberFormatInfo info, out byte result)
+	{
+		result = 0;
+		int i;
+
+		if (!Number.TryParseInt32(s, style, info, i))
+			return false;
+
+		if (style & NumberStyles.AllowHexSpecifier)
+		{
+			if (i < 0 || i > Byte.MaxValue)
+				return false;
+			
+			result = cast(byte)i;
+			return true;
+		}
+		
+		if (i < MinValue || i > MaxValue)
+			return false;
+		
+		result = cast(byte)i;
+		return true;
+	}
 
 	private this()
 	{
@@ -141,10 +218,28 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 	
 	string ToString(IFormatProvider provider = null)
 	{
-		return "";// TODO
+		Contract.Ensures(Contract.Result!string() !is null);
+		return Number.FormatInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 
-	//TODO nejake stringy
+	string ToString(string format, IFormatProvider provider = null)
+	{
+		Contract.Ensures(Contract.Result!string() !is null);
+		return ToString(format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
+	}
+
+	string ToString(string format, NumberFormatInfo info)
+	{
+		Contract.Ensures(Contract.Result!string() !is null);
+
+		if (_value < 0 && format && format.Length > 0 && (format[0] == 'x' || format[0] == 'X'))
+		{
+			uint temp = _value & 0xFF;
+			return Number.FormatInt32(temp, format, info);
+		}
+
+		return Number.FormatInt32(_value, format, info);
+	}
 	
 	Object ToType(Type conversionType, IFormatProvider provider = null)
 	{

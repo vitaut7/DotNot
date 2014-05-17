@@ -39,6 +39,7 @@ _Class:
 	Real
 	Char
 	Float
+	Delegate
 
 
 _Class.Convert - Deklarovat vssetko ostatne
@@ -49,7 +50,6 @@ serializationinfo - nejake detaily AssemblyName atd.
 
 mozno este nejake operatory:
 Char...
-_Class.Byte - Dorobit TryParse, stringy, ostatne hotovo
 _Class.UByte - Dorobit TryParse, stringy, ostatne hotovo
 _Class.Int16 - Dorobit TryParse, stringy, ostatne hotovo
 _Class.UInt16 - Dorobit TryParse, stringy, ostatne hotovo

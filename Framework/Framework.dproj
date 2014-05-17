@@ -191,6 +191,12 @@
     <Compile Include="System\Runtime\Serialization\_Interface\IFormatterConverter.d" />
     <Compile Include="System\Runtime\Serialization\_Class\SerializationInfo.d" />
     <Compile Include="System\Runtime\Serialization\_Class\SerializationInfoEnumerator.d" />
+    <Compile Include="System\Reflection\_Class\MethodInfo.d" />
+    <Compile Include="System\Reflection\_Enum\EventAttributes.d" />
+    <Compile Include="System\_Class\Delegate.d" />
+    <Compile Include="System\Reflection\_Enum\BindingFlags.d" />
+    <Compile Include="System\Globalization\package.d" />
+    <Compile Include="System\Globalization\_Enum\NumberStyles.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
@@ -198,6 +204,10 @@
     <Folder Include="System\Reflection\_Interface\" />
     <Folder Include="System\Threading\_Struct\" />
     <Folder Include="System\Reflection\_Enum\" />
+    <Folder Include="System\Globalization\" />
+    <Folder Include="System\Globalization\_Class\" />
+    <Folder Include="System\Globalization\_Enum\" />
+    <Folder Include="System\Globalization\_Interface\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="System\Attribute.dx" />

@@ -512,17 +512,6 @@ public final class SerializationInfo
 		return _converter.ToDateTime(value);
 	}
 
-	public double GetDouble(string name)
-	{
-		Type foundType;
-		Object value = GetElement(name, foundType);
-		
-		if (foundType == Typeof!double || foundType == Typeof!Double)
-			return cast(Double)value;
-		
-		return _converter.ToDouble(value);
-	}
-
 	public string GetString(string name)
 	{
 		Type foundType;

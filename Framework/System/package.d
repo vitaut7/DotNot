@@ -105,6 +105,7 @@ public import System._Class.Float;
 public import System._Class.Real;
 public import System._Class.Char;
 public import System._Class.Guid;
+public import System._Class.Delegate;
 
 
 interface IDictionary {};//(TKey, TValue) {}
@@ -116,7 +117,9 @@ abstract class CultureInfo : IFormatProvider
 
 class Contract
 {
-	public static void EndContractBlock() { }
+	public static void EndContractBlock() { assert(0); }
+	public static void Ensures(bool condition) { assert(0); }
+	public static T Result(T)() { assert(0); }
 
 	public static void Assert(bool condition, string userMessage) { assert(condition, userMessage); }
 }
@@ -137,6 +140,17 @@ public static class RemotingServices
 }
 
 
+class Number
+{
+	import System.Globalization;
+
+	public static string FormatInt32(int value, string format, NumberFormatInfo info) { assert(0); }
+	public static string FormatUInt32(uint value, string format, NumberFormatInfo info) { assert(0); }
+
+	static Int32 ParseInt32(string s, NumberStyles style, NumberFormatInfo info) { assert(0); }
+	static Boolean TryParseInt32(string s, NumberStyles style, NumberFormatInfo info, out int result) { assert(0); }
+
+}
 
 //UDA
 public const enum internal = "Internal";
