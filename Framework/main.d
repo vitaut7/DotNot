@@ -1,5 +1,4 @@
-﻿import std.stdio;
-/**
+﻿/**
 Sealed  = final
 decimal = real
 Miesto Type pouzit TypeInfo
@@ -51,17 +50,9 @@ mozno este nejake operatory:
 Char...
 _Class.IntPtr - nejake divne operatory
 */
+ 
 
-import System;
-
-
-int main()
-{
-	writeln("test");
-	
-	return 0;
-}
-
+void main() {}
 
 unittest
 {
@@ -189,3 +180,24 @@ System.Collections:
     readonly
     non-readonly
 */
+
+/*
+ * template Gen(alias f)
+{
+	foreach (name; __traits(allMembers, (System._Class.Int32)))
+	{
+		//	static if (!__traits(isStaticFunction, __traits(getMember, (System._Class.Int32), name)))
+		{
+			mixin("alias symbol = " ~ name ~ ";");
+			static if (symbol.stringof[0] == 'p')
+			{
+				//writeln(symbol.stringof);
+				foreach (name2; __traits(allMembers, symbol))
+				{
+					mixin("alias symbol = " ~ name2 ~ ";");
+					pragma(msg, [__traits(allMembers, symbol)]);
+				}
+			}
+		}
+	}
+}*/

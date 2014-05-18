@@ -8,6 +8,11 @@
     <IncrementalLinking>true</IncrementalLinking>
     <PreferOneStepBuild>true</PreferOneStepBuild>
     <Compiler>DMD2</Compiler>
+    <Includes>
+      <Includes>
+        <Path>C:\D\dmd2\src\phobos</Path>
+      </Includes>
+    </Includes>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +45,11 @@
     <Externalconsole>true</Externalconsole>
     <Target>Executable</Target>
     <OutputName>Framework</OutputName>
+    <Libs>
+      <Libs>
+        <Lib>C:\D\dmd2\windows\lib64\phobos64.lib</Lib>
+      </Libs>
+    </Libs>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.d" />
