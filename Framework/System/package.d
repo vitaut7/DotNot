@@ -148,8 +148,10 @@ class Number
 	public static string FormatUInt32(uint value, string format, NumberFormatInfo info) { assert(0); }
 	public static string FormatInt64(long value, string format, NumberFormatInfo info) { assert(0); }
 	public static string FormatUInt64(ulong value, string format, NumberFormatInfo info) { assert(0); }
+	public static string FormatFloat(float value, string format, NumberFormatInfo info) { assert(0); }
+	public static String FormatDouble(double value, string format, NumberFormatInfo info) { assert(0); }
 
-	static Int32 ParseInt32(string s, NumberStyles style, NumberFormatInfo info) { assert(0); }
+	static int ParseInt32(string s, NumberStyles style, NumberFormatInfo info) { assert(0); }
 	static uint ParseUInt32(string s, NumberStyles style, NumberFormatInfo info) { assert(0); }
 	static Boolean TryParseInt32(string s, NumberStyles style, NumberFormatInfo info, out int result) { assert(0); }
 	static Boolean TryParseUInt32(string s, NumberStyles style, NumberFormatInfo info, out uint result) { assert(0); }
@@ -158,6 +160,12 @@ class Number
 	static Boolean TryParseInt64(string s, NumberStyles style, NumberFormatInfo info, out long result) { assert(0); }
 	static ulong ParseUInt64(string s, NumberStyles style, NumberFormatInfo info) { assert(0); }
 	static Boolean TryParseUInt64(string s, NumberStyles style, NumberFormatInfo info, out ulong result) { assert(0); }
+
+	static float ParseFloat(string value, NumberStyles options, NumberFormatInfo info) { assert(0); }
+	static Boolean TryParseFloat(string value, NumberStyles options, NumberFormatInfo info, out float result) { assert(0); }
+
+	static double ParseDouble(string value, NumberStyles options, NumberFormatInfo info) { assert(0); }
+	static Boolean TryParseDouble(string value, NumberStyles options, NumberFormatInfo info, out double result) { assert(0); }
 }
 
 //UDA

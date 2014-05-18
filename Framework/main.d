@@ -9,7 +9,7 @@ scope c = new C(); // alokovanie na stacku
 
 
 Zajtra spravit:
-	double, real, float, char triedy
+	real, char triedy
 	cominterface
 
 _Class:
@@ -33,10 +33,8 @@ _Class:
 	Environment
 	Reflection.RuntimeAssembly
 	UnitySerializationHolder
-	Double
 	Real
 	Char
-	Float
 	Delegate
 
 
@@ -45,9 +43,6 @@ _struct.ArgIterator - doplnit externy
 _Class.Exception - dorobit
 _Class.Guid
 serializationinfo - nejake detaily AssemblyName atd.
-
-mozno este nejake operatory:
-Char...
 _Class.IntPtr - nejake divne operatory
 */
  

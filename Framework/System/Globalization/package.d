@@ -20,4 +20,13 @@ class NumberFormatInfo
 	{
 		assert(0);
 	}
+
+	@internal static void ValidateParseStyleFloatingPoint(NumberStyles style)
+	{
+		assert(0);
+	}
+
+	@property public string PositiveInfinitySymbol() { assert(0); }
+	@property public string NegativeInfinitySymbol() { assert(0); }
+	@property public string NaNSymbol() { assert(0); }
 }
