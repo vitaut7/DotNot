@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Unittest" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Framework\main.d">
+    <Files>
+      <File FileName="Framework\main.d" Line="29" Column="16" />
+      <File FileName="Framework\System\package.d" Line="99" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
