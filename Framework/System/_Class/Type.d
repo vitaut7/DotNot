@@ -28,6 +28,8 @@ public abstract class Type
 	{
 		assert(0);
 	}
+
+	public bool IsInstanceOfType(Object o) { assert(0); }
 }
 
 template Typeof(T)

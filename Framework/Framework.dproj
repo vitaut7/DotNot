@@ -207,6 +207,8 @@
     <Compile Include="System\Reflection\_Enum\BindingFlags.d" />
     <Compile Include="System\Globalization\package.d" />
     <Compile Include="System\Globalization\_Enum\NumberStyles.d" />
+    <Compile Include="System\_Class\MarshalByRefObject.d" />
+    <Compile Include="System\Reflection\_Struct\ParameterModifier.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
@@ -218,6 +220,7 @@
     <Folder Include="System\Globalization\_Class\" />
     <Folder Include="System\Globalization\_Enum\" />
     <Folder Include="System\Globalization\_Interface\" />
+    <Folder Include="System\Reflection\_Struct\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="System\Attribute.dx" />

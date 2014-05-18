@@ -40,11 +40,16 @@ public import System._Struct.RuntimeArgumentHandle;
 public import System._Class.GC;
 public import System._Class.Type;
 public import System._Class.Byte;
+public import System._Class.Real;
+public import System._Class.Char;
+public import System._Class.Guid;
 public import System._Class.UByte;
+public import System._Class.Float;
 public import System._Class.Int16;
 public import System._Class.Int32;
 public import System._Class.Int64;
 public import System._Class.Event;
+public import System._Class.Double;
 public import System._Class.IntPtr;
 public import System._Class.UInt16;
 public import System._Class.UInt32;
@@ -52,12 +57,15 @@ public import System._Class.UInt64;
 public import System._Class.String;
 public import System._Class.Boolean;
 public import System._Class.Convert;
+public import System._Class.Delegate;
 public import System._Class.DateTime;
 public import System._Class.EventArgs;
 public import System._Class.AppDomain;
 public import System._Class.Exception;
+public import System._Class.ValueType;
 public import System._Class.__HResults;
 public import System._Class.RuntimeType;
+public import System._Class.Environment;
 public import System._Class.RankException;
 public import System._Class.RuntimeHandles;
 public import System._Class.FormatException;
@@ -66,6 +74,7 @@ public import System._Class.TimeoutException;
 public import System._Class.GenericUriParser;
 public import System._Class.OverflowException;
 public import System._Class.ArgumentException;
+public import System._Class.MarshalByRefObject;
 public import System._Class.ArithmeticException;
 public import System._Class.InvalidCastException;
 public import System._Class.OutOfMemoryException;
@@ -85,6 +94,7 @@ public import System._Class.NotFiniteNumberException;
 public import System._Class.AccessViolationException;
 public import System._Class.ExecutionEngineException;
 public import System._Class.IndexOutOfRangeException;
+public import System._Class.UnitySerializationHolder;
 public import System._Class.InvalidOperationException;
 public import System._Class.OperationCanceledException;
 public import System._Class.AppDomainUnloadedException;
@@ -97,15 +107,10 @@ public import System._Class.CannotUnloadAppDomainException;
 public import System._Class.MulticastNotSupportedException;
 public import System._Class.InsufficientExecutionStackException;
 
-public import System._Class.ValueType;
-public import System._Class.Environment;
-public import System._Class.UnitySerializationHolder;
-public import System._Class.Double;
-public import System._Class.Float;
-public import System._Class.Real;
-public import System._Class.Char;
-public import System._Class.Guid;
-public import System._Class.Delegate;
+@property public int Length(T)(T value)
+{
+	return cast(int)value.length;
+}
 
 
 interface IDictionary {};//(TKey, TValue) {}
@@ -126,17 +131,22 @@ class Contract
 
 @property
 {
-	public int Length(T)(T[] b) { return cast(int)b.length; }
-	public int Length(string b) { return cast(int)b.length; }
 	public string Trim(string str) { return str; }
 }
 
-abstract public class RealProxy {}
+abstract public class RealProxy {
+	public IntPtr GetCOMIUnknown(bool fIsMarshalled) { assert(0); }
+}
 public static class RemotingServices
 {
 	public static RealProxy GetRealProxy(Object proxy) { assert(0); }
 	static bool ProxyCheckCast(RealProxy rp, RuntimeType castType) { assert(0); }
 	public static bool IsTransparentProxy(Object proxy) { assert(0); }
+}
+
+public static class Marshal
+{
+	public static IntPtr /* IUnknown* */ GetIUnknownForObject(Object o) { assert(0); }
 }
 
 

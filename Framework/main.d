@@ -60,9 +60,13 @@ unittest
 
 /*
 System:
-	Interface - HOTOVO
+	Interface - SKORO HOTOVO
 	Delegats  - HOTOVO
 	Enums     - SKORO HOTOVO
+
+IAppdomain
+IAppDomainPauseManager - prerobit na AppDomainPauseManager do class
+
 
 System.Collections:
 	Delegats  - NENI
