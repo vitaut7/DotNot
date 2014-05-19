@@ -136,6 +136,9 @@ class Contract
 
 abstract public class RealProxy {
 	public IntPtr GetCOMIUnknown(bool fIsMarshalled) { assert(0); }
+
+	import System.Runtime.Remoting;
+	@property Identity IdentityObject() { assert(0); }
 }
 public static class RemotingServices
 {
@@ -147,6 +150,11 @@ public static class RemotingServices
 public static class Marshal
 {
 	public static IntPtr /* IUnknown* */ GetIUnknownForObject(Object o) { assert(0); }
+}
+
+class Interlocked
+{
+	public static Object CompareExchange(ref Object location1, Object value, Object comparand) { assert(0); }
 }
 
 

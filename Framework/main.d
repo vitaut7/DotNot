@@ -36,6 +36,7 @@ _Class:
 	Real
 	Char
 	Delegate
+	MarshalByRefObject
 
 
 _Class.Convert - Deklarovat vssetko ostatne

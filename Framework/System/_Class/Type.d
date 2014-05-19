@@ -3,6 +3,7 @@ module System._Class.Type;
 static import System.Reflection;
 
 import System;
+import System.Reflection;
 
 
 public abstract class Type
@@ -19,6 +20,9 @@ public abstract class Type
 		assert(0);
 	}
 
+	public Object InvokeMember(string name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, 
+                               ParameterModifier[] modifiers, CultureInfo culture, string[] namedParameters);
+
 	@property System.Reflection.Assembly Assembly()
 	{
 		assert(0);
@@ -30,6 +34,7 @@ public abstract class Type
 	}
 
 	public bool IsInstanceOfType(Object o) { assert(0); }
+	@property public bool IsCOMObject() { assert(0); }
 }
 
 template Typeof(T)

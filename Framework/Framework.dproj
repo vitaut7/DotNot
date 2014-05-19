@@ -209,6 +209,8 @@
     <Compile Include="System\Globalization\_Enum\NumberStyles.d" />
     <Compile Include="System\_Class\MarshalByRefObject.d" />
     <Compile Include="System\Reflection\_Struct\ParameterModifier.d" />
+    <Compile Include="System\Runtime\Remoting\_Class\Identity.d" />
+    <Compile Include="System\Reflection\_Class\Binder.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
