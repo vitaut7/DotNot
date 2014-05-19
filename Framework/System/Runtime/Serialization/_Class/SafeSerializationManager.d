@@ -17,7 +17,7 @@ public final class SafeSerializationEventArgs : EventArgs
 		return _streamingContext;
 	}
 
-	@internal public this(System.Runtime.Serialization.StreamingContext streamingContext)
+	@internal this(System.Runtime.Serialization.StreamingContext streamingContext)
 	{
 		_streamingContext = streamingContext;
 	}
@@ -42,18 +42,18 @@ public final class SafeSerializationManager //: IObjectReference, ISerializable
 {
 	private static const RealTypeSerializationName = "CLR_SafeSerializationManager_RealType";
 
-	@internal public EventHandlerT!SafeSerializationEventArgs SerializeObjectState;
+	@internal EventHandlerT!SafeSerializationEventArgs SerializeObjectState;
 	//TODO: list<object>
 	private SerializationInfo _savedSerializationInfo;
 	private Object _realObject;
 	private RuntimeType _realType;
 
-	@internal @property public bool IsActive()
+	@internal @property bool IsActive()
 	{
 		return SerializeObjectState.Count != 0;
 	}
 
-	@internal public this()
+	@internal this()
 	{
 	}
 

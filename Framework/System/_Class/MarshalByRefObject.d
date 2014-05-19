@@ -5,6 +5,7 @@ static import System.Runtime.Remoting;
 import System;
 import System.Reflection;
 import System.Runtime.Remoting;
+import System.Runtime.InteropServices;
 
 
 public abstract class MarshalByRefObject
@@ -22,7 +23,7 @@ public abstract class MarshalByRefObject
 		_identity = value;
 	}
 
-	@internal public IntPtr GetComUnknown(bool isBeingMarshalled)
+	@internal IntPtr GetComUnknown(bool isBeingMarshalled)
 	{
 		if (RemotingServices.IsTransparentProxy(this))
 			return RemotingServices.GetRealProxy(this).GetCOMIUnknown(isBeingMarshalled);
@@ -30,13 +31,13 @@ public abstract class MarshalByRefObject
 			return Marshal.GetIUnknownForObject(this);
 	}
 
-	@internal public bool IsInstanceOfType(Type t)
+	@internal bool IsInstanceOfType(Type t)
 	{
 		return t.IsInstanceOfType(this);
 	}
 
-	@internal public Object InvokeMember(string name, BindingFlags invokeAttr, Binder binder, Object[] args, 
-                                         ParameterModifier[] modifiers, CultureInfo culture, string[] namedParameters)
+	@internal Object InvokeMember(string name, BindingFlags invokeAttr, Binder binder, Object[] args, 
+                                  ParameterModifier[] modifiers, CultureInfo culture, string[] namedParameters)
 	{
 		Type t = null; //TODO: GetType();
 
@@ -55,7 +56,7 @@ public abstract class MarshalByRefObject
 		return mbr;
 	}
 
-	@internal public static System.Runtime.Remoting.Identity GetIdentity(MarshalByRefObject obj, out bool fServer)
+	@internal static System.Runtime.Remoting.Identity GetIdentity(MarshalByRefObject obj, out bool fServer)
 	{
 		fServer = true;
 		System.Runtime.Remoting.Identity id = null;

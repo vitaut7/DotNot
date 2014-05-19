@@ -51,3 +51,8 @@ public class AssemblyLoadEventArgs : EventArgs
 		_loadedAssembly = loadedAssembly;
 	}
 }
+
+public class AppDomain
+{
+	static bool IsAppXModel() { assert(0); }
+}

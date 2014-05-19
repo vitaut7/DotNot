@@ -309,38 +309,38 @@ public final class Guid //: IFormattable, IComparable
 
 	private struct GuidResult
 	{
-		@internal public Guid parsedGuid;
-		@internal public GuidParseThrowStyle throwStyle;
+		@internal Guid parsedGuid;
+		@internal GuidParseThrowStyle throwStyle;
 
-		@internal public ParseFailureKind _failure;
-		@internal public string _failureMessageID;
-		@internal public Object _failureMessageFormatArgument;
-		@internal public string _failureArgumentName;
-		@internal public Exception _innerException;
+		@internal ParseFailureKind _failure;
+		@internal string _failureMessageID;
+		@internal Object _failureMessageFormatArgument;
+		@internal string _failureArgumentName;
+		@internal Exception _innerException;
 
-		@internal public void Init(GuidParseThrowStyle canThrow)
+		@internal void Init(GuidParseThrowStyle canThrow)
 		{
 			parsedGuid = cast(Guid)Guid.Empty;
 			throwStyle = canThrow;
 		}
 
-		@internal public void SetFailure(Exception nativeException)
+		@internal void SetFailure(Exception nativeException)
 		{
 			_failure = ParseFailureKind.NativeException;
 			_innerException = nativeException;
 		}
 
-		@internal public void SetFailure(ParseFailureKind failure, string failureMessageID)
+		@internal void SetFailure(ParseFailureKind failure, string failureMessageID)
 		{
 			SetFailure(failure, failureMessageID, null, null, null);
 		}
 
-		@internal public void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument)
+		@internal void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument)
 		{
 			SetFailure(failure, failureMessageID, failureMessageFormatArgument, null, null);
 		}
 
-		@internal public void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument,
+		@internal void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument,
 		                                 string failureArgumentName, Exception innerException)
 		{
 			Contract.Assert(failure != ParseFailureKind.NativeException, "ParseFailureKind.NativeException should not be used with this overload");
@@ -354,7 +354,7 @@ public final class Guid //: IFormattable, IComparable
 				throw GetGuidParseException();
 		}
 
-		@internal public Exception GetGuidParseException()
+		@internal Exception GetGuidParseException()
 		{
 			switch (_failure)
 			{

@@ -7,7 +7,7 @@ public struct ParameterModifier
 {
 	private bool[] _byRef;
 
-	@internal @property public bool[] IsByRefArray()
+	@internal @property bool[] IsByRefArray()
 	{
 		return _byRef;
 	}

@@ -24,7 +24,7 @@ public final class InvalidProgramException : SystemException
 		SetErrorCode(__HResults.COR_E_INVALIDPROGRAM);
 	}
 
-	@internal public this(SerializationInfo info, StreamingContext context)
+	@internal this(SerializationInfo info, StreamingContext context)
 	{
 		super(info, context);
 	}

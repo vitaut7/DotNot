@@ -27,7 +27,7 @@ public class IOException : SystemException
 		SetErrorCode(hresult);
 	}
 
-	@internal public this(string message, int hresult, string maybeFullPath)
+	@internal this(string message, int hresult, string maybeFullPath)
 	{
 		super(message);
 

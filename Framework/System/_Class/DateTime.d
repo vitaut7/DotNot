@@ -26,8 +26,8 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
         private static const int DaysTo1899 = DaysPer400Years * 4 + DaysPer100Years * 3 - 367;
         private static const int DaysTo10000 = DaysPer400Years * 25 - 366;
     
-        @internal public static const long MinTicks = 0;
-        @internal public static const long MaxTicks = DaysTo10000 * TicksPerDay - 1;
+        @internal static const long MinTicks = 0;
+        @internal static const long MaxTicks = DaysTo10000 * TicksPerDay - 1;
         private static const long MaxMillis = cast(long)DaysTo10000 * MillisPerDay;
     
         private static const long FileTimeOffset = DaysTo1601 * TicksPerDay;

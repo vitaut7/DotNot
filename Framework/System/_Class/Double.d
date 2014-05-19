@@ -120,7 +120,7 @@ public final class Double : IConvertible, IFormattable, IComparable!double, IEqu
 		return d == NegativeInfinity;
 	}
 
-	@internal public static bool IsNegative(double d)
+	@internal static bool IsNegative(double d)
 	{
 		return (*cast(ulong *)(&d) & 0x8000000000000000) == 0x8000000000000000;
 	}

@@ -147,16 +147,15 @@ public static class RemotingServices
 	public static bool IsTransparentProxy(Object proxy) { assert(0); }
 }
 
-public static class Marshal
-{
-	public static IntPtr /* IUnknown* */ GetIUnknownForObject(Object o) { assert(0); }
-}
-
 class Interlocked
 {
 	public static Object CompareExchange(ref Object location1, Object value, Object comparand) { assert(0); }
 }
 
+public class Hashtable
+{
+
+}
 
 class Number
 {

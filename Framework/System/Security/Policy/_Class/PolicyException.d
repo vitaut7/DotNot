@@ -29,13 +29,13 @@ public class PolicyException : SystemException
 		super(info, context);
 	}
 
-	@internal public this(string message, int hresult)
+	@internal this(string message, int hresult)
 	{
 		super(message);
 		SetErrorCode(hresult);
 	}
 
-	@internal public this(string message, int hresult, Exception innerException)
+	@internal this(string message, int hresult, Exception innerException)
 	{
 		super(message, innerException);
 		SetErrorCode(hresult);

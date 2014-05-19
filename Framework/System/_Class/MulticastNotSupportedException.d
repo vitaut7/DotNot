@@ -24,7 +24,7 @@ public final class MulticastNotSupportedException : SystemException
 		SetErrorCode(__HResults.COR_E_MULTICASTNOTSUPPORTED);
 	}
 
-	@internal public this(SerializationInfo info, StreamingContext context)
+	@internal this(SerializationInfo info, StreamingContext context)
 	{
 		super(info, context);
 	}

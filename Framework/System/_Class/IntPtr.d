@@ -52,7 +52,7 @@ public final class IntPtr : ISerializable
 		_value = cast(void *)info.GetInt64("value");
 	}
 
-	@internal public bool IsNull()
+	@internal bool IsNull()
 	{
 		return _value == null;
 	}

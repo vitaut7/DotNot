@@ -250,7 +250,7 @@ public final class SerializationInfo
 		AddValue(name, String(value), Typeof!string);
 	}
 
-	@internal public void UpdateValue(string name, Object value, Type type)
+	@internal void UpdateValue(string name, Object value, Type type)
 	{
 		Contract.Assert(name !is null, "[SerializationInfo.UpdateValue]name!=null");
 		Contract.Assert(value !is null, "[SerializationInfo.UpdateValue]value!=null");

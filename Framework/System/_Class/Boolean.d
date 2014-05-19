@@ -5,11 +5,11 @@ import System;
 
 public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 {
-	@internal public static const True = 1;
-	@internal public static const False = 0;
+	@internal static const True = 1;
+	@internal static const False = 0;
 
-	@internal public static const TrueLiteral = "True";
-	@internal public static const FalseLiteral = "False";
+	@internal static const TrueLiteral = "True";
+	@internal static const FalseLiteral = "False";
 
 	public static immutable TrueString = TrueLiteral;
 	public static immutable FalseString = FalseLiteral;

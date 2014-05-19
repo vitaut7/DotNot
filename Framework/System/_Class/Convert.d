@@ -97,7 +97,7 @@ public static class Convert
 		}
 	}
 
-	@internal public static Object DefaultToType(IConvertible value, Type targetType, IFormatProvider provider) {
+	@internal static Object DefaultToType(IConvertible value, Type targetType, IFormatProvider provider) {
 		return null;
 	}
 	//default to type
