@@ -20,4 +20,8 @@ public class Marshal
 	{
 		assert(0);
 	}
+
+	public static int ReleaseComObject(Object o) { assert (0); }
+
+	static int InternalReleaseComObject(Object o) {assert(0); }
 }

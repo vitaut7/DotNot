@@ -154,7 +154,21 @@ class Interlocked
 
 public class Hashtable
 {
+	Object opIndex(Object key) { assert(0); }
+	void opIndexAssign(Object value, Object key) { assert(0); }
+	@property Object[] Values() { assert(0);}
+}
 
+class Activator
+{
+	import System.Reflection;
+	static const BindingFlags ConstructorDefault= BindingFlags.Instance | BindingFlags.Public | BindingFlags.CreateInstance;
+
+	static public Object CreateInstance(Type type,
+	                                    BindingFlags bindingAttr,
+	                                    Binder binder,
+	                                    Object[] args,
+	CultureInfo culture) {assert(0);}
 }
 
 class Number
