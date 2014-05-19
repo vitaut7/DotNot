@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Unittest" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Framework\System\_Class\MarshalByRefObject.d">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Framework\main.d">
     <Files>
-      <File FileName="Framework\main.d" Line="69" Column="1" />
-      <File FileName="Framework\System\package.d" Line="109" Column="48" />
-      <File FileName="Framework\System\_Class\MarshalByRefObject.d" Line="10" Column="2" />
+      <File FileName="Framework\main.d" Line="12" Column="9" />
+      <File FileName="Framework\System\package.d" Line="111" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

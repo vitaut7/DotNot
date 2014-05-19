@@ -9,7 +9,7 @@ scope c = new C(); // alokovanie na stacku
 
 
 Zajtra spravit:
-	real, char triedy
+	version
 	cominterface
 
 _Class:
@@ -37,7 +37,12 @@ _Class:
 	Char
 	Delegate
 	MarshalByRefObject
+	AppDomainManager
+	Version
 
+int:
+IConfigHandler
+_AppDomain
 
 _Class.Convert - Deklarovat vssetko ostatne
 _struct.ArgIterator - doplnit externy

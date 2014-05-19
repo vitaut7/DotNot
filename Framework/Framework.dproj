@@ -212,6 +212,8 @@
     <Compile Include="System\Runtime\Remoting\_Class\Identity.d" />
     <Compile Include="System\Reflection\_Class\Binder.d" />
     <Compile Include="System\_Class\__ComObject.d" />
+    <Compile Include="System\_Class\AppDomainManager.d" />
+    <Compile Include="System\_Class\Version.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
@@ -224,8 +226,5 @@
     <Folder Include="System\Globalization\_Enum\" />
     <Folder Include="System\Globalization\_Interface\" />
     <Folder Include="System\Reflection\_Struct\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="System\Attribute.dx" />
   </ItemGroup>
 </Project>

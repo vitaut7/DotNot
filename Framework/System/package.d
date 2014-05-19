@@ -107,6 +107,9 @@ public import System._Class.CannotUnloadAppDomainException;
 public import System._Class.MulticastNotSupportedException;
 public import System._Class.InsufficientExecutionStackException;
 
+public import System._Class.AppDomainManager;
+public import System._Class.Version;
+
 @property public int Length(T)(T value)
 {
 	return cast(int)value.length;
@@ -127,6 +130,11 @@ class Contract
 	public static T Result(T)() { assert(0); }
 
 	public static void Assert(bool condition, string userMessage) { assert(condition, userMessage); }
+}
+
+string ToString(T)(T value)
+{
+	return value.stringof; //TODO
 }
 
 @property
