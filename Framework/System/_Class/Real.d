@@ -1,7 +1,7 @@
 ﻿module System._Class.Real;
 
 import System;
-
+import System.Globalization;
 
 class Real
 {
@@ -21,6 +21,7 @@ class Real
 	static Real opCall(real value) { return new Real(); }
 	char ToChar(IFormatProvider p = null) { return 'a'; }
 	DateTime ToDateTime(IFormatProvider p = null) { return null; }
+	public static real Parse(string s, NumberStyles style, IFormatProvider provider) { assert(0); }
 }
 
 /*

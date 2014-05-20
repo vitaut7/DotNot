@@ -1,7 +1,10 @@
 module System._Class.Convert;
 
+static import System;
+
 import System;
-import system = System._Class.DBNull;
+import System.Threading;
+import System.Globalization;
 
 
 public enum Base64FormattingOptions
@@ -13,7 +16,7 @@ public enum Base64FormattingOptions
 
 public static class Convert
 {
-	public static immutable Object DBNull = system.DBNull.Value;
+	public static immutable Object DBNull = System.DBNull.Value;
 
 
 	public static TypeCode GetTypeCode(Object value)
@@ -42,7 +45,7 @@ public static class Convert
 
 	public static Object ChangeType(Object value, TypeCode typeCode)
 	{
-		return ChangeType(value, typeCode, null); //TODO: Thread.Currentthresd...
+		return ChangeType(value, typeCode, Thread.CurrentThread.CurrentCulture);
 	}
 
 	public static Object ChangeType(Object value, TypeCode typeCode, IFormatProvider provider)
@@ -186,7 +189,7 @@ public static class Convert
 		if (value is null)
 			return false; 
 		
-		assert(0); //TODO: (cast(IConvertible)value).ToBoolean(null);
+		return (cast(IConvertible)value).ToBoolean();
 	}
 
 	public static bool ToBoolean(string value)
@@ -194,7 +197,7 @@ public static class Convert
 		if (value is null)
 			return false;
 		
-		assert(0); //TODO: Boolean.Parse(value);
+		return Boolean.Parse(value);
 	}
 
 
@@ -283,15 +286,14 @@ public static class Convert
 		return cast(char)value;
 	}
 
-	public static char ToChar(string value, IFormatProvider provider)
+	public static char ToChar(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			throw new ArgumentNullException("value");
-		
 		Contract.EndContractBlock();
 
 		if (String(value).Length != 1)
-			throw new FormatException(Environment.GetResourceString("TODO")); //TODO
+			throw new FormatException(Environment.GetResourceString("Format_NeedSingleChar"));
 
 		return value[0];
 	}
@@ -406,12 +408,12 @@ public static class Convert
 		return cast(byte)value;
 	}
 	
-	public static byte ToByte(string value, IFormatProvider provider)
+	public static byte ToByte(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
-		
-		assert(0); //TODO parse
+
+		return Byte.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static byte ToByte(float value)
@@ -524,12 +526,12 @@ public static class Convert
 		return cast(ubyte)value;
 	}
 	
-	public static ubyte ToUByte(string value, IFormatProvider provider)
+	public static ubyte ToUByte(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return Byte.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static ubyte ToUByte(float value)
@@ -630,12 +632,12 @@ public static class Convert
 		return cast(short)value;
 	}
 	
-	public static short ToInt16(string value, IFormatProvider provider)
+	public static short ToInt16(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return Int16.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static short ToInt16(float value)
@@ -745,7 +747,7 @@ public static class Convert
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return UInt16.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static ushort ToUInt16(float value)
@@ -838,12 +840,12 @@ public static class Convert
 		return cast(int)value;
 	}
 	
-	public static int ToInt32(string value, IFormatProvider provider)
+	public static int ToInt32(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return Int32.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static int ToInt32(float value)
@@ -971,12 +973,12 @@ public static class Convert
 		return cast(uint)value;
 	}
 	
-	public static uint ToUInt32(string value, IFormatProvider provider)
+	public static uint ToUInt32(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return UInt32.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static uint ToUInt32(float value)
@@ -1072,12 +1074,12 @@ public static class Convert
 		return cast(long)value;
 	}
 	
-	public static long ToInt64(string value, IFormatProvider provider)
+	public static long ToInt64(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return Int64.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static long ToInt64(float value)
@@ -1174,12 +1176,12 @@ public static class Convert
 		return value;
 	}
 	
-	public static ulong ToUInt64(string value, IFormatProvider provider)
+	public static ulong ToUInt64(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return UInt64.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static ulong ToUInt64(float value)
@@ -1260,12 +1262,12 @@ public static class Convert
 		return value;
 	}
 	
-	public static float ToFloat(string value, IFormatProvider provider)
+	public static float ToFloat(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return Float.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static float ToFloat(float value)
@@ -1346,12 +1348,12 @@ public static class Convert
 		return value;
 	}
 	
-	public static double ToDouble(string value, IFormatProvider provider)
+	public static double ToDouble(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return Double.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static double ToDouble(float value)
@@ -1432,12 +1434,12 @@ public static class Convert
 		return value;
 	}
 	
-	public static real ToReal(string value, IFormatProvider provider)
+	public static real ToReal(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return 0;
 		
-		assert(0); //TODO parse
+		return Real.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static real ToReal(float value)
@@ -1518,12 +1520,12 @@ public static class Convert
 		return UInt64(value).ToDateTime();
 	}
 	
-	public static DateTime ToDateTime(string value, IFormatProvider provider)
+	public static DateTime ToDateTime(string value, IFormatProvider provider = null)
 	{
 		if (!value)
 			return new DateTime(0);
 		
-		assert(0); //TODO parse
+		return DateTime.Parse(value, NumberStyles.Integer, provider ? provider : CultureInfo.CurrentCulture);
 	}
 	
 	public static DateTime ToDateTime(float value)
@@ -1547,5 +1549,5 @@ public static class Convert
 	}
 
 
-	//DateTime, String, este nejake dalsie picoviny
+	//string, este nejake dalsie picoviny
 }

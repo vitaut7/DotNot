@@ -141,7 +141,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return _message;
 	}
 
-	@property IDictionary Data()
+	@property public IDictionary Data()
 	{
 		if (_data is null)
 			if (IsImmutableAgileException(this))

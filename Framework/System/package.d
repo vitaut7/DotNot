@@ -109,6 +109,7 @@ public import System._Class.InsufficientExecutionStackException;
 
 public import System._Class.AppDomainManager;
 public import System._Class.Version;
+public import System._Class.DBNull;
 
 @property public int Length(T)(T value)
 {
@@ -121,6 +122,7 @@ interface IDictionary {};//(TKey, TValue) {}
 abstract class CultureInfo : IFormatProvider
 {
 	@property public static CultureInfo InvariantCulture() { assert(0); }
+	@property public static CultureInfo CurrentCulture() { assert(0); }
 }
 
 class Contract

@@ -1,6 +1,7 @@
 module System._Class.DateTime;
 
 import System;
+import System.Globalization;
 import System.Runtime.Serialization;
 
 
@@ -67,4 +68,5 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 
 	this(long) {}
     this(long, int) {}
+	public static DateTime Parse(string s, NumberStyles style, IFormatProvider provider) { assert(0); }
 }

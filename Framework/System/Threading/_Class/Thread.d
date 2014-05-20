@@ -1,5 +1,7 @@
 ﻿module System.Threading._Class.Thread;
 
+import System;
+
 
 public final class Thread
 {
@@ -10,6 +12,10 @@ public final class Thread
 	
 	@property Object AbortReason()
 	{
+		assert(0);
+	}
+
+	@property public CultureInfo CurrentCulture() {
 		assert(0);
 	}
 }
