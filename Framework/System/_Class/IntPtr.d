@@ -4,8 +4,9 @@ import System;
 import System.Runtime.Serialization;
 
 
-public final class IntPtr : ISerializable
+public final class IntPtr : ISerializable, IEquatable!IntPtr
 {
+	alias opEquals = Equals;
 	public static immutable IntPtr Zero;
 	public static const Size = 8;
 
@@ -22,7 +23,7 @@ public final class IntPtr : ISerializable
 		_value = value;
 	}
 
-	bool opEquals(IntPtr value)
+	bool Equals(IntPtr value)
 	{
 		return _value == value._value;
 	}

@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const MaxValue = cast(byte)0x7F;
 	public static const MinValue = cast(byte)0x80;
 
@@ -27,11 +29,6 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		Byte ret = new Byte();
 		ret._value = value;
 		return ret;
-	}
-
-	bool opEquals(byte value)
-	{
-		return Equals(value);
 	}
 
 	public static byte Parse(string s)

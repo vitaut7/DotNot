@@ -116,7 +116,7 @@ public import System._Class.DBNull;
 	return cast(int)value.length;
 }
 
-
+string[] Split(string str, char[] vals) {assert (0); }
 interface IDictionary {};//(TKey, TValue) {}
 
 abstract class CultureInfo : IFormatProvider

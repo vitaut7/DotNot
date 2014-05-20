@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class Int64 : IConvertible, IFormattable, IComparable!long, IEquatable!long
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const MaxValue = cast(int)0x7fffffffffffffff;
 	public static const MinValue = cast(int)0x8000000000000000;
 	
@@ -29,11 +31,6 @@ public final class Int64 : IConvertible, IFormattable, IComparable!long, IEquata
 		return ret;
 	}
 
-	bool opEquals(long value)
-	{
-		return Equals(value);
-	}
-	
 	public static long Parse(string s)
 	{
 		return Number.ParseInt64(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);

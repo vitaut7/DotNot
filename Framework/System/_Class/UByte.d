@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class UByte : IConvertible, IComparable!ubyte, IEquatable!ubyte
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const MaxValue = cast(byte)0xFF;
 	public static const MinValue = cast(byte)0x00;
 
@@ -27,11 +29,6 @@ public final class UByte : IConvertible, IComparable!ubyte, IEquatable!ubyte
 		UByte ret = new UByte();
 		ret._value = value;
 		return ret;
-	}
-
-	bool opEquals(ubyte value)
-	{
-		return Equals(value);
 	}
 
 	public static ubyte Parse(string s)

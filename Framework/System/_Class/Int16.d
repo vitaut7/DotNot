@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquatable!short
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const MaxValue = cast(short)0x7FFF;
 	public static const MinValue = cast(short)0x8000;
 	
@@ -27,11 +29,6 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 		Int16 ret = new Int16();
 		ret._value = value;
 		return ret;
-	}
-
-	bool opEquals(short value)
-	{
-		return Equals(value);
 	}
 
 	public static short Parse(string s)

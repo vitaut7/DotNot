@@ -7,6 +7,8 @@ import System.Runtime.Serialization;
 
 public final class DateTime// : IComparable, IFormattable, IConvertible, ISerializable, IComparableT!DateTime, IEquatable!DateTime
 {
+	//alias opEquals = Equals;
+	//alias opCmp = CompareTo;
 	private static const long TicksPerMillisecond = 10000;
 	private static const long TicksPerSecond = TicksPerMillisecond * 1000;
 	private static const long TicksPerMinute = TicksPerSecond * 60;

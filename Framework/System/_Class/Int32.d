@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatable!int
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const MaxValue = cast(int)0x7FFFFFFF;
 	public static const MinValue = cast(int)0x80000000;
 	
@@ -27,11 +29,6 @@ public final class Int32 : IConvertible, IFormattable, IComparable!int, IEquatab
 		Int32 ret = new Int32();
 		ret._value = value;
 		return ret;
-	}
-
-	bool opEquals(int value)
-	{
-		return Equals(value);
 	}
 
 	public static int Parse(string s)

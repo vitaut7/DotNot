@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class UInt64 : IConvertible, IFormattable, IComparable!ulong, IEquatable!ulong
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const MaxValue = cast(int)0xffffffffffffffff;
 	public static const MinValue = cast(int)0x0000000000000000;
 	
@@ -29,11 +31,6 @@ public final class UInt64 : IConvertible, IFormattable, IComparable!ulong, IEqua
 		return ret;
 	}
 
-	bool opEquals(ulong value)
-	{
-		return Equals(value);
-	}
-	
 	public static ulong Parse(string s)
 	{
 		return Number.ParseUInt64(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);

@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class Double : IConvertible, IFormattable, IComparable!double, IEquatable!double
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const double MinValue = -1.7976931348623157e+308;
 	public static const double MaxValue = 1.7976931348623157e+308;
 	public static const double Epsilon = 4.9406564584124654e-324;
@@ -32,11 +34,6 @@ public final class Double : IConvertible, IFormattable, IComparable!double, IEqu
 		Double ret = new Double();
 		ret._value = value;
 		return ret;
-	}
-	
-	bool opEquals(double value)
-	{
-		return Equals(value);
 	}
 	
 	public static double Parse(string s)

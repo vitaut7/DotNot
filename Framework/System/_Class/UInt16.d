@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEquatable!ushort
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const MaxValue = cast(short)0xFFFF;
 	public static const MinValue = cast(short)0x0000;
 	
@@ -27,11 +29,6 @@ public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEqu
 		UInt16 ret = new UInt16();
 		ret._value = value;
 		return ret;
-	}
-
-	bool opEquals(ushort value)
-	{
-		return Equals(value);
 	}
 
 	public static ushort Parse(string s)

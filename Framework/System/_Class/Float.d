@@ -6,6 +6,8 @@ import System.Globalization;
 
 public final class Float : IConvertible, IFormattable, IComparable!float, IEquatable!float
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const float MinValue = -3.40282346638528859e+38;
 	public static const float MaxValue = 3.40282346638528859e+38;
 	public static const float Epsilon = 1.4e-45;
@@ -31,11 +33,6 @@ public final class Float : IConvertible, IFormattable, IComparable!float, IEquat
 		Float ret = new Float();
 		ret._value = value;
 		return ret;
-	}
-
-	bool opEquals(float value)
-	{
-		return Equals(value);
 	}
 
 	public static float Parse(string s)

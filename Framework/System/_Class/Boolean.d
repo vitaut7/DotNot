@@ -5,6 +5,8 @@ import System;
 
 public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 {
+	alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	@internal static const True = 1;
 	@internal static const False = 0;
 
@@ -32,11 +34,6 @@ public final class Boolean : IConvertible, IComparable!bool, IEquatable!bool
 		Boolean ret = new Boolean();
 		ret._value = value;
 		return ret;
-	}
-
-	bool opEquals(bool value)
-	{
-		return Equals(value);
 	}
 
 	public static Boolean Parse(string value)

@@ -33,6 +33,8 @@ import System.Globalization;
 
 public final class Real : IConvertible, IFormattable, IComparable!real, IEquatable!real
 {
+alias opEquals = Equals;
+	alias opCmp = CompareTo;
 	public static const real MinValue = -3.40282346638528859e+38;
 	public static const real MaxValue = 79228162514264337593543950335m;
 	public static const real Epsilon = 1.4e-45;
@@ -58,11 +60,6 @@ public final class Real : IConvertible, IFormattable, IComparable!real, IEquatab
 		Real ret = new Real();
 		ret._value = value;
 		return ret;
-	}
-	
-	bool opEquals(real value)
-	{
-		return Equals(value);
 	}
 	
 	public static real Parse(string s)
