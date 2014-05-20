@@ -28,7 +28,6 @@ _Class:
 	RuntimeType
 	RuntimeHandles
 	TypedReference - EASY
-	IRuntimeMethodInfo - TUTORIAL
 	ValueType
 	Environment
 	Reflection.RuntimeAssembly
