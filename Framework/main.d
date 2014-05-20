@@ -10,7 +10,6 @@ scope c = new C(); // alokovanie na stacku
 
 Zajtra spravit:
 	version
-	cominterface
 
 _Class:
 	Reflection.Assembly

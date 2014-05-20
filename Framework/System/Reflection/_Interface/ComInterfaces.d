@@ -16,7 +16,7 @@ public interface _Type
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -136,7 +136,7 @@ public interface _Type
 public interface _Assembly
 {
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -192,7 +192,7 @@ public interface _MemberInfo
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 	
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -216,7 +216,7 @@ public interface _MethodBase
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 	
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -262,7 +262,7 @@ public interface _MethodInfo
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 	
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -313,7 +313,7 @@ public interface _ContructorInfo
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 	
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -363,7 +363,7 @@ public interface _FieldInfo
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 	
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -409,7 +409,7 @@ public interface _PropertyInfo
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 	
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
@@ -451,7 +451,7 @@ public interface _EventInfo
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 	
 	//region Object
-	string Tostring();
+	string ToString();
 	bool Equals(Object other);
 	int GetHashCode();
 	Type GetType();
