@@ -9,7 +9,7 @@ import System;
 
 	@internal @property static RuntimeMethodHandleInternal EmptyValue()
 	{
-		return *(new RuntimeMethodHandleInternal());
+		return *new RuntimeMethodHandleInternal();
 	}
 
 	@internal @property IntPtr Value()

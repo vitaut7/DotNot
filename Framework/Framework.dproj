@@ -214,6 +214,9 @@
     <Compile Include="System\_Class\__ComObject.d" />
     <Compile Include="System\_Class\AppDomainManager.d" />
     <Compile Include="System\_Class\Version.d" />
+    <Compile Include="System\Globalization\_Class\Calendar.d" />
+    <Compile Include="System\Collection\package.d" />
+    <Compile Include="System\Collection\_Interface\IEnumerator.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
@@ -226,5 +229,7 @@
     <Folder Include="System\Globalization\_Enum\" />
     <Folder Include="System\Globalization\_Interface\" />
     <Folder Include="System\Reflection\_Struct\" />
+    <Folder Include="System\Collection\" />
+    <Folder Include="System\Collection\_Interface\" />
   </ItemGroup>
 </Project>

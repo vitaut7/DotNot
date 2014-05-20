@@ -34,4 +34,9 @@ public static class Environment //TODO
 	{
 		return "LTODO";
 	}
+
+	static String GetResourceString(String key, Object[] values)
+	{
+		assert(0);
+	}
 }

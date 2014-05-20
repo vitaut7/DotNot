@@ -2,6 +2,8 @@
 
 public import System.Globalization._Enum.NumberStyles;
 
+public import System.Globalization._Class.Calendar;
+
 
 class NumberFormatInfo
 {
