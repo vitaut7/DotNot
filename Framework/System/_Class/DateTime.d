@@ -210,33 +210,33 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 
 	private this(SerializationInfo info, StreamingContext context)
 	{
-            if (info is null)
-                throw new ArgumentNullException("info");
-            Contract.EndContractBlock();
-    
-            bool foundTicks = false;
-            bool foundDateData = false;
-            long serializedTicks = 0;
-            ulong serializedDateData = 0;
-    
-            // Get the data
-        /*    SerializationInfoEnumerator enumerator = info.GetEnumerator();
-            while(enumerator.MoveNext()) {
-                switch( enumerator.Name) {
-                    case TicksField:
-                        serializedTicks = Convert.ToInt64(enumerator.Value, CultureInfo.InvariantCulture);
-                        foundTicks = true;
-                        break;
-                    case DateDataField:
-                        serializedDateData = Convert.ToUInt64(enumerator.Value, CultureInfo.InvariantCulture);
-                        foundDateData = true;
-                        break;
-                    default:
-                        // Ignore other fields for forward compatability.
-                        break;
-                }
+		if (info is null)
+		    throw new ArgumentNullException("info");
+		Contract.EndContractBlock();
+
+		bool foundTicks = false;
+		bool foundDateData = false;
+		long serializedTicks = 0;
+		ulong serializedDateData = 0;
+
+		SerializationInfoEnumerator enumerator = info.GetEnumerator();
+	/*	while (enumerator.MoveNext())
+		{
+            switch (enumerator.Name)
+			{
+                case TicksField:
+                    serializedTicks = Convert.ToInt64(enumerator.Value, CultureInfo.InvariantCulture);
+                    foundTicks = true;
+                    break;
+                case DateDataField:
+                    serializedDateData = Convert.ToUInt64(enumerator.Value, CultureInfo.InvariantCulture);
+                    foundDateData = true;
+                    break;
+                default:
+                    break;
             }
-            if (foundDateData) {
+        }*/
+          /*  if (foundDateData) {
                 this.dateData = serializedDateData;
             }
             else if (foundTicks) {
@@ -246,9 +246,9 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
                 throw new SerializationException(Environment.GetResourceString("Serialization_MissingDateTimeData"));                
             }
             Int64 ticks = InternalTicks;
-            if (ticks < MinTicks || ticks > MaxTicks) {*/
+            if (ticks < MinTicks || ticks > MaxTicks) {
 		throw new SerializationException(Environment.GetResourceString("Serialization_DateTimeTicksOutOfRange"));
-	//}                        
+	}    */                    
 	}
 
 
