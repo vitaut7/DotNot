@@ -39,7 +39,7 @@ public abstract class MarshalByRefObject
 	@internal Object InvokeMember(string name, BindingFlags invokeAttr, Binder binder, Object[] args, 
                                   ParameterModifier[] modifiers, CultureInfo culture, string[] namedParameters)
 	{
-		Type t = null; //TODO: GetType();
+		Type t = cast(Type)new Object(); //TODO: GetType();
 
 		if (!t.IsCOMObject)
 			throw new InvalidOperationException(Environment.GetResourceString("Arg_InvokeMember"));

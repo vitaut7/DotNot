@@ -210,5 +210,27 @@ class Number
 	static Boolean TryParseDouble(string value, NumberStyles options, NumberFormatInfo info, out double result) { assert(0); }
 }
 
+
+class ConstructorInfo {}
+class TypeFilter {}
+class EventInfo {}
+class MemberFilter {}
+class InterfaceMapping {}
+class CallingConventions {}
+class TypeAttributes {}
+class AssemblyName {}
+class Stream {}
+class FileStream {}
+class ManifestResourceInfo {}
+class ModuleResolveEventHandler {}
+class ParameterInfo {}
+class MethodImplAttributes {}
+class RuntimeMethodHandle {}
+class MethodAttributes {}
+interface ICustomAttributeProvider {}
+class RuntimeFieldHandle {}
+class FieldAttributes {}
+class PropertyAttributes {}
+
 //UDA
 public const enum internal = "Internal";

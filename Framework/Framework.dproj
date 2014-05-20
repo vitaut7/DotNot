@@ -24,6 +24,11 @@
     <Externalconsole>true</Externalconsole>
     <Target>Executable</Target>
     <OutputName>Framework</OutputName>
+    <Libs>
+      <Libs>
+        <Lib>C:\D\dmd2\windows\lib64\phobos64.lib</Lib>
+      </Libs>
+    </Libs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release</OutputPath>
@@ -34,6 +39,11 @@
     <Externalconsole>true</Externalconsole>
     <Target>Executable</Target>
     <OutputName>Framework</OutputName>
+    <Libs>
+      <Libs>
+        <Lib>C:\D\dmd2\windows\lib64\phobos64.lib</Lib>
+      </Libs>
+    </Libs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Unittest|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
