@@ -60,7 +60,6 @@ public class ArgumentException : SystemException {
 		if (info is null)
 			throw new ArgumentNullException("info");
 
-		Contract.EndContractBlock();
 		super.GetObjectData(info, context);
 		info.AddValue("ParamName", _paramName);
 	}

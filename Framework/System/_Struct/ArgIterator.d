@@ -37,8 +37,7 @@ public struct ArgIterator {
 	public TypedReference GetNextArg(RuntimeTypeHandle rth) {
 		if (_sigPtr != IntPtr.Zero) {
 			return GetNextArg();
-		}
-		else {
+		} else {
 			if (_argPtr == IntPtr.Zero)
 				throw new ArgumentNullException();
 

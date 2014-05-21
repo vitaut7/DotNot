@@ -58,8 +58,7 @@ public class ArgumentOutOfRangeException : ArgumentException {
 	public override void GetObjectData(SerializationInfo info, StreamingContext context) {
 		if (info is null)
 			throw new ArgumentNullException("info");
-		
-		Contract.EndContractBlock();
+
 		super.GetObjectData(info, context);
 		info.AddValue("ActualValue", _actualValue, Typeof!Object);
 	}

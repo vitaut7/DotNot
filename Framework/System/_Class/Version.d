@@ -36,7 +36,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version {
 		return cast(short)(_revision & 0xFFFF);
 	}
 
-	public this(int major, int minor, int build = -1, int revision = -1) {
+	public this(int major, int minor, int build = -1, int revision = -1) in {
 		if (major < 0)
 			throw new ArgumentOutOfRangeException("major", Environment.GetResourceString("ArgumentOutOfRange_Version"));
 
@@ -48,8 +48,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version {
 
 		if (revision < -1)
 			throw new ArgumentOutOfRangeException("revision", Environment.GetResourceString("ArgumentOutOfRange_Version"));
-		Contract.EndContractBlock();
-
+	} body {
 		_major = major;
 		_minor = minor;
 		_build = build;
@@ -160,11 +159,10 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version {
 		}
 	}
 
-	public static Version Parse(string input) {
+	public static Version Parse(string input) in {
 		if (input is null)
 			throw new ArgumentNullException("input");
-		Contract.EndContractBlock();
-
+	} body {
 		VersionResult* r = new VersionResult();
 		r.Init("input", true);
 		if (!TryParseVersion(input, *r))
@@ -216,11 +214,9 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version {
 					return false;
 				else
 					result._parsedVersion = new Version(major, minor, build, revision);
-			}
-			else
+			} else
 				result._parsedVersion = new Version(major, minor, build);
-		}
-		else
+		} else
 			result._parsedVersion = new Version(major, minor);
 		
 		return true;
@@ -280,10 +276,10 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version {
 						return e;
 					}
 
-					Contract.Assert(false, "Int32.Parse() did not throw exception but TryParse failed: " ~ _exceptionArgument);
+					assert(false, "Int32.Parse() did not throw exception but TryParse failed: " ~ _exceptionArgument);
 					return new FormatException(Environment.GetResourceString("Format_InvalidString"));
 				default:
-					Contract.Assert(false, "Unmatched case in Version.GetVersionParseException() for value: "); //TODO
+					assert(false, "Unmatched case in Version.GetVersionParseException() for value: "); //TODO
 					return new ArgumentException(Environment.GetResourceString("Arg_VersionString"));
 			}
 		}

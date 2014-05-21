@@ -65,7 +65,7 @@ public abstract class MarshalByRefObject {
 	}
 
 	@internal static System.Runtime.Remoting.Identity GetIdentity(MarshalByRefObject obj) {
-		Contract.Assert(!RemotingServices.IsTransparentProxy(obj), "Use this method for server objects only");
+		assert(!RemotingServices.IsTransparentProxy(obj), "Use this method for server objects only");
 
 		bool fServer;
 		return GetIdentity(obj, fServer);

@@ -56,7 +56,6 @@ public class NotFiniteNumberException : ArithmeticException {
 		if (info is null)
 			throw new ArgumentNullException("info");
 
-		Contract.EndContractBlock();
 		super.GetObjectData(info, context);
 		info.AddValue("OffendingNumber", _offendingNumber);
 	}

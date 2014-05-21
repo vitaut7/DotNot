@@ -32,20 +32,18 @@ public final class SerializationInfo {
 		return _data;
 	}
 
-	@property public void FullTypeName(string value) {
+	@property public void FullTypeName(string value) in {
 		if (!value)
 			throw new ArgumentNullException("value");
-		Contract.EndContractBlock();
-
+	} body {
 		_fullTypeName = value;
 		_isFullTypeNameSetExplicit = true;
 	}
 
-	@property public void AssemblyName(string value) {
+	@property public void AssemblyName(string value) in {
 		if (!value)
 			throw new ArgumentNullException("value");
-		Contract.EndContractBlock();
-
+	} body {
 		if (_requireSameTokenInPartialTrust)
 			DemandForUnsafeAssemblyNameAssignments(_assemName, value);
 
@@ -57,14 +55,13 @@ public final class SerializationInfo {
 		this(type, converter, false);
 	}
 
-	public this(Type type, IFormatterConverter converter, bool requireSameTokenInPartialTrust) {
+	public this(Type type, IFormatterConverter converter, bool requireSameTokenInPartialTrust) in {
 		if (type is null)
 			throw new ArgumentNullException("type");
 
 		if (converter is null)
 			throw new ArgumentNullException("converter");
-		Contract.EndContractBlock();
-
+	} body {
 		_objectType = type;
 		_fullTypeName = type.FullName;
 		_assemName = type.Module.Assembly.FullName;
@@ -72,11 +69,10 @@ public final class SerializationInfo {
 		_requireSameTokenInPartialTrust = requireSameTokenInPartialTrust;
 	}
 
-	public void SetType(Type type) {
+	public void SetType(Type type) in {
 		if (type is null)
 			throw new ArgumentNullException("type");
-		Contract.EndContractBlock();
-
+	} body {
 		if (_requireSameTokenInPartialTrust)
 			DemandForUnsafeAssemblyNameAssignments(_objectType.Assembly.FullName, type.Assembly.FullName);
 
@@ -134,14 +130,13 @@ public final class SerializationInfo {
 		return new SerializationInfoEnumerator(_members, _data, _types);
 	}
 
-	public void AddValue(string name, Object value, Type type) {
+	public void AddValue(string name, Object value, Type type) in {
 		if (!name)
 			throw new ArgumentNullException("name");
 
 		if (type is null)
 			throw new ArgumentNullException("type");
-		Contract.EndContractBlock();
-
+	} body {
 		foreach (x; _members)
 			if (x == name)
 				throw new SerializationException(Environment.GetResourceString("Serialization_SameNameTwice"));
@@ -215,9 +210,9 @@ public final class SerializationInfo {
 	}
 
 	@internal void UpdateValue(string name, Object value, Type type) {
-		Contract.Assert(name !is null, "[SerializationInfo.UpdateValue]name!=null");
-		Contract.Assert(value !is null, "[SerializationInfo.UpdateValue]value!=null");
-		Contract.Assert(type !is null, "[SerializationInfo.UpdateValue]type!=null");
+		assert(name !is null, "[SerializationInfo.UpdateValue]name!=null");
+		assert(value !is null, "[SerializationInfo.UpdateValue]value!=null");
+		assert(type !is null, "[SerializationInfo.UpdateValue]type!=null");
 
 		int index = FindElement(name);
 		if (index == -1)
@@ -229,11 +224,10 @@ public final class SerializationInfo {
 		}
 	}
 
-	private int FindElement(string name) {
+	private int FindElement(string name) in {
 		if (!name)
 			throw new ArgumentNullException("name");
-		Contract.EndContractBlock();
-
+	} body {
 		foreach (int i, x; _members)
 			if (x == name)
 				return i;
@@ -246,11 +240,11 @@ public final class SerializationInfo {
 		if (index == -1)
 			throw new SerializationException(Environment.GetResourceString("Serialization_NotFound", name));
 
-		Contract.Assert(index < _data.Length, "[SerializationInfo.GetElement]index<_data.Length");
-		Contract.Assert(index < _types.Length, "[SerializationInfo.GetElement]index<_types.Length");
+		assert(index < _data.Length, "[SerializationInfo.GetElement]index<_data.Length");
+		assert(index < _types.Length, "[SerializationInfo.GetElement]index<_types.Length");
 
 		foundType = _types[index];
-		Contract.Assert(foundType !is null, "[SerializationInfo.GetElement]foundType!=null");
+		assert(foundType !is null, "[SerializationInfo.GetElement]foundType!=null");
 		return _data[index];
 	}
 
@@ -264,11 +258,10 @@ public final class SerializationInfo {
 		}
 	}
 
-	public Object GetValue(string name, Type type) {
+	public Object GetValue(string name, Type type) in {
 		if (type is null)
 			throw new ArgumentNullException("type");
-		Contract.EndContractBlock();
-
+	} body {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 
@@ -276,19 +269,18 @@ public final class SerializationInfo {
 			RealProxy proxy = RemotingServices.GetRealProxy(value);
 			if (RemotingServices.ProxyCheckCast(proxy, cast(RuntimeType)type))
 				return value;
-		}
-		else {
+		} else {
 			if (foundType == type || type.IsAssignableFrom(foundType) || value is null)
 				return value;
 		}
 
-		Contract.Assert(_converter !is null, "[SerializationInfo.GetValue]_converter!=null");
+		assert(_converter !is null, "[SerializationInfo.GetValue]_converter!=null");
 		return _converter.Convert(value, type);
 	}
 
 	public Object GetValueNoThrow(string name, Type type) {
-		Contract.Assert(type !is null, "[SerializationInfo.GetValue]type ==null");
-		Contract.Assert(type.GetType() == RuntimeType.GetType(), "[SerializationInfo.GetValue]type is not a runtime type");
+		assert(type !is null, "[SerializationInfo.GetValue]type ==null");
+		assert(type.GetType() == RuntimeType.GetType(), "[SerializationInfo.GetValue]type is not a runtime type");
 
 		Type foundType;
 		Object value = GetElementNoThrow(name, foundType);
@@ -299,13 +291,12 @@ public final class SerializationInfo {
 			RealProxy proxy = RemotingServices.GetRealProxy(value);
 			if (RemotingServices.ProxyCheckCast(proxy, cast(RuntimeType)type))
 				return value;
-		}
-		else {
+		} else {
 			if (foundType == type || type.IsAssignableFrom(foundType) || value is null)
 				return value;
 		}
 		
-		Contract.Assert(_converter !is null, "[SerializationInfo.GetValue]_converter!=null");
+		assert(_converter !is null, "[SerializationInfo.GetValue]_converter!=null");
 		return _converter.Convert(value, type);
 	}
 

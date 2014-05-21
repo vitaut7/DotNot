@@ -81,11 +81,10 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable {
 		_innerException = cast(BaseException)innerException;
 	}
 
-	protected this(SerializationInfo info, StreamingContext context) {
+	protected this(SerializationInfo info, StreamingContext context) in {
 		if (info is null)
 			throw new ArgumentNullException("info");
-		Contract.EndContractBlock();
-
+	} body {
 		_className = info.GetString("ClassName");
 		_message = info.GetString("Message");
 		_data = cast(IDictionary)info.GetValueNoThrow("Data", Typeof!IDictionary);
@@ -233,11 +232,10 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable {
 		assert(0); //TODO
 	}
 
-	public override void GetObjectData(SerializationInfo info, StreamingContext context) {
+	public override void GetObjectData(SerializationInfo info, StreamingContext context) in {
 		if (info is null)
 			throw new ArgumentNullException("info");
-		
-		Contract.EndContractBlock();
+	} body {
 		string tempStackTraceString = _stackTraceString;
 		
 		if (_stackTrace !is null) {

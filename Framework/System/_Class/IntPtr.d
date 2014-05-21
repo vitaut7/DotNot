@@ -52,7 +52,6 @@ public final class IntPtr : ISerializable, IEquatable!IntPtr {
 		if (info is null)
 			throw new ArgumentNullException("info");
 
-		Contract.EndContractBlock();
 		info.AddValue("value", cast(long)_value);
 	}
 

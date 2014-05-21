@@ -54,14 +54,13 @@ public final class Guid /*: IFormattable, IComparable */{
 	private byte  _k;
 
 
-	public this(byte[] b) {
+	public this(byte[] b) in {
 		if (b is null)
 			throw new ArgumentNullException("b");
 
 		if (b.Length != 16)
 			throw new ArgumentException(Environment.GetResourceString("Arg_GuidArrayCtor", [String("16")]));
-		Contract.EndContractBlock();
-
+	} body {
 		_a = (cast(int)b[3] << 24) | (cast(int)b[2] << 16) | (cast(int)b[1] << 8) | b[0];
 		_b = cast(short)((cast(int)b[5] << 8) | b[4]);
 		_c = cast(short)((cast(int)b[7] << 8) | b[6]);
@@ -103,14 +102,13 @@ public final class Guid /*: IFormattable, IComparable */{
 		_k = k;
 	}
 
-	public this(int a, short b, short c, byte[] d) {
+	public this(int a, short b, short c, byte[] d) in {
 		if (d is null)
 			throw new ArgumentNullException("d");
 
 		if (d.Length != 8)
 			throw new ArgumentException(Environment.GetResourceString("Arg_GuidArrayCtor", [String("8")]));
-		Contract.EndContractBlock();
-
+	} body {
 		_a  = a;
 		_b  = b;
 		_c  = c;
@@ -124,11 +122,10 @@ public final class Guid /*: IFormattable, IComparable */{
 		_k = d[7];
 	}
 
-	public this(string g) {
+	public this(string g) in {
 		if (!g)
 			throw new ArgumentNullException("g");
-		Contract.EndContractBlock();
-
+	} body {
 		//this = cast(Guid)Guid.Empty;
 		//TODO
 
@@ -136,11 +133,10 @@ public final class Guid /*: IFormattable, IComparable */{
 		result.Init(GuidParseThrowStyle.All);
 	}
 
-	public static Guid Parse(string input) {
+	public static Guid Parse(string input) in {
 		if (!input)
 			throw new ArgumentNullException("input");
-		Contract.EndContractBlock();
-
+	} body {
 		GuidResult* result = new GuidResult();
 		result.Init(GuidParseThrowStyle.AllButOverflow);
 
@@ -316,7 +312,7 @@ public final class Guid /*: IFormattable, IComparable */{
 
 		@internal void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument,
 		                                 string failureArgumentName, Exception innerException) {
-			Contract.Assert(failure != ParseFailureKind.NativeException, "ParseFailureKind.NativeException should not be used with this overload");
+			assert(failure != ParseFailureKind.NativeException, "ParseFailureKind.NativeException should not be used with this overload");
 			_failure = failure;
 			_failureMessageID = failureMessageID;
 			_failureMessageFormatArgument = failureMessageFormatArgument;
@@ -345,7 +341,7 @@ public final class Guid /*: IFormattable, IComparable */{
 					return _innerException;
 					
 				default:
-					Contract.Assert(false, "Unknown GuidParseFailure: TODO"); //TODO
+					assert(false, "Unknown GuidParseFailure: TODO"); //TODO
 					return new FormatException(Environment.GetResourceString("Format_GuidUnrecognized"));
 			}
 		}

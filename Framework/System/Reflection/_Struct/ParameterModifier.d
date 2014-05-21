@@ -18,11 +18,10 @@ public struct ParameterModifier {
 		_byRef[index] = value;
 	}
 
-	public this(int parameterCount) {
+	public this(int parameterCount) in {
 		if (parameterCount <= 0)
 			throw new ArgumentException(Environment.GetResourceString("Arg_ParmArraySize"));
-		Contract.EndContractBlock();
-
+	} body {
 		_byRef = new bool[parameterCount];
 	}
 }

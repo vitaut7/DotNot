@@ -58,9 +58,9 @@ public final class SerializationInfoEnumerator : IEnumerator!SerializationEntry 
 	}
 
 	@internal this(string[] members, Object[] info, Type[] types) {
-		Contract.Assert(members !is null, "[SerializationInfoEnumerator.ctor]members!=null");
-		Contract.Assert(info !is null, "[SerializationInfoEnumerator.ctor]info!=null");
-		Contract.Assert(types !is null, "[SerializationInfoEnumerator.ctor]types!=null");
+		assert(members !is null, "[SerializationInfoEnumerator.ctor]members!=null");
+		assert(info !is null, "[SerializationInfoEnumerator.ctor]info!=null");
+		assert(types !is null, "[SerializationInfoEnumerator.ctor]types!=null");
 
 		_members = members;
 		_data = info;

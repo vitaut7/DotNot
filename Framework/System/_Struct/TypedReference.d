@@ -8,14 +8,13 @@ public struct TypedReference {
 	private IntPtr _value;
 	private IntPtr _type;
 
-	public static TypedReference MakeTypedReference(Object target, FieldInfo[] flds) {
+	public static TypedReference MakeTypedReference(Object target, FieldInfo[] flds) in {
 		if (target is null)
 			throw new ArgumentNullException("target");
 
 		if (flds is null)
 			throw new ArgumentNullException("flds");
-		Contract.EndContractBlock();
-
+	} body {
 		if (!flds.Length)
 			throw new ArgumentException(Environment.GetResourceString("Arg_ArrayZeroError"));
 
