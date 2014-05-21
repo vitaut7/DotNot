@@ -206,13 +206,15 @@ public final class Double : IConvertible, IFormattable, IComparable!double, IEqu
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Double", "DateTime"));
 	}
 	
-	string ToString(IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return Number.FormatDouble(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	string ToString(string format, IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(string format, IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return Number.FormatDouble(_value, format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	

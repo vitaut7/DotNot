@@ -140,13 +140,15 @@ public final class UInt32 : IConvertible, IFormattable, IComparable!uint, IEquat
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "UInt32", "DateTime"));
 	}
 	
-	string ToString(IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return Number.FormatUInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	string ToString(string format, IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(string format, IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return Number.FormatUInt32(_value, format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	

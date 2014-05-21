@@ -123,12 +123,8 @@ abstract class CultureInfo : IFormatProvider {
 	@property public static CultureInfo CurrentCulture() { assert(0); }
 }
 
-
 class Contract {
 	public static void EndContractBlock() { }
-	public static void Ensures(bool condition) { assert(0); }
-	public static T Result(T)() { assert(0); }
-	public static void Requires(bool condition, string userMessage) {}
 
 	public static void Assert(bool condition, string userMessage) { assert(condition, userMessage); }
 }

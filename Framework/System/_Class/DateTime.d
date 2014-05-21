@@ -78,24 +78,22 @@ public final class DateTime/* : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks;
 	}
 
-	public this(long ticks, DateTimeKind kind) {
+	public this(long ticks, DateTimeKind kind) in {
 		if (ticks < MinTicks || ticks > MaxTicks)
 			throw new ArgumentOutOfRangeException("ticks", Environment.GetResourceString("ArgumentOutOfRange_DateTimeBadTicks"));
 
 		if (kind < DateTimeKind.Unspecified || kind > DateTimeKind.Local)
 			throw new ArgumentException(Environment.GetResourceString("Argument_InvalidDateTimeKind"), "kind");
-		Contract.EndContractBlock();
-
+	} body {
 		_dateData = cast(ulong)ticks | (cast(ulong)kind << KindShift);
 	}
 
-	@internal this(long ticks, DateTimeKind kind, bool isAmbiuousDst) {
+	@internal this(long ticks, DateTimeKind kind, bool isAmbiuousDst) in {
 		if (ticks < MinTicks || ticks > MaxTicks)
 			throw new ArgumentOutOfRangeException("ticks", Environment.GetResourceString("ArgumentOutOfRange_DateTimeBadTicks"));
 
-		Contract.Requires(kind == DateTimeKind.Local, "Internal Constructor is for local times only");
-		Contract.EndContractBlock();
-
+		assert(kind == DateTimeKind.Local, "Internal Constructor is for local times only");
+	} body {
 		_dateData = cast(ulong)ticks | (isAmbiuousDst ? KindLocalAmbiguousDst : KindLocal);
 	}
 

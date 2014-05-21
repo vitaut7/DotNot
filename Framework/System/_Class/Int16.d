@@ -183,19 +183,21 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Int16", "DateTime"));
 	}
 
-	string ToString(IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return Number.FormatInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	string ToString(string format, IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(string format, IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return ToString(format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	string ToString(string format, NumberFormatInfo info) {
-		Contract.Ensures(Contract.Result!string() !is null);
-		
+	string ToString(string format, NumberFormatInfo info) out (result) {
+		assert(result);
+	} body {
 		if (_value < 0 && format && format.Length > 0 && (format[0] == 'x' || format[0] == 'X')) {
 			uint temp = _value & 0xFFFF;
 			return Number.FormatInt32(temp, format, info);

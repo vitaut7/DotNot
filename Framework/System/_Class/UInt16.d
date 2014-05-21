@@ -168,13 +168,15 @@ public final class UInt16 : IConvertible, IFormattable, IComparable!ushort, IEqu
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "UInt16", "DateTime"));
 	}
 	
-	string ToString(IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return Number.FormatUInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	string ToString(string format, IFormatProvider provider = null) {
-		Contract.Ensures(Contract.Result!string() !is null);
+	string ToString(string format, IFormatProvider provider = null) out (result) {
+		assert(result);
+	} body {
 		return Number.FormatUInt32(_value, format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
