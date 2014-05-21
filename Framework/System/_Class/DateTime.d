@@ -5,8 +5,7 @@ import System.Globalization;
 import System.Runtime.Serialization;
 
 
-public final class DateTime// : IComparable, IFormattable, IConvertible, ISerializable, IComparableT!DateTime, IEquatable!DateTime
-{
+public final class DateTime/* : IComparable, IFormattable, IConvertible, ISerializable, IComparableT!DateTime, IEquatable!DateTime*/ {
 	//alias opEquals = Equals;
 	//alias opCmp = CompareTo;
 	private static const long TicksPerMillisecond = 10000;
@@ -67,13 +66,11 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 
 	private ulong _dateData;
 
-	@property public long Ticks()
-	{
+	@property public long Ticks() {
 		return -1;
 	}
 
-	public this(long ticks)
-	{
+	public this(long ticks) {
 		if (ticks < MinTicks || ticks > MaxTicks)
 			throw new ArgumentOutOfRangeException("ticks", Environment.GetResourceString("ArgumentOutOfRange_DateTimeBadTicks"));
 		Contract.EndContractBlock();
@@ -81,8 +78,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks;
 	}
 
-	public this(long ticks, DateTimeKind kind)
-	{
+	public this(long ticks, DateTimeKind kind) {
 		if (ticks < MinTicks || ticks > MaxTicks)
 			throw new ArgumentOutOfRangeException("ticks", Environment.GetResourceString("ArgumentOutOfRange_DateTimeBadTicks"));
 
@@ -93,8 +89,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks | (cast(ulong)kind << KindShift);
 	}
 
-	@internal this(long ticks, DateTimeKind kind, bool isAmbiuousDst)
-	{
+	@internal this(long ticks, DateTimeKind kind, bool isAmbiuousDst) {
 		if (ticks < MinTicks || ticks > MaxTicks)
 			throw new ArgumentOutOfRangeException("ticks", Environment.GetResourceString("ArgumentOutOfRange_DateTimeBadTicks"));
 
@@ -104,23 +99,19 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks | (isAmbiuousDst ? KindLocalAmbiguousDst : KindLocal);
 	}
 
-	public this(int year, int month, int day)
-	{
+	public this(int year, int month, int day) {
 		_dateData = DateToTicks(year, month, day);
 	}
 
-	public this(int year, int month, int day, Calendar calendar)
-	{
+	public this(int year, int month, int day, Calendar calendar) {
 		this(year, month, day, 0, 0, 0, calendar);
 	}
 
-	public this(int year, int month, int day, int hour, int minute, int second)
-	{
+	public this(int year, int month, int day, int hour, int minute, int second) {
 		_dateData = cast(ulong)(DateToTicks(year, month, day) + TimeToTicks(hour, minute, second));
 	}
 
-	public this(int year, int month, int day, int hour, int minute, int second, DateTimeKind kind)
-	{
+	public this(int year, int month, int day, int hour, int minute, int second, DateTimeKind kind) {
 		if (kind < DateTimeKind.Unspecified || kind > DateTimeKind.Local)
 			throw new ArgumentException(Environment.GetResourceString("Argument_InvalidDateTimeKind"), "kind");
 		Contract.EndContractBlock();
@@ -129,8 +120,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks | (cast(ulong)kind << KindShift);
 	}
 
-	public this(int year, int month, int day, int hour, int minute, int second, Calendar calendar)
-	{
+	public this(int year, int month, int day, int hour, int minute, int second, Calendar calendar) {
 		if (calendar is null)
 			throw new ArgumentNullException("calendar");
 		Contract.EndContractBlock();
@@ -138,8 +128,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)calendar.ToDateTime(year, month, day, hour, minute, second, 0).Ticks;
 	}
 
-	public this(int year, int month, int day, int hour, int minute, int second, int millisecond)
-	{
+	public this(int year, int month, int day, int hour, int minute, int second, int millisecond) {
 		if (millisecond < 0 || millisecond >= MillisPerSecond)
 			throw new ArgumentOutOfRangeException("millisecond", Environment.GetResourceString("ArgumentOutOfRange_Range", [Int32(0), Int32(MillisPerSecond - 1)]));
 		Contract.EndContractBlock();
@@ -153,8 +142,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks;
 	}
 
-	public this(int year, int month, int day, int hour, int minute, int second, int millisecond, DateTimeKind kind)
-	{
+	public this(int year, int month, int day, int hour, int minute, int second, int millisecond, DateTimeKind kind) {
 		if (millisecond < 0 || millisecond >= MillisPerSecond)
 			throw new ArgumentOutOfRangeException("millisecond", Environment.GetResourceString("ArgumentOutOfRange_Range", [Int32(0), Int32(MillisPerSecond - 1)]));
 
@@ -171,8 +159,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks | (cast(ulong)kind << KindShift);
 	}
 
-	public this(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar)
-	{
+	public this(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar) {
 		if (calendar is null)
 			throw new ArgumentNullException("calendar");
 
@@ -189,8 +176,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks;
 	}
 
-	public this(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar, DateTimeKind kind)
-	{
+	public this(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar, DateTimeKind kind) {
 		if (calendar is null)
 			throw new ArgumentNullException("calendar");
 
@@ -210,8 +196,7 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		_dateData = cast(ulong)ticks | (cast(ulong)kind << KindShift);
 	}
 
-	private this(SerializationInfo info, StreamingContext context)
-	{
+	private this(SerializationInfo info, StreamingContext context) {
 		if (info is null)
 		    throw new ArgumentNullException("info");
 		Contract.EndContractBlock();
@@ -222,10 +207,8 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		ulong serializedDateData = 0;
 
 		SerializationInfoEnumerator enumerator = info.GetEnumerator();
-	/*	while (enumerator.MoveNext())
-		{
-            switch (enumerator.Name)
-			{
+	/*	while (enumerator.MoveNext()) {
+            switch (enumerator.Name) {
                 case TicksField:
                     serializedTicks = Convert.ToInt64(enumerator.Value, CultureInfo.InvariantCulture);
                     foundTicks = true;
@@ -256,13 +239,10 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 
 
 
-	private static long DateToTicks(int year, int month, int day)
-	{
-		if (year >= 1 && year <= 9999 && month >= 1 && month <= 12)
-		{
+	private static long DateToTicks(int year, int month, int day) {
+		if (year >= 1 && year <= 9999 && month >= 1 && month <= 12) {
 			immutable int[] days = IsLeapYear(year) ? DaysToMonth366 : DaysToMonth365;
-			if (day >= 1 && day <= days[month] - days[month - 1])
-			{
+			if (day >= 1 && day <= days[month] - days[month - 1]) {
 				int y = year - 1;
 				int n = y * 365 + y / 4 - y / 100 + y / 400 + days[month - 1] + day - 1;
 				return n * TicksPerDay;
@@ -272,16 +252,14 @@ public final class DateTime// : IComparable, IFormattable, IConvertible, ISerial
 		throw new ArgumentOutOfRangeException(null, Environment.GetResourceString("ArgumentOutOfRange_BadYearMonthDay"));
 	}
 
-	private static long TimeToTicks(int hour, int minute, int second)
-	{
+	private static long TimeToTicks(int hour, int minute, int second) {
 		//if (hour >= 0 && hour < 24 && minute >= 0 && minute < 60 && second >=0 && second < 60)
 		//	return (TimeSpan.TimeToTicks(hour, minute, second)); TODO
 
 		throw new ArgumentOutOfRangeException(null, Environment.GetResourceString("ArgumentOutOfRange_BadHourMinuteSecond"));
 	}
 
-	public static bool IsLeapYear(int year)
-	{
+	public static bool IsLeapYear(int year) {
 		if (year < 1 || year > 9999)
 			throw new ArgumentOutOfRangeException("year", Environment.GetResourceString("ArgumentOutOfRange_Year"));
 		Contract.EndContractBlock();

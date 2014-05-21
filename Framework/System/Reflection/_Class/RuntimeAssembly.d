@@ -4,7 +4,6 @@ import System;
 import System.Reflection;
 
 
-@internal class RuntimeAssembly : Assembly
-{
+@internal class RuntimeAssembly : Assembly {
 
 }

@@ -1,8 +1,7 @@
 ﻿module System.Reflection._Enum.BindingFlags;
 
 
-public enum BindingFlags
-{
+public enum BindingFlags {
 	Default              = 0x00,
 
 	IgnoreCase           = 0x01,

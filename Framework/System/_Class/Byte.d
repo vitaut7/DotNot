@@ -4,8 +4,7 @@ import System;
 import System.Globalization;
 
 
-public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
-{
+public final class Byte : IConvertible, IComparable!byte, IEquatable!byte {
 	alias opEquals = Equals;
 	alias opCmp = CompareTo;
 	public static const MaxValue = cast(byte)0x7F;
@@ -14,60 +13,49 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 	alias Value this;
 	private byte _value;
 
-	@property byte Value()
-	{
+	@property byte Value() {
 		return _value;
 	}
 	
-	@property void Value(byte value)
-	{
+	@property void Value(byte value) {
 		_value = value;
 	}
 
-	static Byte opCall(byte value)
-	{
+	static Byte opCall(byte value) {
 		Byte ret = new Byte();
 		ret._value = value;
 		return ret;
 	}
 
-	public static byte Parse(string s)
-	{
+	public static byte Parse(string s) {
 		return Parse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
 	}
 
-	public static byte Parse(string s, NumberStyles style)
-	{
+	public static byte Parse(string s, NumberStyles style) {
 		NumberFormatInfo.ValidateParseStyleInteger(style);
 		return Parse(s, style, NumberFormatInfo.CurrentInfo);
 	}
 
-	public static byte Parse(string s, IFormatProvider provider)
-	{
+	public static byte Parse(string s, IFormatProvider provider) {
 		return Parse(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
 	}
 
-	public static byte Parse(string s, NumberStyles style, IFormatProvider provider)
-	{
+	public static byte Parse(string s, NumberStyles style, IFormatProvider provider) {
 		NumberFormatInfo.ValidateParseStyleInteger(style);
 		return Parse(s, style, NumberFormatInfo.GetInstance(provider));
 	}
 
-	private static byte Parse(string s, NumberStyles style, NumberFormatInfo info)
-	{
+	private static byte Parse(string s, NumberStyles style, NumberFormatInfo info) {
 		int i;
 
-		try
-		{
+		try {
 			i = Number.ParseInt32(s, style, info);
 		}
-		catch (OverflowException e)
-		{
+		catch (OverflowException e) {
 			throw new OverflowException(Environment.GetResourceString("Overflow_Byte"), e);
 		}
 
-		if (style & NumberStyles.AllowHexSpecifier)
-		{
+		if (style & NumberStyles.AllowHexSpecifier) {
 			if (i < 0 || i > Byte.MaxValue)
 				throw new OverflowException(Environment.GetResourceString("Overflow_Byte"));
 		
@@ -80,27 +68,23 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		return cast(byte)i;
 	}
 
-	public static bool TryParse(string s, out byte result)
-	{
+	public static bool TryParse(string s, out byte result) {
 		return TryParse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, result);
 	}
 
-	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out byte result)
-	{
+	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out byte result) {
 		NumberFormatInfo.ValidateParseStyleInteger(style);
 		return TryParse(s, style, NumberFormatInfo.GetInstance(provider), result);
 	}
 
-	private static bool TryParse(string s, NumberStyles style, NumberFormatInfo info, out byte result)
-	{
+	private static bool TryParse(string s, NumberStyles style, NumberFormatInfo info, out byte result) {
 		result = 0;
 		int i;
 
 		if (!Number.TryParseInt32(s, style, info, i))
 			return false;
 
-		if (style & NumberStyles.AllowHexSpecifier)
-		{
+		if (style & NumberStyles.AllowHexSpecifier) {
 			if (i < 0 || i > Byte.MaxValue)
 				return false;
 			
@@ -115,18 +99,15 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		return true;
 	}
 
-	private this()
-	{
+	private this() {
 	}
 
 	// Override Objct's methods
-	public override int GetHashCode()
-	{
+	public override int GetHashCode() {
 		return (cast(int)_value ^ cast(int)_value << 8);
 	}
 	
-	public override bool Equals(Object obj)
-	{
+	public override bool Equals(Object obj) {
 		if (obj.GetType() != Byte.GetType())
 			return false;
 
@@ -134,109 +115,88 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 	}
 	
 	// Implement interface methods
-	public bool Equals(byte other)
-	{
+	public bool Equals(byte other) {
 		return _value == other;
 	}
 	
-	public int CompareTo(byte value)
-	{
+	public int CompareTo(byte value) {
 		return _value - value;
 	}
 
-	TypeCode GetTypeCode()
-	{
+	TypeCode GetTypeCode() {
 		return TypeCode.Byte;
 	}
 	
-	bool ToBoolean(IFormatProvider provider = null)
-	{
+	bool ToBoolean(IFormatProvider provider = null) {
 		return Convert.ToBoolean(_value);
 	}
 	
-	char ToChar(IFormatProvider provider = null)
-	{
+	char ToChar(IFormatProvider provider = null) {
 		return Convert.ToChar(_value);
 	}
 	
-	byte ToByte(IFormatProvider provider = null)
-	{
+	byte ToByte(IFormatProvider provider = null) {
 		return _value;
 	}
 	
-	ubyte ToUByte(IFormatProvider provider = null)
-	{
+	ubyte ToUByte(IFormatProvider provider = null) {
 		return Convert.ToUByte(_value);
 	}
 	
-	short ToInt16(IFormatProvider provider = null)
-	{
+	short ToInt16(IFormatProvider provider = null) {
 		return Convert.ToInt16(_value);
 	}
 	
-	ushort ToUInt16(IFormatProvider provider = null)
-	{
+	ushort ToUInt16(IFormatProvider provider = null) {
 		return Convert.ToUInt16(_value);
 	}
 	
-	int ToInt32(IFormatProvider provider = null)
-	{
+	int ToInt32(IFormatProvider provider = null) {
 		return Convert.ToInt32(_value);
 	}
 	
-	uint ToUInt32(IFormatProvider provider = null)
-	{
+	uint ToUInt32(IFormatProvider provider = null) {
 		return Convert.ToUInt32(_value);
 	}
 	
-	long ToInt64(IFormatProvider provider = null)
-	{
+	long ToInt64(IFormatProvider provider = null) {
 		return Convert.ToInt64(_value);
 	}
 	
-	ulong ToUInt64(IFormatProvider provider = null)
-	{
+	ulong ToUInt64(IFormatProvider provider = null) {
 		return Convert.ToUInt64(_value);
 	}
 	
-	float ToFloat(IFormatProvider provider = null)
-	{
+	float ToFloat(IFormatProvider provider = null) {
 		return Convert.ToFloat(_value);
 	}
 	
-	double ToDouble(IFormatProvider provider = null)
-	{
+	double ToDouble(IFormatProvider provider = null) {
 		return Convert.ToDouble(_value);
 	}
 	
-	real ToReal(IFormatProvider provider = null)
-	{
+	real ToReal(IFormatProvider provider = null) {
 		return Convert.ToReal(_value);
 	}
 	
-	DateTime ToDateTime(IFormatProvider provider = null)
-	{
+	DateTime ToDateTime(IFormatProvider provider = null) {
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Byte", "DateTime"));
 	}
 	
-	string ToString(IFormatProvider provider = null)
-	{
+	string ToString(IFormatProvider provider = null) {
 		Contract.Ensures(Contract.Result!string() !is null);
 		return Number.FormatInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 
-	string ToString(string format, IFormatProvider provider = null)
-	{
+	string ToString(string format, IFormatProvider provider = null) {
 		Contract.Ensures(Contract.Result!string() !is null);
 		return ToString(format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 
-	string ToString(string format, NumberFormatInfo info)
-	{
+	string ToString(string format, NumberFormatInfo info) {
 		Contract.Ensures(Contract.Result!string() !is null);
 
-		if (_value < 0 && format && format.Length > 0 && (format[0] == 'x' || format[0] == 'X'))
-		{
+		if (_value < 0 && format && format.Length > 0 && (format[0] == 'x' || format[0] == 'X')) {
 			uint temp = _value & 0xFF;
 			return Number.FormatInt32(temp, format, info);
 		}
@@ -244,8 +204,7 @@ public final class Byte : IConvertible, IComparable!byte, IEquatable!byte
 		return Number.FormatInt32(_value, format, info);
 	}
 	
-	Object ToType(Type conversionType, IFormatProvider provider = null)
-	{
+	Object ToType(Type conversionType, IFormatProvider provider = null) {
 		return Convert.DefaultToType(this, conversionType, provider);
 	}
 }

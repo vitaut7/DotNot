@@ -4,8 +4,7 @@ import System;
 import System.Reflection;
 
 
-public interface _Exception
-{
+public interface _Exception {
 	@property public string Message();
 	@property public string StackTrace();
 

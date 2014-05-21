@@ -3,7 +3,6 @@
 import System.Collections;
 
 
-public interface IEnumerable
-{
+public interface IEnumerable {
 	IEnumerator GetEnumerator();
 }

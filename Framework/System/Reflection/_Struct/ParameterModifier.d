@@ -3,27 +3,22 @@
 import System;
 
 
-public struct ParameterModifier
-{
+public struct ParameterModifier {
 	private bool[] _byRef;
 
-	@internal @property bool[] IsByRefArray()
-	{
+	@internal @property bool[] IsByRefArray() {
 		return _byRef;
 	}
 
-	public bool opIndex(int index)
-	{
+	public bool opIndex(int index) {
 		return _byRef[index];
 	}
 
-	public void opIndexAssign(bool value, int index)
-	{
+	public void opIndexAssign(bool value, int index) {
 		_byRef[index] = value;
 	}
 
-	public this(int parameterCount)
-	{
+	public this(int parameterCount) {
 		if (parameterCount <= 0)
 			throw new ArgumentException(Environment.GetResourceString("Arg_ParmArraySize"));
 		Contract.EndContractBlock();

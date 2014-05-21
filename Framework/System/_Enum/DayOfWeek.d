@@ -1,8 +1,7 @@
 module System._Enum.DayOfWeek;
 
 
-public enum DayOfWeek
-{
+public enum DayOfWeek {
 	Sunday    = 0,
 	Monday    = 1,
 	Tuesday   = 2,

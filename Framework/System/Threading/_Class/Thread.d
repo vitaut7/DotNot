@@ -3,15 +3,12 @@
 import System;
 
 
-public final class Thread
-{
-	@property public static Thread CurrentThread()
-	{
+public final class Thread {
+	@property public static Thread CurrentThread() {
 		assert(0);
 	}
 	
-	@property Object AbortReason()
-	{
+	@property Object AbortReason() {
 		assert(0);
 	}
 

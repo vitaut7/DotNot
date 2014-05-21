@@ -3,15 +3,13 @@ module System._Class.String;
 import System;
 
 
-public enum StrngSplitOptions
-{
+public enum StrngSplitOptions {
 	None               = 0,
 	RemoveEmptyEntries = 1
 }
 
 
-class String
-{
+class String {
 	string a;
 	alias a this;
 	public static immutable String Empty;
@@ -28,17 +26,14 @@ class String
 }
 
 
-string Substring(string str, int startIndex, int length)
-{
+string Substring(string str, int startIndex, int length) {
 	return "todo";
 }
 
-bool Equals(string str, string value, StringComparison comparisonType)
-{
+bool Equals(string str, string value, StringComparison comparisonType) {
 	return str == value;
 }
 
-@property public int Length(string str)
-{
+@property public int Length(string str) {
 	return cast(int)str.length;
 }

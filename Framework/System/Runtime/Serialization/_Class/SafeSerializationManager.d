@@ -6,24 +6,20 @@ import System;
 import System.Runtime.Serialization;
 
 
-public final class SafeSerializationEventArgs : EventArgs
-{
+public final class SafeSerializationEventArgs : EventArgs {
 	private System.Runtime.Serialization.StreamingContext _streamingContext;
 	//TODO: list<object>
 
 	//TODO
-	@property public System.Runtime.Serialization.StreamingContext StreamingContextx()
-	{
+	@property public System.Runtime.Serialization.StreamingContext StreamingContextx() {
 		return _streamingContext;
 	}
 
-	@internal this(System.Runtime.Serialization.StreamingContext streamingContext)
-	{
+	@internal this(System.Runtime.Serialization.StreamingContext streamingContext) {
 		_streamingContext = streamingContext;
 	}
 
-	public void AddSerializedState(ISafeSerializationData serializedState)
-	{
+	public void AddSerializedState(ISafeSerializationData serializedState) {
 		if (serializedState is null)
 			throw new ArgumentNullException("serializedState");
 
@@ -32,14 +28,12 @@ public final class SafeSerializationEventArgs : EventArgs
 }
 
 
-public interface ISafeSerializationData
-{
+public interface ISafeSerializationData {
 	void CompleteDeserialization(Object deserialized);
 }
 
 
-public final class SafeSerializationManager //: IObjectReference, ISerializable
-{
+public final class SafeSerializationManager /*: IObjectReference, ISerializable*/ {
 	private static const RealTypeSerializationName = "CLR_SafeSerializationManager_RealType";
 
 	@internal EventHandlerT!SafeSerializationEventArgs SerializeObjectState;
@@ -48,13 +42,11 @@ public final class SafeSerializationManager //: IObjectReference, ISerializable
 	private Object _realObject;
 	private RuntimeType _realType;
 
-	@internal @property bool IsActive()
-	{
+	@internal @property bool IsActive() {
 		return SerializeObjectState.Count != 0;
 	}
 
-	@internal this()
-	{
+	@internal this() {
 	}
 
 	//TODO: zvisok

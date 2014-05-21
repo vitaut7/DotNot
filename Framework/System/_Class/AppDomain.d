@@ -9,50 +9,41 @@ alias void delegate() CrossAppDomainDelegate;
 alias Assembly delegate(Object sender, ResolveEventArgs args) ResolveEventHandler;
 
 
-public class ResolveEventArgs : EventArgs
-{
+public class ResolveEventArgs : EventArgs {
 	private string _name;
 	private Assembly _requestingAssembly;
 
-	@property public string Name() 
-	{
+	@property public string Name()  {
 		return _name;
 	}
 
-	@property public Assembly RequestingAssembly()
-	{
+	@property public Assembly RequestingAssembly() {
 		return _requestingAssembly; 
 	}
 
-	public this(string name)
-	{
+	public this(string name) {
 		_name = name;
 	}
 
-	public this(string name, Assembly requestingAssembly)
-	{
+	public this(string name, Assembly requestingAssembly) {
 		_name = name;
 		_requestingAssembly = requestingAssembly;
 	}
 }
 
 
-public class AssemblyLoadEventArgs : EventArgs
-{
+public class AssemblyLoadEventArgs : EventArgs {
 	private Assembly _loadedAssembly;
 
-	@property public Assembly LoadedAssembly() 
-	{
+	@property public Assembly LoadedAssembly()  {
 		return _loadedAssembly; 
 	}
 
-	public this(Assembly loadedAssembly)
-	{
+	public this(Assembly loadedAssembly) {
 		_loadedAssembly = loadedAssembly;
 	}
 }
 
-public class AppDomain
-{
+public class AppDomain {
 	static bool IsAppXModel() { assert(0); }
 }

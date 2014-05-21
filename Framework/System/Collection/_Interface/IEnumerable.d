@@ -3,15 +3,12 @@
 import System.Collection;
 
 
-interface IEnumerable(T)
-{
+interface IEnumerable(T) {
 	IEnumerator!T GetEnumerator();
 
-	final int opApply(int delegate(T) dg)
-	{
+	final int opApply(int delegate(T) dg) {
 		IEnumerator!T enumerator = GetEnumerator();
-		while (enumerator.MoveNext())
-		{
+		while (enumerator.MoveNext()) {
 			int result = dg(enumerator.Current);
 			if (result)
 				return result;

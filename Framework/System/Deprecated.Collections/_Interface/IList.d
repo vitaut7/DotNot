@@ -3,8 +3,7 @@
 import System.Collections;
 
 
-public interface IList : ICollection
-{
+public interface IList : ICollection {
 	void opIndexAssign(Object value, int index);
 	Object opIndex(int index);
 

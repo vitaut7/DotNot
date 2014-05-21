@@ -3,8 +3,7 @@
 import System;
 
 
-interface IEnumerator(T) : IDisposable
-{
+interface IEnumerator(T) : IDisposable {
 	bool MoveNext();
 	void Reset();
 

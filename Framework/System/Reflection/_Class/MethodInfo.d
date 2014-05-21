@@ -1,6 +1,5 @@
 ﻿module System.Reflection._Class.MethodInfo;
 
-public abstract class MethodInfo
-{
+public abstract class MethodInfo {
 
 }

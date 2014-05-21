@@ -7,8 +7,7 @@ import System.Reflection;
 import System.Runtime.Serialization;
 
 
-public interface _Type
-{
+public interface _Type {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -133,8 +132,7 @@ public interface _Type
 	@property bool Equals(Type o);
 }
 
-public interface _Assembly
-{
+public interface _Assembly {
 	//region Object
 	string ToString();
 	bool Equals(Object other);
@@ -183,8 +181,7 @@ public interface _Assembly
 	@property bool GlobalAssemblyCache();
 }
 
-public interface _MemberInfo
-{
+public interface _MemberInfo {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -207,8 +204,7 @@ public interface _MemberInfo
 	bool IsDefined(Type attributeType, bool inherit);
 }
 
-public interface _MethodBase
-{
+public interface _MethodBase {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -253,8 +249,7 @@ public interface _MethodBase
 	Object Invoke(Object obj, Object[] parameters);
 }
 
-public interface _MethodInfo
-{
+public interface _MethodInfo {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -304,8 +299,7 @@ public interface _MethodInfo
 	MethodInfo GetBaseDefinition();
 }
 
-public interface _ContructorInfo
-{
+public interface _ContructorInfo {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -354,8 +348,7 @@ public interface _ContructorInfo
 	Object Invoke_5(Object[] parameters);
 }
 
-public interface _FieldInfo
-{
+public interface _FieldInfo {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -400,8 +393,7 @@ public interface _FieldInfo
 	@property bool IsPinvokeImpl();
 }
 
-public interface _PropertyInfo
-{
+public interface _PropertyInfo {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -442,8 +434,7 @@ public interface _PropertyInfo
 	@property bool IsSpecialName();
 }
 
-public interface _EventInfo
-{
+public interface _EventInfo {
 	//region IDispatch
 	void GetTypeInfoCount(out uint info);
 	void GetTypeInfo(uint info, uint lcid, IntPtr ptrInfo);
@@ -480,24 +471,21 @@ public interface _EventInfo
 	@property bool IsMulticast();
 }
 
-public interface _ParameterInfo
-{
+public interface _ParameterInfo {
 	void GetTypeInfoCount(out uint pcTInfo);
 	void GetTypeInfo(uint iTInfo, uint lcid, IntPtr ppTInfo);
 	void GetIDsOfNames(ref Guid riid, IntPtr rgszNames, uint cNames, uint lcid, IntPtr rgDispId);
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 }
 
-public interface _Module
-{
+public interface _Module {
 	void GetTypeInfoCount(out uint pcTInfo);
 	void GetTypeInfo(uint iTInfo, uint lcid, IntPtr ppTInfo);
 	void GetIDsOfNames(ref Guid riid, IntPtr rgszNames, uint cNames, uint lcid, IntPtr rgDispId);
 	void Invoke(uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
 }
 
-public interface _AssemblyName
-{
+public interface _AssemblyName {
 	void GetTypeInfoCount(out uint pcTInfo);
 	void GetTypeInfo(uint iTInfo, uint lcid, IntPtr ppTInfo);
 	void GetIDsOfNames(ref Guid riid, IntPtr rgszNames, uint cNames, uint lcid, IntPtr rgDispId);

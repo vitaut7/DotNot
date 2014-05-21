@@ -1,8 +1,7 @@
 ﻿module System.Reflection._Enum.MemberTypes;
 
 
-public enum MemberTypes
-{
+public enum MemberTypes {
 	Constructor = 0x01,
 	Event       = 0x02,
 	Field       = 0x04,

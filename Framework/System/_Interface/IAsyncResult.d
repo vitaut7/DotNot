@@ -4,8 +4,7 @@ import System;
 import System.Threading;
 
 
-public interface IAsyncResult
-{
+public interface IAsyncResult {
 	@property Object Asyncstate();
 	@property WaitHandle AsyncWaitHandle();
 	@property bool CompletedSynchronously();

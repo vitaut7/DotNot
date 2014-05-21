@@ -1,8 +1,7 @@
 module System._Enum.AttributeTargets;
 
 
-public enum AttributeTargets
-{
+public enum AttributeTargets {
 	Assembly         = 0x0001,
 	Module           = 0x0002,
 	Class            = 0x0004,

@@ -4,10 +4,8 @@ import System;
 import System.Reflection;
 
 
-@internal class RuntimeType //TODO
-{
-	@internal static MethodBase GetMethodBase(IRuntimeMethodInfo methodHandle)
-	{
-		assert(0);
+@internal class RuntimeType {
+	@internal static MethodBase GetMethodBase(IRuntimeMethodInfo methodHandle) {
+		assert(0);//TODO
 	}
 }

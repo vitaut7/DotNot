@@ -3,10 +3,8 @@
 import System.Collections;
 
 
-public interface IDictionaryEnumerator
-{
-	@property
-	{
+public interface IDictionaryEnumerator {
+	@property {
 		Object Key();
 		Object Value();
 		DictionaryEntry Entry();

@@ -8,10 +8,8 @@ import System.Runtime.InteropServices;
 
 // Toto je Exception z .NETu akurad sa mi to nechce prerabat do object.d
 // vsetky BaseException prerobit na Exception
-public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
-{
-	@internal enum ExceptionMessageKind
-	{
+public class BaseException : Exception/*Throwable*/, _Exception, ISerializable {
+	@internal enum ExceptionMessageKind {
 		ThreadAbort = 1,
 		ThreadInterrupted = 2,
 		OutOfMemory = 3
@@ -36,66 +34,54 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 	private string _source;
 	private int _hResult;
 
-	@property public int HResult()
-	{
+	@property public int HResult() {
 		return _hResult;
 	}
 
-	@property public Exception InnerException()
-	{
+	@property public Exception InnerException() {
 		return _innerException;
 	}
 
-	@property public string StackTrace()
-	{
+	@property public string StackTrace() {
 		return GetStackTrace(true);
 	}
 
-	@property public MethodBase TargetSite()
-	{
+	@property public MethodBase TargetSite() {
 		return GetTargetSiteInternal();
 	}
 
-	@property public string HelpLink()
-	{
+	@property public string HelpLink() {
 		return _helpURL;
 	}
 
-	@property public void HelpLink(string value)
-	{
+	@property public void HelpLink(string value) {
 		_helpURL = value;
 	}
 
-	@property public string Source()
-	{
+	@property public string Source() {
 		return _source;
 	} //TODO
 
-	@property public void Source(string value)
-	{
+	@property public void Source(string value) {
 		_source = value;
 	}
 
-	public this() 
-	{
+	public this()  {
 		Init();
 	}
 
-	public this(string message)
-	{
+	public this(string message) {
 		Init();
 		_message = message;
 	}
 
-	public this(string message, Exception innerException)
-	{
+	public this(string message, Exception innerException) {
 		Init();
 		_message = message;
 		_innerException = cast(BaseException)innerException;
 	}
 
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		if (info is null)
 			throw new ArgumentNullException("info");
 		Contract.EndContractBlock();
@@ -117,17 +103,14 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		if (_className is null || !_hResult)
 			throw new SerializationException(Environment.GetResourceString("Serialization_InsufficientState"));
 
-		if (context.State == StreamingContextStates.CrossAppDomain)
-		{
+		if (context.State == StreamingContextStates.CrossAppDomain) {
 			_remoteStackTraceString = _remoteStackTraceString ~ _stackTraceString;
 			_stackTraceString = null;
 		}
 	}
 
-	@property public string Message()
-	{
-		if (!_message)
-		{
+	@property public string Message() {
+		if (!_message) {
 			if (!_className)
 				_className = GetClassName();
 
@@ -137,8 +120,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return _message;
 	}
 
-	@property public IDictionary Data()
-	{
+	@property public IDictionary Data() {
 		if (_data is null)
 			if (IsImmutableAgileException(this))
 				_data = null; //TODO
@@ -148,21 +130,18 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return _data;
 	}
 
-	private string GetClassName()
-	{
+	private string GetClassName() {
 		if (!_className)
 			_className = GetType();
 
 		return _className;
 	}
 
-	public Exception GetBaseException()
-	{
+	public Exception GetBaseException() {
 		Exception inner = InnerException;
 		Exception back = this;
 
-		while (inner !is null)
-		{
+		while (inner !is null) {
 			back = inner;
 			inner = (cast(BaseException)inner).InnerException; //HACK: No cast
 		}
@@ -170,8 +149,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return back;
 	}
 
-	private MethodBase GetExceptionMethodFromStackTrace()
-	{
+	private MethodBase GetExceptionMethodFromStackTrace() {
 		IRuntimeMethodInfo method = GetMethodFromStackTrace(_stackTrace);
 
 		if (method is null)
@@ -180,8 +158,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return RuntimeType.GetMethodBase(method);
 	}
 
-	private MethodBase GetTargetSiteInternal()
-	{
+	private MethodBase GetTargetSiteInternal() {
 		if (_exceptionMethod !is null)
 			return _exceptionMethod;
 
@@ -196,13 +173,11 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return _exceptionMethod;
 	}
 
-	private string GetStackTrace(bool needFileInfo)
-	{
+	private string GetStackTrace(bool needFileInfo) {
 		string stackTraceString = _stackTraceString;
 		string remoteStackTraceString = _remoteStackTraceString;
 
-		if (!needFileInfo)
-		{
+		if (!needFileInfo) {
 			stackTraceString = StripFileInfo(stackTraceString, false);
 			remoteStackTraceString = StripFileInfo(remoteStackTraceString, true);
 		}
@@ -217,18 +192,15 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return remoteStackTraceString ~ tempStackTraceString;
 	}
 
-	@internal void SetErrorCode(int hr)
-	{
+	@internal void SetErrorCode(int hr) {
 		_hResult = hr;
 	}
 
-	public override string ToString()
-	{
+	public override string ToString() {
 		return ToString(true, true);
 	}
 
-	private string ToString(bool needFileLineInfo, bool needMessage)
-	{
+	private string ToString(bool needFileLineInfo, bool needMessage) {
 		string message = needMessage ? Message : null;
 		string s;
 
@@ -237,8 +209,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		else
 			s = GetClassName() ~ ": " ~ message;
 
-		if (_innerException !is null)
-		{
+		if (_innerException !is null) {
 			s = s ~ " ---> " ~ _innerException.ToString(needFileLineInfo, needMessage) ~ Environment.NewLine
 				~ "   " ~ Environment.GetRuntimeResourceString("Exception_EndOfInnerExceptionStack");
 		}
@@ -250,8 +221,7 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		return s;
 	}
 
-	private string GetExceptionMethodString()
-	{
+	private string GetExceptionMethodString() {
 		MethodBase methBase = GetTargetSiteInternal();
 		if (methBase is null)
 			return null;
@@ -259,21 +229,18 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		assert(0); //TODO
 	}
 
-	private MethodBase GetExceptionMethodFromString()
-	{
+	private MethodBase GetExceptionMethodFromString() {
 		assert(0); //TODO
 	}
 
-	public override void GetObjectData(SerializationInfo info, StreamingContext context)
-	{
+	public override void GetObjectData(SerializationInfo info, StreamingContext context) {
 		if (info is null)
 			throw new ArgumentNullException("info");
 		
 		Contract.EndContractBlock();
 		string tempStackTraceString = _stackTraceString;
 		
-		if (_stackTrace !is null)
-		{
+		if (_stackTrace !is null) {
 			if (!tempStackTraceString)
 				tempStackTraceString = Environment.GetStackTrace(this, true);
 			
@@ -299,30 +266,25 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 
 
 
-	@internal static string GetMessageFromNativeResources(ExceptionMessageKind kind)
-	{
+	@internal static string GetMessageFromNativeResources(ExceptionMessageKind kind) {
 		string ret;
 		GetMessageFromNativeResources(kind); //TODO
 		return ret;
 	}
 
-	private static bool IsImmutableAgileException(Exception e)
-	{
+	private static bool IsImmutableAgileException(Exception e) {
 		throw new NotImplementedException();
 	}
 
-	private static IRuntimeMethodInfo GetMethodFromStackTrace(Object stackTrace)
-	{
+	private static IRuntimeMethodInfo GetMethodFromStackTrace(Object stackTrace) {
 		throw new NotImplementedException();
 	}
 
-	private string StripFileInfo(string stackTrace, bool isRemoteStackTrace)
-	{
+	private string StripFileInfo(string stackTrace, bool isRemoteStackTrace) {
 		throw new NotImplementedException();
 	}
 
-	private void Init()
-	{
+	private void Init() {
 		_message = null;
 		_stackTrace = null;
 		_hResult = __HResults.COR_E_EXCEPTION;
@@ -330,31 +292,25 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		SerializeObjectState = _safeSerializationManager.SerializeObjectState;
 	}
 
-	private class __RestrictedErrorObject
-	{
+	private class __RestrictedErrorObject {
 		private Object _realErrorObject;
 
-		@property public Object RealErrorObject()
-		{
+		@property public Object RealErrorObject() {
 			return _realErrorObject;
 		}
 
-		public this(Object errorObject)
-		{
+		public this(Object errorObject) {
 			_realErrorObject = errorObject;
 		}
 	}
 }
 
 
-unittest
-{
-	try
-	{
+unittest {
+	try {
 		throw new BaseException("Test of Exception", new BaseException("This is inner exception"));
 	}
-	catch (BaseException e)
-	{
+	catch (BaseException e) {
 		//import std.stdio;
 		//writeln(e.ToString());
 	}

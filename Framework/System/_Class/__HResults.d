@@ -5,8 +5,7 @@ import io = System.IO;
 import runtimeRemoting = System.Runtime.Remoting;
 
 
-@internal static class __HResults
-{
+@internal static class __HResults {
 	mixin io.__HResults;
 	mixin runtimeRemoting.__HResults;
 

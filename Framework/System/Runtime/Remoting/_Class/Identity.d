@@ -3,7 +3,6 @@
 import System;
 
 
-@internal class Identity
-{
+@internal class Identity {
 
 }

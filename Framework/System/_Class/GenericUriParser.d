@@ -1,8 +1,7 @@
 module System._Class.GenericUriParser;
 
 
-public enum GenericUriParserOptions
-{
+public enum GenericUriParserOptions {
 	Default                        = 0x0,
 	GenericAuthority               = 0x1,
 	AllowEmptyAuthority            = 0x2,

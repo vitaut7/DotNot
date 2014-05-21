@@ -3,53 +3,43 @@
 import System;
 
 
-@internal struct RuntimeMethodHandleInternal
-{
+@internal struct RuntimeMethodHandleInternal {
 	@internal IntPtr _handle;
 
-	@internal @property static RuntimeMethodHandleInternal EmptyValue()
-	{
+	@internal @property static RuntimeMethodHandleInternal EmptyValue() {
 		return *new RuntimeMethodHandleInternal();
 	}
 
-	@internal @property IntPtr Value()
-	{
+	@internal @property IntPtr Value() {
 		return _handle;
 	}
 
-	@internal bool IsNullhandle()
-	{
+	@internal bool IsNullhandle() {
 		return _handle.IsNull();
 	}
 
-	@internal this(IntPtr value)
-	{
+	@internal this(IntPtr value) {
 		_handle = value;
 	}
 }
 
 
-@internal interface IRuntimeMethodInfo
-{
+@internal interface IRuntimeMethodInfo {
 	@property RuntimeMethodHandleInternal Value();
 }
 
 
-public final class RuntimeTypeHandle
-{
+public final class RuntimeTypeHandle {
 	//TODO
-	RuntimeType GetRuntimeType()
-	{
+	RuntimeType GetRuntimeType() {
 		assert(0);
 	}
 	
-	this()
-	{
+	this() {
 		assert(0);
 	}
 
-	this(RuntimeType)
-	{
+	this(RuntimeType) {
 		assert(0);
 	}
 }

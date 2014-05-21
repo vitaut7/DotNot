@@ -8,16 +8,13 @@ public import System.Runtime.InteropServices._Class.SafeArrayRankMismatchExcepti
 public import System.Runtime.InteropServices._Class.SafeArrayTypeMismatchException;
 
 
-public interface IStringable
-{
+public interface IStringable {
 	string ToString();
 }
 
-public class Marshal
-{
+public class Marshal {
 	import System;
-	public static IntPtr /* IUnknown* */ GetIUnknownForObject(Object o)
-	{
+	public static IntPtr /* IUnknown* */ GetIUnknownForObject(Object o) {
 		assert(0);
 	}
 

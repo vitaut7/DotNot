@@ -3,8 +3,7 @@
 import System;
 
 
-public interface IFormatterConverter
-{
+public interface IFormatterConverter {
 	Object Convert(Object value, Type type);
 	Object Convert(Object value, TypeCode typeCode);
 	bool ToBoolean(Object value);

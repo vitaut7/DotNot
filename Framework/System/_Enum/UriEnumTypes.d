@@ -1,16 +1,14 @@
 module System._Enum.UriEnumTypes;
 
 
-public enum UriKind
-{
+public enum UriKind {
 	RelativeOrAbsolute,
 	Absolute,
 	Relative
 }
 
 
-public enum UriComponents
-{
+public enum UriComponents {
 	Scheme                  = 0x1,
 	UserInfo                = 0x2,
 	Host                    = 0x4,
@@ -34,24 +32,21 @@ public enum UriComponents
 }
 
 
-public enum UriFormat
-{
+public enum UriFormat {
 	UriEscaped    = 1,
 	Unescaped     = 2,
 	SafeUnescaped = 3
 }
 
 
-public enum UriIdnScope
-{
+public enum UriIdnScope {
 	None,
 	AllExceptIntranet,
 	All
 }
 
 
-public enum UriHostNameType
-{
+public enum UriHostNameType {
 	Unknown,
 	Basic,
 	Dns,
@@ -60,8 +55,7 @@ public enum UriHostNameType
 }
 
 
-public enum UriPartial
-{
+public enum UriPartial {
 	Scheme,
 	Authority,
 	Path,

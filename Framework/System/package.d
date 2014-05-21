@@ -111,38 +111,33 @@ public import System._Class.AppDomainManager;
 public import System._Class.Version;
 public import System._Class.DBNull;
 
-@property public int Length(T)(T value)
-{
+@property public int Length(T)(T value) {
 	return cast(int)value.length;
 }
 
 string[] Split(string str, char[] vals) {assert (0); }
 interface IDictionary {};//(TKey, TValue) {}
 
-abstract class CultureInfo : IFormatProvider
-{
+abstract class CultureInfo : IFormatProvider {
 	@property public static CultureInfo InvariantCulture() { assert(0); }
 	@property public static CultureInfo CurrentCulture() { assert(0); }
 }
 
-/*
-class Contract
-{
+
+class Contract {
 	public static void EndContractBlock() { }
 	public static void Ensures(bool condition) { assert(0); }
 	public static T Result(T)() { assert(0); }
 	public static void Requires(bool condition, string userMessage) {}
 
 	public static void Assert(bool condition, string userMessage) { assert(condition, userMessage); }
-}*/
+}
 
-string ToString(T)(T value)
-{
+string ToString(T)(T value) {
 	return value.stringof; //TODO
 }
 
-@property
-{
+@property {
 	public string Trim(string str) { return str; }
 }
 
@@ -152,27 +147,23 @@ abstract public class RealProxy {
 	import System.Runtime.Remoting;
 	@property Identity IdentityObject() { assert(0); }
 }
-public static class RemotingServices
-{
+public static class RemotingServices {
 	public static RealProxy GetRealProxy(Object proxy) { assert(0); }
 	static bool ProxyCheckCast(RealProxy rp, RuntimeType castType) { assert(0); }
 	public static bool IsTransparentProxy(Object proxy) { assert(0); }
 }
 
-class Interlocked
-{
+class Interlocked {
 	public static Object CompareExchange(ref Object location1, Object value, Object comparand) { assert(0); }
 }
 
-public class Hashtable
-{
+public class Hashtable {
 	Object opIndex(Object key) { assert(0); }
 	void opIndexAssign(Object value, Object key) { assert(0); }
 	@property Object[] Values() { assert(0);}
 }
 
-class Activator
-{
+class Activator {
 	import System.Reflection;
 	static const BindingFlags ConstructorDefault= BindingFlags.Instance | BindingFlags.Public | BindingFlags.CreateInstance;
 
@@ -183,8 +174,7 @@ class Activator
 	CultureInfo culture) {assert(0);}
 }
 
-class Number
-{
+class Number {
 	import System.Globalization;
 
 	public static string FormatInt32(int value, string format, NumberFormatInfo info) { assert(0); }

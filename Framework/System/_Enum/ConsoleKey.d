@@ -1,8 +1,7 @@
 module System._Enum.ConsoleKey;
 
 
-public enum ConsoleKey
-{
+public enum ConsoleKey {
 	Backspace         = 0x8,
 	Tab               = 0x9,
 	// A-B,  // Undefined

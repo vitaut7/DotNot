@@ -15,42 +15,35 @@ public enum StreamingContextStates {
 	All            = 0xFF
 }
 
-struct StreamingContext
-{
+struct StreamingContext {
 	private Object _additionalContext;
 	private StreamingContextStates _state;
 
-	@property public Object Context()
-	{
+	@property public Object Context() {
 		return _additionalContext;
 	}
 
-	@property public StreamingContextStates State()
-	{
+	@property public StreamingContextStates State() {
 		return _state;
 	}
 
-	public this(StreamingContextStates state)
-	{
+	public this(StreamingContextStates state) {
 		this(state, null);
 	}
 
-	public this(StreamingContextStates state, Object additional)
-	{
+	public this(StreamingContextStates state, Object additional) {
 		_state = state;
 		_additionalContext = additional;
 	}
 
-	public bool Equals(StreamingContext obj)
-	{
+	public bool Equals(StreamingContext obj) {
 		if (obj._additionalContext == _additionalContext && obj._state == _state)
 			return true;
 
 		return false;
 	}
 
-	public int GetHashCode()
-	{
+	public int GetHashCode() {
 		return cast(int)_state;
 	}
 }

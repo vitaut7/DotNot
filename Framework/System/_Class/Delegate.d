@@ -4,7 +4,6 @@ import System;
 import System.Runtime.Serialization;
 
 
-public abstract class Delegate : ICloneable, ISerializable 
-{
+public abstract class Delegate : ICloneable, ISerializable  {
 
 }

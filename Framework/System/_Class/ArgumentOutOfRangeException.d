@@ -4,20 +4,16 @@ import System;
 import System.Runtime.Serialization;
 
 
-public class ArgumentOutOfRangeException : ArgumentException
-{
+public class ArgumentOutOfRangeException : ArgumentException {
 	private Object _actualValue;
 
-	@property public Object ActualValue()
-	{
+	@property public Object ActualValue() {
 		return _actualValue; 
 	}
 
-	@property public override string Message()
-	{
+	@property public override string Message() {
 		string s = super.Message();
-		if (_actualValue !is null)
-		{
+		if (_actualValue !is null) {
 			string valueMessage = Environment.GetRuntimeResourceString("ArgumentOutOfRange_ActualValue", [String(_actualValue.ToString())]);
 			if (!s)
 				return valueMessage;
@@ -27,46 +23,39 @@ public class ArgumentOutOfRangeException : ArgumentException
 		return s;
 	}
 
-	public this()
-	{
+	public this() {
 		super(Environment.GetResourceString("Arg_ArgumentOutOfRangeException"));
 		SetErrorCode(__HResults.COR_E_ARGUMENTOUTOFRANGE);
 	}
 
-	public this(string paramName)
-	{
+	public this(string paramName) {
 		super(Environment.GetResourceString("Arg_ArgumentOutOfRangeException"), paramName);
 		SetErrorCode(__HResults.COR_E_ARGUMENTOUTOFRANGE);
 	}
 
-	public this(string paramName, string message)
-	{
+	public this(string paramName, string message) {
 		super(message, paramName);
 		SetErrorCode(__HResults.COR_E_ARGUMENTOUTOFRANGE);
 	}
 
-	public this(string message, Exception innerException)
-	{
+	public this(string message, Exception innerException) {
 		super(message, innerException);
 		SetErrorCode(__HResults.COR_E_ARGUMENTOUTOFRANGE);
 	}
 
-	public this(string paramName, Object actualValue, string message)
-	{
+	public this(string paramName, Object actualValue, string message) {
 		super(message, paramName);
 
 		_actualValue = actualValue;
 		SetErrorCode(__HResults.COR_E_ARGUMENTOUTOFRANGE);
 	}
 
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		super(info, context);
 		_actualValue = info.GetValue("ActualValue", Typeof!Object);
 	}
 
-	public override void GetObjectData(SerializationInfo info, StreamingContext context)
-	{
+	public override void GetObjectData(SerializationInfo info, StreamingContext context) {
 		if (info is null)
 			throw new ArgumentNullException("info");
 		

@@ -4,8 +4,7 @@ import System;
 import System.Runtime.Serialization;
 
 
-public final class SerializationInfo
-{
+public final class SerializationInfo {
 	private string[] _members;
 	private Object[] _data;
 	private Type[] _types;
@@ -17,28 +16,23 @@ public final class SerializationInfo
 	private bool _isAssemblyNameSetExplicit;
 	private bool _requireSameTokenInPartialTrust;
 
-	@property public string FullTypeName()
-	{
+	@property public string FullTypeName() {
 		return _fullTypeName;
 	}
 
-	@property public string AssemblyName()
-	{
+	@property public string AssemblyName() {
 		return _assemName;
 	}
 
-	@internal @property string[] MemberNames()
-	{
+	@internal @property string[] MemberNames() {
 		return _members;
 	}
 
-	@internal @property Object[] MemberValues()
-	{
+	@internal @property Object[] MemberValues() {
 		return _data;
 	}
 
-	@property public void FullTypeName(string value)
-	{
+	@property public void FullTypeName(string value) {
 		if (!value)
 			throw new ArgumentNullException("value");
 		Contract.EndContractBlock();
@@ -47,8 +41,7 @@ public final class SerializationInfo
 		_isFullTypeNameSetExplicit = true;
 	}
 
-	@property public void AssemblyName(string value)
-	{
+	@property public void AssemblyName(string value) {
 		if (!value)
 			throw new ArgumentNullException("value");
 		Contract.EndContractBlock();
@@ -60,13 +53,11 @@ public final class SerializationInfo
 		_isAssemblyNameSetExplicit = true;
 	}
 
-	public this(Type type, IFormatterConverter converter)
-	{
+	public this(Type type, IFormatterConverter converter) {
 		this(type, converter, false);
 	}
 
-	public this(Type type, IFormatterConverter converter, bool requireSameTokenInPartialTrust)
-	{
+	public this(Type type, IFormatterConverter converter, bool requireSameTokenInPartialTrust) {
 		if (type is null)
 			throw new ArgumentNullException("type");
 
@@ -81,8 +72,7 @@ public final class SerializationInfo
 		_requireSameTokenInPartialTrust = requireSameTokenInPartialTrust;
 	}
 
-	public void SetType(Type type)
-	{
+	public void SetType(Type type) {
 		if (type is null)
 			throw new ArgumentNullException("type");
 		Contract.EndContractBlock();
@@ -90,8 +80,7 @@ public final class SerializationInfo
 		if (_requireSameTokenInPartialTrust)
 			DemandForUnsafeAssemblyNameAssignments(_objectType.Assembly.FullName, type.Assembly.FullName);
 
-		if (!Object.ReferenceEquals(_objectType, type))
-		{
+		if (!Object.ReferenceEquals(_objectType, type)) {
 			_objectType = type;
 			_fullTypeName = type.FullName;
 			_assemName = type.Module.Assembly.FullName;
@@ -100,8 +89,7 @@ public final class SerializationInfo
 		}
 	}
 
-	private static bool Compare(byte[] a, byte[] b)
-	{
+	private static bool Compare(byte[] a, byte[] b) {
 		if (a is null || b is null || !a.Length || !b.Length || a.Length != b.Length)
 			return false;
 
@@ -112,15 +100,13 @@ public final class SerializationInfo
 		return true;
 	}
 
-	@internal static void DemandForUnsafeAssemblyNameAssignments(string originalAssemblyName, string newAssemblyName)
-	{
+	@internal static void DemandForUnsafeAssemblyNameAssignments(string originalAssemblyName, string newAssemblyName) {
 		//if (!IsAssemblyNameAssignmentSafe(originalAssemblyName, newAssemblyName))
 		//TODO
 		assert(0);
 	}
 
-	@internal static bool IsAssemblyNameAssignmentSafe(string originalAssemblyName, string newAssemblyName)
-	{
+	@internal static bool IsAssemblyNameAssignmentSafe(string originalAssemblyName, string newAssemblyName) {
 		if (originalAssemblyName == newAssemblyName)
 			return true;
 
@@ -128,33 +114,27 @@ public final class SerializationInfo
 		assert(0);
 	}
 
-	@property public int MemberCount()
-	{
+	@property public int MemberCount() {
 		return _types.Length;
 	}
 
-	@property public Type ObjectType()
-	{
+	@property public Type ObjectType() {
 		return _objectType;
 	}
 
-	@property public bool IsFullTypeNameSetExplicit()
-	{
+	@property public bool IsFullTypeNameSetExplicit() {
 		return _isFullTypeNameSetExplicit;
 	}
 
-	@property public bool IsAssemblyNameSetExplicit()
-	{
+	@property public bool IsAssemblyNameSetExplicit() {
 		return _isAssemblyNameSetExplicit;
 	}
 
-	@property SerializationInfoEnumerator GetEnumerator()
-	{
+	@property SerializationInfoEnumerator GetEnumerator() {
 		return new SerializationInfoEnumerator(_members, _data, _types);
 	}
 
-	public void AddValue(string name, Object value, Type type)
-	{
+	public void AddValue(string name, Object value, Type type) {
 		if (!name)
 			throw new ArgumentNullException("name");
 
@@ -171,86 +151,70 @@ public final class SerializationInfo
 		_types ~= type;
 	}
 
-	public void AddValue(string name, Object value)
-	{
+	public void AddValue(string name, Object value) {
 		if (value is null)
 			AddValue(name, value, Typeof!Object);
 	//	else //TODO
 	//		AddValue(name, value, value.GetType());
 	}
 
-	public void AddValue(string name, bool value)
-	{
+	public void AddValue(string name, bool value) {
 		AddValue(name, Boolean(value), Typeof!bool);
 	}
 
-	public void AddValue(string name, byte value)
-	{
+	public void AddValue(string name, byte value) {
 		AddValue(name, Byte(value), Typeof!byte);
 	}
 
-	public void AddValue(string name, ubyte value)
-	{
+	public void AddValue(string name, ubyte value) {
 		AddValue(name, UByte(value), Typeof!ubyte);
 	}
 
-	public void AddValue(string name, short value)
-	{
+	public void AddValue(string name, short value) {
 		AddValue(name, Int16(value), Typeof!short);
 	}
 
-	public void AddValue(string name, ushort value)
-	{
+	public void AddValue(string name, ushort value) {
 		AddValue(name, UInt16(value), Typeof!ushort);
 	}
 
-	public void AddValue(string name, int value)
-	{
+	public void AddValue(string name, int value) {
 		AddValue(name, Int32(value), Typeof!int);
 	}
 
-	public void AddValue(string name, uint value)
-	{
+	public void AddValue(string name, uint value) {
 		AddValue(name, UInt32(value), Typeof!uint);
 	}
 
-	public void AddValue(string name, long value)
-	{
+	public void AddValue(string name, long value) {
 		AddValue(name, Int64(value), Typeof!long);
 	}
 
-	public void AddValue(string name, ulong value)
-	{
+	public void AddValue(string name, ulong value) {
 		AddValue(name, UInt64(value), Typeof!ulong);
 	}
 
-	public void AddValue(string name, float value)
-	{
+	public void AddValue(string name, float value) {
 		AddValue(name, Float(value), Typeof!float);
 	}
 
-	public void AddValue(string name, double value)
-	{
+	public void AddValue(string name, double value) {
 		AddValue(name, Double(value), Typeof!double);
 	}
 
-	public void AddValue(string name, real value)
-	{
+	public void AddValue(string name, real value) {
 		AddValue(name, Real(value), Typeof!real);
 	}
 
-	public void AddValue(string name, DateTime value)
-	{
+	public void AddValue(string name, DateTime value) {
 		AddValue(name, value, Typeof!DateTime);
 	}
 
-	public void AddValue(string name, string value)
-	{
+	public void AddValue(string name, string value) {
 		AddValue(name, String(value), Typeof!string);
 	}
 
-	@internal void UpdateValue(string name, Object value, Type type)
-	{
+	@internal void UpdateValue(string name, Object value, Type type) {
 		Contract.Assert(name !is null, "[SerializationInfo.UpdateValue]name!=null");
 		Contract.Assert(value !is null, "[SerializationInfo.UpdateValue]value!=null");
 		Contract.Assert(type !is null, "[SerializationInfo.UpdateValue]type!=null");
@@ -258,16 +222,14 @@ public final class SerializationInfo
 		int index = FindElement(name);
 		if (index == -1)
 			AddValue(name, value);
-		else
-		{
+		else {
 			_members[index] = name;
 			_data[index] = value;
 			_types[index] = type;
 		}
 	}
 
-	private int FindElement(string name)
-	{
+	private int FindElement(string name) {
 		if (!name)
 			throw new ArgumentNullException("name");
 		Contract.EndContractBlock();
@@ -279,8 +241,7 @@ public final class SerializationInfo
 		return -1;
 	}
 
-	private Object GetElement(string name, out Type foundType)
-	{
+	private Object GetElement(string name, out Type foundType) {
 		int index = FindElement(name);
 		if (index == -1)
 			throw new SerializationException(Environment.GetResourceString("Serialization_NotFound", name));
@@ -293,21 +254,17 @@ public final class SerializationInfo
 		return _data[index];
 	}
 
-	private Object GetElementNoThrow(string name, out Type foundType)
-	{
-		try
-		{
+	private Object GetElementNoThrow(string name, out Type foundType) {
+		try {
 			return GetElement(name, foundType);
 		}
-		catch
-		{
+		catch {
 			foundType = null;
 			return null;
 		}
 	}
 
-	public Object GetValue(string name, Type type)
-	{
+	public Object GetValue(string name, Type type) {
 		if (type is null)
 			throw new ArgumentNullException("type");
 		Contract.EndContractBlock();
@@ -315,14 +272,12 @@ public final class SerializationInfo
 		Type foundType;
 		Object value = GetElement(name, foundType);
 
-		if (RemotingServices.IsTransparentProxy(value))
-		{
+		if (RemotingServices.IsTransparentProxy(value)) {
 			RealProxy proxy = RemotingServices.GetRealProxy(value);
 			if (RemotingServices.ProxyCheckCast(proxy, cast(RuntimeType)type))
 				return value;
 		}
-		else
-		{
+		else {
 			if (foundType == type || type.IsAssignableFrom(foundType) || value is null)
 				return value;
 		}
@@ -331,8 +286,7 @@ public final class SerializationInfo
 		return _converter.Convert(value, type);
 	}
 
-	public Object GetValueNoThrow(string name, Type type)
-	{
+	public Object GetValueNoThrow(string name, Type type) {
 		Contract.Assert(type !is null, "[SerializationInfo.GetValue]type ==null");
 		Contract.Assert(type.GetType() == RuntimeType.GetType(), "[SerializationInfo.GetValue]type is not a runtime type");
 
@@ -341,14 +295,12 @@ public final class SerializationInfo
 		if (value is null)
 			return null;
 				
-		if (RemotingServices.IsTransparentProxy(value))
-		{
+		if (RemotingServices.IsTransparentProxy(value)) {
 			RealProxy proxy = RemotingServices.GetRealProxy(value);
 			if (RemotingServices.ProxyCheckCast(proxy, cast(RuntimeType)type))
 				return value;
 		}
-		else
-		{
+		else {
 			if (foundType == type || type.IsAssignableFrom(foundType) || value is null)
 				return value;
 		}
@@ -357,8 +309,7 @@ public final class SerializationInfo
 		return _converter.Convert(value, type);
 	}
 
-	public bool GetBoolean(string name)
-	{
+	public bool GetBoolean(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 
@@ -368,8 +319,7 @@ public final class SerializationInfo
 		return _converter.ToBoolean(value);
 	}
 
-	public char GetChar(string name)
-	{
+	public char GetChar(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -379,8 +329,7 @@ public final class SerializationInfo
 		return _converter.ToChar(value);
 	}
 
-	public byte GetByte(string name)
-	{
+	public byte GetByte(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 
@@ -390,8 +339,7 @@ public final class SerializationInfo
 		return _converter.ToByte(value);
 	}
 
-	public ubyte GetUByte(string name)
-	{
+	public ubyte GetUByte(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -401,8 +349,7 @@ public final class SerializationInfo
 		return _converter.ToUByte(value);
 	}
 
-	public short GetInt16(string name)
-	{
+	public short GetInt16(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 
@@ -412,8 +359,7 @@ public final class SerializationInfo
 		return _converter.ToInt16(value);
 	}
 
-	public ushort GetUInt16(string name)
-	{
+	public ushort GetUInt16(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 
@@ -423,8 +369,7 @@ public final class SerializationInfo
 		return _converter.ToUInt16(value);
 	}
 
-	public int GetInt32(string name)
-	{
+	public int GetInt32(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -434,8 +379,7 @@ public final class SerializationInfo
 		return _converter.ToInt32(value);
 	}
 	
-	public uint GetUInt32(string name)
-	{
+	public uint GetUInt32(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -445,8 +389,7 @@ public final class SerializationInfo
 		return _converter.ToUInt32(value);
 	}
 
-	public long GetInt64(string name)
-	{
+	public long GetInt64(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -456,8 +399,7 @@ public final class SerializationInfo
 		return _converter.ToInt64(value);
 	}
 	
-	public ulong GetUInt64(string name)
-	{
+	public ulong GetUInt64(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -467,8 +409,7 @@ public final class SerializationInfo
 		return _converter.ToUInt64(value);
 	}
 
-	public float GetFloat(string name)
-	{
+	public float GetFloat(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 
@@ -478,8 +419,7 @@ public final class SerializationInfo
 		return _converter.ToFloat(value);
 	}
 
-	public double GetDouble(string name)
-	{
+	public double GetDouble(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -489,8 +429,7 @@ public final class SerializationInfo
 		return _converter.ToDouble(value);
 	}
 
-	public real GetReal(string name)
-	{
+	public real GetReal(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -500,8 +439,7 @@ public final class SerializationInfo
 		return _converter.ToReal(value);
 	}
 
-	public DateTime GetDateTime(string name)
-	{
+	public DateTime GetDateTime(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 		
@@ -511,8 +449,7 @@ public final class SerializationInfo
 		return _converter.ToDateTime(value);
 	}
 
-	public string GetString(string name)
-	{
+	public string GetString(string name) {
 		Type foundType;
 		Object value = GetElement(name, foundType);
 

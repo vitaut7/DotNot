@@ -3,12 +3,10 @@
 import System;
 
 
-public final class Guid //: IFormattable, IComparable
-{
+public final class Guid /*: IFormattable, IComparable */{
 	public static immutable Guid Empty;// = cast(immutable(Guid))new Guid();
 
-	private enum GuidStyles
-	{
+	private enum GuidStyles {
 		None               = 0x00000000, 
 		AllowParenthesis   = 0x00000001,
 		AllowBraces        = 0x00000002,
@@ -28,15 +26,13 @@ public final class Guid //: IFormattable, IComparable
 		Any                = AllowParenthesis | AllowBraces | AllowDashes | AllowHexPrefix
 	}
 
-	private enum GuidParseThrowStyle
-	{
+	private enum GuidParseThrowStyle {
 		None           = 0,
 		All            = 1,
 		AllButOverflow = 2
 	}
 
-	private enum ParseFailureKind
-	{
+	private enum ParseFailureKind {
 		None                     = 0,
 		ArgumentNull             = 1,
 		Format                   = 2,
@@ -58,8 +54,7 @@ public final class Guid //: IFormattable, IComparable
 	private byte  _k;
 
 
-	public this(byte[] b)
-	{
+	public this(byte[] b) {
 		if (b is null)
 			throw new ArgumentNullException("b");
 
@@ -80,8 +75,7 @@ public final class Guid //: IFormattable, IComparable
 		_k = b[15];
 	}
 
-	public this(uint a, ushort b, ushort c, byte d, byte e, byte f, byte g, byte h, byte i, byte j, byte k)
-	{
+	public this(uint a, ushort b, ushort c, byte d, byte e, byte f, byte g, byte h, byte i, byte j, byte k) {
 		_a = cast(int)a;
 		_b = cast(short)b;
 		_c = cast(short)c;
@@ -95,8 +89,7 @@ public final class Guid //: IFormattable, IComparable
 		_k = k;
 	}
 
-	public this(int a, short b, short c, byte d, byte e, byte f, byte g, byte h, byte i, byte j, byte k)
-	{
+	public this(int a, short b, short c, byte d, byte e, byte f, byte g, byte h, byte i, byte j, byte k) {
 		_a = a;
 		_b = b;
 		_c = c;
@@ -110,8 +103,7 @@ public final class Guid //: IFormattable, IComparable
 		_k = k;
 	}
 
-	public this(int a, short b, short c, byte[] d)
-	{
+	public this(int a, short b, short c, byte[] d) {
 		if (d is null)
 			throw new ArgumentNullException("d");
 
@@ -132,8 +124,7 @@ public final class Guid //: IFormattable, IComparable
 		_k = d[7];
 	}
 
-	public this(string g)
-	{
+	public this(string g) {
 		if (!g)
 			throw new ArgumentNullException("g");
 		Contract.EndContractBlock();
@@ -145,8 +136,7 @@ public final class Guid //: IFormattable, IComparable
 		result.Init(GuidParseThrowStyle.All);
 	}
 
-	public static Guid Parse(string input)
-	{
+	public static Guid Parse(string input) {
 		if (!input)
 			throw new ArgumentNullException("input");
 		Contract.EndContractBlock();
@@ -160,13 +150,11 @@ public final class Guid //: IFormattable, IComparable
 		throw result.GetGuidParseException();
 	}
 
-	public static bool TryParse(string input, out Guid result)
-	{
+	public static bool TryParse(string input, out Guid result) {
 		GuidResult* parseResult = new GuidResult();
 		parseResult.Init(GuidParseThrowStyle.None);
 
-		if (TryParseGuid(input, GuidStyles.Any, *parseResult))
-		{
+		if (TryParseGuid(input, GuidStyles.Any, *parseResult)) {
 			result = parseResult.parsedGuid;
 			return true;
 		}
@@ -175,8 +163,7 @@ public final class Guid //: IFormattable, IComparable
 		return false;
 	}
 
-	public static Guid ParseExtract(string input, string format)
-	{
+	public static Guid ParseExtract(string input, string format) {
 		if (!input)
 			throw new ArgumentNullException("input");
 
@@ -189,8 +176,7 @@ public final class Guid //: IFormattable, IComparable
 		GuidStyles style;
 		char formatCh = format[0];
 
-		switch (formatCh)
-		{
+		switch (formatCh) {
 			case 'D':
 			case 'd':
 				style = GuidStyles.DigitFormat;
@@ -224,10 +210,8 @@ public final class Guid //: IFormattable, IComparable
 		throw result.GetGuidParseException();
 	}
 
-	public static bool TryParseExtract(string input, string format, ref Guid result)
-	{
-		if (!format || format.Length != 1)
-		{
+	public static bool TryParseExtract(string input, string format, ref Guid result) {
+		if (!format || format.Length != 1) {
 			result = cast(Guid)Guid.Empty;
 			return false;
 		}
@@ -235,8 +219,7 @@ public final class Guid //: IFormattable, IComparable
 		GuidStyles style;
 		char formatCh = format[0];
 		
-		switch (formatCh)
-		{
+		switch (formatCh) {
 			case 'D':
 			case 'd':
 				style = GuidStyles.DigitFormat;
@@ -265,8 +248,7 @@ public final class Guid //: IFormattable, IComparable
 		GuidResult* parseResult = new GuidResult();
 		parseResult.Init(GuidParseThrowStyle.None);
 		
-		if (TryParseGuid(input, style, *parseResult))
-		{
+		if (TryParseGuid(input, style, *parseResult)) {
 			result = parseResult.parsedGuid;
 			return true;
 		}
@@ -275,17 +257,14 @@ public final class Guid //: IFormattable, IComparable
 		return false;
 	}
 
-	private static bool TryParseGuid(string g, GuidStyles flags, ref GuidResult result)
-	{
-		if (!g)
-		{
+	private static bool TryParseGuid(string g, GuidStyles flags, ref GuidResult result) {
+		if (!g) {
 			result.SetFailure(ParseFailureKind.Format, "Format_GuidUnrecognized");
 			return false;
 		}
 
 		string guidString = g.Trim();
-		if (!guidString.Length)
-		{
+		if (!guidString.Length) {
 			result.SetFailure(ParseFailureKind.Format, "Format_GuidUnrecognized");
 			return false;
 		}
@@ -307,8 +286,7 @@ public final class Guid //: IFormattable, IComparable
 
 
 
-	private struct GuidResult
-	{
+	private struct GuidResult {
 		@internal Guid parsedGuid;
 		@internal GuidParseThrowStyle throwStyle;
 
@@ -318,31 +296,26 @@ public final class Guid //: IFormattable, IComparable
 		@internal string _failureArgumentName;
 		@internal Exception _innerException;
 
-		@internal void Init(GuidParseThrowStyle canThrow)
-		{
+		@internal void Init(GuidParseThrowStyle canThrow) {
 			parsedGuid = cast(Guid)Guid.Empty;
 			throwStyle = canThrow;
 		}
 
-		@internal void SetFailure(Exception nativeException)
-		{
+		@internal void SetFailure(Exception nativeException) {
 			_failure = ParseFailureKind.NativeException;
 			_innerException = nativeException;
 		}
 
-		@internal void SetFailure(ParseFailureKind failure, string failureMessageID)
-		{
+		@internal void SetFailure(ParseFailureKind failure, string failureMessageID) {
 			SetFailure(failure, failureMessageID, null, null, null);
 		}
 
-		@internal void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument)
-		{
+		@internal void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument) {
 			SetFailure(failure, failureMessageID, failureMessageFormatArgument, null, null);
 		}
 
 		@internal void SetFailure(ParseFailureKind failure, string failureMessageID, Object failureMessageFormatArgument,
-		                                 string failureArgumentName, Exception innerException)
-		{
+		                                 string failureArgumentName, Exception innerException) {
 			Contract.Assert(failure != ParseFailureKind.NativeException, "ParseFailureKind.NativeException should not be used with this overload");
 			_failure = failure;
 			_failureMessageID = failureMessageID;
@@ -354,10 +327,8 @@ public final class Guid //: IFormattable, IComparable
 				throw GetGuidParseException();
 		}
 
-		@internal Exception GetGuidParseException()
-		{
-			switch (_failure)
-			{
+		@internal Exception GetGuidParseException() {
+			switch (_failure) {
 				case ParseFailureKind.ArgumentNull:
 					return new ArgumentNullException(_failureArgumentName, Environment.GetResourceString(_failureMessageID));
 					

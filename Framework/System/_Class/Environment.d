@@ -3,20 +3,16 @@
 import System;
 
 
-public static class Environment //TODO
-{
-	static string GetResourceString(string key)
-	{
+public static class Environment {
+	static string GetResourceString(string key) { //TODO
 		return key;
 	}
 	
-	static string GetResourceString(string key, Object[] values)
-	{
+	static string GetResourceString(string key, Object[] values) {
 		return key;
 	}
 	
-	static string GetResourceString(string key, string, string a = null)
-	{
+	static string GetResourceString(string key, string, string a = null) {
 		return key;
 	}
 	
@@ -24,19 +20,16 @@ public static class Environment //TODO
 	static string GetRuntimeResourceString(string key) { return key; }
 	
 	
-	@property public static string NewLine()
-	{
+	@property public static string NewLine() {
 		//Contract.Ensures(Contract.Result<String>() != null);
 		return "\r\n";
 	}
 	
-	@internal static string GetStackTrace(Exception e, bool needFileInfo)
-	{
+	@internal static string GetStackTrace(Exception e, bool needFileInfo) {
 		return "LTODO";
 	}
 
-	static String GetResourceString(String key, Object[] values)
-	{
+	static String GetResourceString(String key, Object[] values) {
 		assert(0);
 	}
 }

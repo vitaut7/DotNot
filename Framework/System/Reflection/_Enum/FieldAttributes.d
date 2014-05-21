@@ -1,8 +1,7 @@
 ﻿module System.Reflection._Enum.FieldAttributes;
 
 
-public enum FieldAttributes
-{
+public enum FieldAttributes {
 	// member access mask - Use this mask to retrieve accessibility information.
 	FieldAccessMask = 0x0007,
 	PrivateScope    = 0x0000,    // Member not referenceable.

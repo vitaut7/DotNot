@@ -3,10 +3,8 @@
 import System.Collections;
 
 
-public interface IDictionary : ICollection
-{
-	@property
-	{
+public interface IDictionary : ICollection {
+	@property {
 		ICollection Keys();
 		ICollection Values();
 		bool IsReadOnly();

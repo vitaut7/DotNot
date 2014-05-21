@@ -8,36 +8,30 @@ import System.Runtime.Remoting;
 import System.Runtime.InteropServices;
 
 
-public abstract class MarshalByRefObject
-{
+public abstract class MarshalByRefObject {
 	private Object _identity;
 
-	@property Object Identity()
-	{
+	@property Object Identity() {
 		return _identity;
 	}
 
-	@property private void Identity(Object value)
-	{
+	@property private void Identity(Object value) {
 		_identity = value;
 	}
 
-	@internal IntPtr GetComUnknown(bool isBeingMarshalled)
-	{
+	@internal IntPtr GetComUnknown(bool isBeingMarshalled) {
 		if (RemotingServices.IsTransparentProxy(this))
 			return RemotingServices.GetRealProxy(this).GetCOMIUnknown(isBeingMarshalled);
 		else
 			return Marshal.GetIUnknownForObject(this);
 	}
 
-	@internal bool IsInstanceOfType(Type t)
-	{
+	@internal bool IsInstanceOfType(Type t) {
 		return t.IsInstanceOfType(this);
 	}
 
 	@internal Object InvokeMember(string name, BindingFlags invokeAttr, Binder binder, Object[] args, 
-                                  ParameterModifier[] modifiers, CultureInfo culture, string[] namedParameters)
-	{
+                                  ParameterModifier[] modifiers, CultureInfo culture, string[] namedParameters) {
 		Type t = cast(Type)new Object(); //TODO: GetType();
 
 		if (!t.IsCOMObject)
@@ -46,8 +40,7 @@ public abstract class MarshalByRefObject
 		return t.InvokeMember(name, invokeAttr, binder, this, args, modifiers, culture, namedParameters);
 	}
 
-	protected MarshalByRefObject MemberwiseClone(bool cloneIdentity)
-	{
+	protected MarshalByRefObject MemberwiseClone(bool cloneIdentity) {
 		MarshalByRefObject mbr = cast(MarshalByRefObject)super.MemberwiseClone();
 
 		if (cloneIdentity)
@@ -55,17 +48,14 @@ public abstract class MarshalByRefObject
 		return mbr;
 	}
 
-	@internal static System.Runtime.Remoting.Identity GetIdentity(MarshalByRefObject obj, out bool fServer)
-	{
+	@internal static System.Runtime.Remoting.Identity GetIdentity(MarshalByRefObject obj, out bool fServer) {
 		fServer = true;
 		System.Runtime.Remoting.Identity id = null;
 
-		if (obj !is null)
-		{
+		if (obj !is null) {
 			if (!RemotingServices.IsTransparentProxy(obj))
 				id = cast(System.Runtime.Remoting.Identity)obj.Identity;
-			else
-			{
+			else {
 				fServer = false;
 				id = RemotingServices.GetRealProxy(obj).IdentityObject;
 			}
@@ -74,23 +64,19 @@ public abstract class MarshalByRefObject
 		return id;
 	}
 
-	@internal static System.Runtime.Remoting.Identity GetIdentity(MarshalByRefObject obj)
-	{
+	@internal static System.Runtime.Remoting.Identity GetIdentity(MarshalByRefObject obj) {
 		Contract.Assert(!RemotingServices.IsTransparentProxy(obj), "Use this method for server objects only");
 
 		bool fServer;
 		return GetIdentity(obj, fServer);
 	}
 
-	@internal static IntPtr GetComIUnknown(MarshalByRefObject o)
-	{
+	@internal static IntPtr GetComIUnknown(MarshalByRefObject o) {
 		throw new NotImplementedException();
 	}
 
-	@internal ServerIdentity __RaceSetServerIdentity(ServerIdentity id)
-	{
-		if (_identity is null)
-		{
+	@internal ServerIdentity __RaceSetServerIdentity(ServerIdentity id) {
+		if (_identity is null) {
 			if (!id.IsContextBound)
 				id.RaceSetTransparentProxy(this);
 			Interlocked.CompareExchange(_identity, id, null);
@@ -99,23 +85,19 @@ public abstract class MarshalByRefObject
 		return cast(ServerIdentity)_identity;
 	}
 
-	@internal void __ResetServerIdentity()
-	{
+	@internal void __ResetServerIdentity() {
 		_identity = null;
 	}
 
-	public Object GetLifetimeService()
-	{
+	public Object GetLifetimeService() {
 		return cast(Object)LifetimeServices.GetLease(this);
 	}
 
-	public Object InitializeLifetimeService()
-	{
+	public Object InitializeLifetimeService() {
 		return cast(Object)LifetimeServices.GetLeaseInitial(this);
 	}
 
-	public ObjRef CreateObjRef(Type requestedType)
-	{
+	public ObjRef CreateObjRef(Type requestedType) {
 		if (_identity is null)
 			throw new RemotingException(Environment.GetResourceString("Remoting_NoIdentityEntry"));
 

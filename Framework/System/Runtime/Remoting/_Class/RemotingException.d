@@ -4,82 +4,67 @@ import System;
 import System.Runtime.Serialization;
 
 
-public class RemotingException : SystemException
-{
-	public this()
-	{
+public class RemotingException : SystemException {
+	public this() {
 		super(Environment.GetResourceString("Remoting_Default"));
 		SetErrorCode(__HResults.COR_E_REMOTING);
 	}
 
-	public this(string message)
-	{
+	public this(string message) {
 		super(message);
 		SetErrorCode(__HResults.COR_E_REMOTING);
 	}
 
-	public this(string message, Exception innerException)
-	{
+	public this(string message, Exception innerException) {
 		super(message, innerException);
 		SetErrorCode(__HResults.COR_E_REMOTING);
 	}
 
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		super(info, context);
 	}
 }
 
 
-public class ServerException : SystemException
-{
-	public this()
-	{
+public class ServerException : SystemException {
+	public this() {
 		super(Environment.GetResourceString("Remoting_Default"));
 		SetErrorCode(__HResults.COR_E_SERVER);
 	}
 
-	public this(string message)
-	{
+	public this(string message) {
 		super(message);
 		SetErrorCode(__HResults.COR_E_SERVER);
 	}
 
-	public this(string message, Exception innerException)
-	{
+	public this(string message, Exception innerException) {
 		super(message, innerException);
 		SetErrorCode(__HResults.COR_E_SERVER);
 	}
 
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		super(info, context);
 	}
 }
 
 
-public class RemotingTimeoutException : RemotingException
-{
-	public this()
-	{
+public class RemotingTimeoutException : RemotingException {
+	public this() {
 		super(Environment.GetResourceString("Remoting_Default"));
 		SetErrorCode(__HResults.COR_E_REMOTING);
 	}
 
-	public this(string message)
-	{
+	public this(string message) {
 		super(message);
 		SetErrorCode(__HResults.COR_E_REMOTING);
 	}
 
-	public this(string message, Exception innerException)
-	{
+	public this(string message, Exception innerException) {
 		super(message, innerException);
 		SetErrorCode(__HResults.COR_E_REMOTING);
 	}
 
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		super(info, context);
 	}
 }

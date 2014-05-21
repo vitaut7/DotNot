@@ -4,22 +4,18 @@ import System;
 import System.Runtime.Serialization;
 
 
-public final class ThreadStartException : SystemException
-{
-	public this()
-	{
+public final class ThreadStartException : SystemException {
+	public this() {
 		super(Environment.GetResourceString("Arg_ThreadStartException"));
 		SetErrorCode(__HResults.COR_E_THREADSTART);
 	}
 
-	public this(Exception innerException)
-	{
+	public this(Exception innerException) {
 		super(Environment.GetResourceString("Arg_ThreadStartException"), innerException);
 		SetErrorCode(__HResults.COR_E_THREADSTART);
 	}
 
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		super(info, context);
 	}
 }

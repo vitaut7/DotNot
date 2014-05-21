@@ -4,28 +4,23 @@ import System;
 import System.Runtime.Serialization;
 
 
-public class AccessViolationException : SystemException
-{
-	public this()
-	{
+public class AccessViolationException : SystemException {
+	public this() {
 		super(Environment.GetResourceString("Arg_AccessViolationException"));
 		SetErrorCode(__HResults.E_POINTER);
 	}
 
-	public this(string message)
-	{
+	public this(string message) {
 		super(message);
 		SetErrorCode(__HResults.E_POINTER);
 	}
 
-	public this(string message, Exception innerException)
-	{
+	public this(string message, Exception innerException) {
 		super(message, innerException);
 		SetErrorCode(__HResults.E_POINTER);
 	}
 
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		super(info, context);
 	}
 }

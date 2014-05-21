@@ -5,18 +5,14 @@ import System.Reflection;
 import System.Runtime.InteropServices;
 
 
-@internal class __ComObject : MarshalByRefObject
-{
+@internal class __ComObject : MarshalByRefObject {
 	private Hashtable _objectToDataMap;
 
-	protected this()
-	{
+	protected this() {
 	}
 
-	public override string ToString()
-	{
-		if (AppDomain.IsAppXModel())
-		{
+	public override string ToString() {
+		if (AppDomain.IsAppXModel()) {
 			IStringable stringableType = cast(IStringable)this;
 			if (stringableType !is null)
 				return stringableType.ToString();
@@ -24,33 +20,27 @@ import System.Runtime.InteropServices;
 		return super.ToString();
 	}
 
-	@internal IntPtr GetIUnknown(out bool isURTAggregated)
-	{
+	@internal IntPtr GetIUnknown(out bool isURTAggregated) {
 		isURTAggregated = false; //TODO
 		return Marshal.GetIUnknownForObject(this);
 	}
 
-	@internal Object GetData(Object key)
-	{
+	@internal Object GetData(Object key) {
 		Object data = null;
-		synchronized(this)
-		{
+		synchronized(this) {
 			if (_objectToDataMap !is null)
 				data = _objectToDataMap[key];
 		}
 		return data;
 	}
 
-	@internal bool SetData(Object key, Object data)
-	{
+	@internal bool SetData(Object key, Object data) {
 		bool added = false;
-		synchronized(this)
-		{
+		synchronized(this) {
 			if (_objectToDataMap is null)
 				_objectToDataMap = new Hashtable();
 
-			if (_objectToDataMap[key] is null)
-			{
+			if (_objectToDataMap[key] is null) {
 				_objectToDataMap[key] = data;
 				added = true;
 			}
@@ -58,14 +48,10 @@ import System.Runtime.InteropServices;
 		return added;
 	}
 
-	@internal void ReleaseAllData()
-	{
-		synchronized(this)
-		{
-			if (_objectToDataMap !is null)
-			{
-				foreach (Object o; _objectToDataMap.Values)
-				{
+	@internal void ReleaseAllData() {
+		synchronized(this) {
+			if (_objectToDataMap !is null) {
+				foreach (Object o; _objectToDataMap.Values) {
 					IDisposable disposableObject = cast(IDisposable)o;
 					if (disposableObject !is null)
 						disposableObject.Dispose();
@@ -80,8 +66,7 @@ import System.Runtime.InteropServices;
 		}
 	}
 
-	@internal Object GetEventProvider(RuntimeType t)
-	{
+	@internal Object GetEventProvider(RuntimeType t) {
 		Object evProvider = GetData(t);
 
 		if (evProvider is null)
@@ -90,21 +75,17 @@ import System.Runtime.InteropServices;
 		return evProvider;
 	}
 
-	@internal int ReleaseSelf()
-	{
+	@internal int ReleaseSelf() {
 		return Marshal.InternalReleaseComObject(this);
 	}
 
-	@internal int FinalReleaseSelf()
-	{
+	@internal int FinalReleaseSelf() {
 		return Marshal.InternalReleaseComObject(this);
 	}
 
-	private Object CreateEventProvider(RuntimeType t)
-	{
+	private Object CreateEventProvider(RuntimeType t) {
 		Object evProvider = Activator.CreateInstance(null/*t*/, Activator.ConstructorDefault | BindingFlags.NonPublic, null, [this], null); //TODO
-		if (!SetData(t, evProvider))
-		{
+		if (!SetData(t, evProvider)) {
 			IDisposable dis = cast(IDisposable)evProvider;
 			if (dis !is null)
 				dis.Dispose();

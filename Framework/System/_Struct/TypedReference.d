@@ -4,13 +4,11 @@ import System;
 import System.Reflection;
 
 
-public struct TypedReference
-{
+public struct TypedReference {
 	private IntPtr _value;
 	private IntPtr _type;
 
-	public static TypedReference MakeTypedReference(Object target, FieldInfo[] flds)
-	{
+	public static TypedReference MakeTypedReference(Object target, FieldInfo[] flds) {
 		if (target is null)
 			throw new ArgumentNullException("target");
 

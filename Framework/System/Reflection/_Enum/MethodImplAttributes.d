@@ -1,8 +1,7 @@
 ﻿module System.Reflection._Enum.MethodImplAttributes;
 
 
-public enum MethodImplAttributes
-{
+public enum MethodImplAttributes {
 	CodeTypeMask       = 0x0003,
 	IL                 = 0x0000,
 	Native             = 0x0001,

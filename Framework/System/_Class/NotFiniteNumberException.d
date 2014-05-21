@@ -4,59 +4,50 @@ import System;
 import System.Runtime.Serialization;
 
 
-public class NotFiniteNumberException : ArithmeticException
-{
+public class NotFiniteNumberException : ArithmeticException {
 	private double _offendingNumber;
 
-	@property public double OffendingNumber()
-	{
+	@property public double OffendingNumber() {
 		return _offendingNumber;
 	}
 
-	public this()
-	{
+	public this() {
 		super(Environment.GetResourceString("Arg_NotFiniteNumberException"));
 		_offendingNumber = 0;
 		SetErrorCode(__HResults.COR_E_NOTFINITENUMBER);
 	}
 
-	public this(double offendingNumber)
-	{
+	public this(double offendingNumber) {
 		super(Environment.GetResourceString("Arg_NotFiniteNumberException"));
 		_offendingNumber = offendingNumber;
 		SetErrorCode(__HResults.COR_E_NOTFINITENUMBER);
 	}
 	
-	public this(string message)
-	{
+	public this(string message) {
 		super(message);
 		_offendingNumber = 0;
 		SetErrorCode(__HResults.COR_E_NOTFINITENUMBER);
 	}
 
-	public this(string message, double offendingNumber)
-	{
+	public this(string message, double offendingNumber) {
 		super(message);
 		_offendingNumber = offendingNumber;
 		SetErrorCode(__HResults.COR_E_NOTFINITENUMBER);
 	}
 	
-	public this(string message, Exception innerException)
-	{
+	public this(string message, Exception innerException) {
 		super(message, innerException);
 		_offendingNumber = 0;
 		SetErrorCode(__HResults.COR_E_NOTFINITENUMBER);
 	}
 
-	public this(string message, double offendingNumber, Exception innerException)
-	{
+	public this(string message, double offendingNumber, Exception innerException) {
 		super(message, innerException);
 		_offendingNumber = offendingNumber;
 		SetErrorCode(__HResults.COR_E_NOTFINITENUMBER);
 	}
 	
-	protected this(SerializationInfo info, StreamingContext context)
-	{
+	protected this(SerializationInfo info, StreamingContext context) {
 		super(info, context);
 		_offendingNumber = info.GetInt32("OffendingNumber");
 	}

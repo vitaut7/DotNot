@@ -1,8 +1,7 @@
 module System._Interface.IAppDomainSetup;
 
 
-public interface IAppDomainSetup
-{
+public interface IAppDomainSetup {
 	@property string ApplicationBase();
 	@property void ApplicationBase(string);
 

@@ -1,8 +1,7 @@
 ﻿module System.Reflection._Enum.CallingConventions;
 
 
-public enum CallingConventions
-{
+public enum CallingConventions {
 	Standard     = 0x0001,
 	VarArgs      = 0x0002,
 	Any          = Standard | VarArgs,

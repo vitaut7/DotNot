@@ -3,8 +3,7 @@
 import System;
 
 
-public abstract class Assembly
-{
+public abstract class Assembly {
 	@property string FullName() { assert(0); }
 	// TODO: Implement
 }

@@ -4,8 +4,7 @@ import System;
 import System.Globalization;
 
 
-public class Version : ICloneable, IComparable!Version, IEquatable!Version
-{
+public class Version : ICloneable, IComparable!Version, IEquatable!Version {
 	alias opEquals = Equals;
 	alias opCmp = CompareTo;
 	private int _major;
@@ -13,38 +12,31 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 	private int _build = -1;
 	private int _revision = -1;
 
-	@property public int Major()
-	{
+	@property public int Major() {
 		return _major;
 	}
 
-	@property public int Minor()
-	{
+	@property public int Minor() {
 		return _minor;
 	}
 
-	@property public int Build()
-	{
+	@property public int Build() {
 		return _build;
 	}
 
-	@property public int Revision()
-	{
+	@property public int Revision() {
 		return _revision;
 	}
 
-	@property public short MajorRevision()
-	{
+	@property public short MajorRevision() {
 		return _revision >> 16;
 	}
 
-	@property public short MinorRevision()
-	{
+	@property public short MinorRevision() {
 		return cast(short)(_revision & 0xFFFF);
 	}
 
-	public this(int major, int minor, int build = -1, int revision = -1)
-	{
+	public this(int major, int minor, int build = -1, int revision = -1) {
 		if (major < 0)
 			throw new ArgumentOutOfRangeException("major", Environment.GetResourceString("ArgumentOutOfRange_Version"));
 
@@ -64,8 +56,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		_revision = revision;
 	}
 
-	public this(string ver)
-	{
+	public this(string ver) {
 		Version v = Version.Parse(ver);
 		_major = v._major;
 		_minor = v._minor;
@@ -73,14 +64,12 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		_revision = v._revision;
 	}
 
-	public this()
-	{
+	public this() {
 		_major = 0;
 		_minor = 0;
 	}
 
-	public Object Clone()
-	{
+	public Object Clone() {
 		Version v = new Version();
 		v._major = _major;
 		v._minor = _minor;
@@ -90,8 +79,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return v;
 	}
 
-	public int CompareTo(Version value)
-	{
+	public int CompareTo(Version value) {
 		if (value is null)
 			return 1;
 
@@ -118,8 +106,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return 0;
 	}
 
-	public override bool Equals(Object obj)
-	{
+	public override bool Equals(Object obj) {
 		Version v = cast(Version)obj;
 		if (v is null)
 			return false;
@@ -127,21 +114,18 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return _major == v._major && _minor == v._minor && _build == v._build && _revision == v._revision;
 	}
 
-	public bool Equals(Version obj)
-	{
+	public bool Equals(Version obj) {
 		if (obj is null)
 			return false;
 
 		return _major == obj._major && _minor == obj._minor && _build == obj._build && _revision == obj._revision;
 	}
 
-	public override int GetHashCode()
-	{
+	public override int GetHashCode() {
 		return _revision << 24 | _build << 16 | _minor << 8 | _major;
 	}
 
-	public override string ToString()
-	{
+	public override string ToString() {
 		if (_build == -1)
 			return ToString(2);
 
@@ -151,10 +135,8 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return ToString(4);
 	}
 
-	public string ToString(int fieldCount)
-	{
-		switch (fieldCount)
-		{
+	public string ToString(int fieldCount) {
+		switch (fieldCount) {
 			case 0:
 				return String.Empty;
 			case 1:
@@ -178,8 +160,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		}
 	}
 
-	public static Version Parse(string input)
-	{
+	public static Version Parse(string input) {
 		if (input is null)
 			throw new ArgumentNullException("input");
 		Contract.EndContractBlock();
@@ -192,8 +173,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return r._parsedVersion;
 	}
 
-	public static bool TryParse(string input, out Version result)
-	{
+	public static bool TryParse(string input, out Version result) {
 		VersionResult* r = new VersionResult();
 		r.Init("input", false);
 		bool b = TryParseVersion(input, *r);
@@ -201,12 +181,10 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return b;
 	}
 	
-	private static bool TryParseVersion(string ver, ref VersionResult result)
-	{
+	private static bool TryParseVersion(string ver, ref VersionResult result) {
 		int major, minor, build, revision;
 		
-		if (!ver)
-		{
+		if (!ver) {
 			result.SetFailure(ParseFailureKind.ArgumentNullException);
 			return false;
 		}
@@ -214,8 +192,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		string[] parsedComponents = ver.Split(['.']);
 		int parsedComponentsLength = parsedComponents.Length;
 
-		if (parsedComponentsLength < 2 || parsedComponentsLength > 4)
-		{
+		if (parsedComponentsLength < 2 || parsedComponentsLength > 4) {
 			result.SetFailure(ParseFailureKind.ArgumentException);
 			return false;
 		}
@@ -228,15 +205,13 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		
 		parsedComponentsLength -= 2;
 		
-		if (parsedComponentsLength > 0)
-		{
+		if (parsedComponentsLength > 0) {
 			if (!TryParseComponent(parsedComponents[2], "build", result, build))
 				return false;
 			
 			parsedComponentsLength--;
 			
-			if (parsedComponentsLength > 0)
-			{
+			if (parsedComponentsLength > 0) {
 				if (!TryParseComponent(parsedComponents[3], "revision", result, revision))
 					return false;
 				else
@@ -251,16 +226,13 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return true;
 	}
 	
-	private static bool TryParseComponent(string component, string componentName, ref VersionResult result, out int parsedComponent)
-	{
-		if (!Int32.TryParse(component, NumberStyles.Integer, CultureInfo.InvariantCulture, parsedComponent))
-		{
+	private static bool TryParseComponent(string component, string componentName, ref VersionResult result, out int parsedComponent) {
+		if (!Int32.TryParse(component, NumberStyles.Integer, CultureInfo.InvariantCulture, parsedComponent)) {
 			result.SetFailure(ParseFailureKind.FormatException, component);
 			return false;
 		}
 		
-		if (parsedComponent < 0)
-		{
+		if (parsedComponent < 0) {
 			result.SetFailure(ParseFailureKind.ArgumentOutOfRangeException, componentName);
 			return false;
 		}
@@ -268,27 +240,23 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		return true;
 	}
 
-	@internal struct VersionResult
-	{
+	@internal struct VersionResult {
 		@internal Version _parsedVersion;
 		@internal ParseFailureKind _failure;
 		@internal string _exceptionArgument;
 		@internal string _argumentName;
 		@internal bool _canThrow;
 
-		@internal void Init(string argumentName, bool canThrow)
-		{
+		@internal void Init(string argumentName, bool canThrow) {
 			_canThrow = canThrow;
 			_argumentName = argumentName;
 		}
 
-		@internal void SetFailure(ParseFailureKind failure)
-		{
+		@internal void SetFailure(ParseFailureKind failure) {
 			SetFailure(failure, String.Empty);
 		}
 
-		@internal void SetFailure(ParseFailureKind failure, string argument)
-		{
+		@internal void SetFailure(ParseFailureKind failure, string argument) {
 			_failure = failure;
 			_exceptionArgument = argument;
 
@@ -296,10 +264,8 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 				throw GetVersionParseException();
 		}
 
-		@internal Exception GetVersionParseException()
-		{
-			switch (_failure)
-			{
+		@internal Exception GetVersionParseException() {
+			switch (_failure) {
 				case ParseFailureKind.ArgumentNullException:
 					return new ArgumentNullException(_argumentName);
 				case ParseFailureKind.ArgumentException:
@@ -307,12 +273,10 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 				case ParseFailureKind.ArgumentOutOfRangeException:
 					return new ArgumentOutOfRangeException(_exceptionArgument, Environment.GetResourceString("ArgumentOutOfRange_Version"));
 				case ParseFailureKind.FormatException:
-					try
-					{
+					try {
 						Int32.Parse(_exceptionArgument, CultureInfo.InvariantCulture);
 					}
-					catch (Exception e)
-					{
+					catch (Exception e) {
 						return e;
 					}
 
@@ -325,8 +289,7 @@ public class Version : ICloneable, IComparable!Version, IEquatable!Version
 		}
 	}
 
-	@internal enum ParseFailureKind
-	{
+	@internal enum ParseFailureKind {
 		ArgumentNullException, 
 		ArgumentException, 
 		ArgumentOutOfRangeException, 

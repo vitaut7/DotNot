@@ -4,8 +4,7 @@ import System;
 import System.Globalization;
 
 
-public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquatable!short
-{
+public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquatable!short {
 	alias opEquals = Equals;
 	alias opCmp = CompareTo;
 	public static const MaxValue = cast(short)0x7FFF;
@@ -14,60 +13,49 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 	alias Value this;
 	private short _value;
 
-	@property short Value()
-	{
+	@property short Value() {
 		return _value;
 	}
 	
-	@property void Value(short value)
-	{
+	@property void Value(short value) {
 		_value = value;
 	}
 	
-	static Int16 opCall(short value)
-	{
+	static Int16 opCall(short value) {
 		Int16 ret = new Int16();
 		ret._value = value;
 		return ret;
 	}
 
-	public static short Parse(string s)
-	{
+	public static short Parse(string s) {
 		return Parse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo);
 	}
 	
-	public static short Parse(string s, NumberStyles style)
-	{
+	public static short Parse(string s, NumberStyles style) {
 		NumberFormatInfo.ValidateParseStyleInteger(style);
 		return Parse(s, style, NumberFormatInfo.CurrentInfo);
 	}
 	
-	public static short Parse(string s, IFormatProvider provider)
-	{
+	public static short Parse(string s, IFormatProvider provider) {
 		return Parse(s, NumberStyles.Integer, NumberFormatInfo.GetInstance(provider));
 	}
 	
-	public static short Parse(string s, NumberStyles style, IFormatProvider provider)
-	{
+	public static short Parse(string s, NumberStyles style, IFormatProvider provider) {
 		NumberFormatInfo.ValidateParseStyleInteger(style);
 		return Parse(s, style, NumberFormatInfo.GetInstance(provider));
 	}
 	
-	private static short Parse(string s, NumberStyles style, NumberFormatInfo info)
-	{
+	private static short Parse(string s, NumberStyles style, NumberFormatInfo info) {
 		int i;
 		
-		try
-		{
+		try {
 			i = Number.ParseInt32(s, style, info);
 		}
-		catch (OverflowException e)
-		{
+		catch (OverflowException e) {
 			throw new OverflowException(Environment.GetResourceString("Overflow_Int16"), e);
 		}
 		
-		if (style & NumberStyles.AllowHexSpecifier)
-		{
+		if (style & NumberStyles.AllowHexSpecifier) {
 			if (i < 0 || i > UInt16.MaxValue)
 				throw new OverflowException(Environment.GetResourceString("Overflow_Int16"));
 			
@@ -80,27 +68,23 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 		return cast(short)i;
 	}
 	
-	public static bool TryParse(string s, out short result)
-	{
+	public static bool TryParse(string s, out short result) {
 		return TryParse(s, NumberStyles.Integer, NumberFormatInfo.CurrentInfo, result);
 	}
 	
-	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out short result)
-	{
+	public static bool TryParse(string s, NumberStyles style, IFormatProvider provider, out short result) {
 		NumberFormatInfo.ValidateParseStyleInteger(style);
 		return TryParse(s, style, NumberFormatInfo.GetInstance(provider), result);
 	}
 	
-	private static bool TryParse(string s, NumberStyles style, NumberFormatInfo info, out short result)
-	{
+	private static bool TryParse(string s, NumberStyles style, NumberFormatInfo info, out short result) {
 		result = 0;
 		int i;
 		
 		if (!Number.TryParseInt32(s, style, info, i))
 			return false;
 		
-		if (style & NumberStyles.AllowHexSpecifier)
-		{
+		if (style & NumberStyles.AllowHexSpecifier) {
 			if (i < 0 || i > Byte.MaxValue)
 				return false;
 			
@@ -115,18 +99,15 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 		return true;
 	}
 	
-	private this()
-	{
+	private this() {
 	}
 	
 	// Override Objct's methods
-	public override int GetHashCode()
-	{
+	public override int GetHashCode() {
 		return (cast(short)_value | (cast(int)_value << 8));
 	}
 	
-	public override bool Equals(Object obj)
-	{
+	public override bool Equals(Object obj) {
 		if (obj.GetType() != Int16.GetType())
 			return false;
 		
@@ -134,109 +115,88 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 	}
 	
 	// Implement interface methods
-	public bool Equals(short other)
-	{
+	public bool Equals(short other) {
 		return _value == other;
 	}
 	
-	public int CompareTo(short value)
-	{
+	public int CompareTo(short value) {
 		return _value - value;
 	}
 	
-	TypeCode GetTypeCode()
-	{
+	TypeCode GetTypeCode() {
 		return TypeCode.Int16;
 	}
 	
-	bool ToBoolean(IFormatProvider provider = null)
-	{
+	bool ToBoolean(IFormatProvider provider = null) {
 		return Convert.ToBoolean(_value);
 	}
 	
-	char ToChar(IFormatProvider provider = null)
-	{
+	char ToChar(IFormatProvider provider = null) {
 		return Convert.ToChar(_value);
 	}
 	
-	byte ToByte(IFormatProvider provider = null)
-	{
+	byte ToByte(IFormatProvider provider = null) {
 		return Convert.ToByte(_value);
 	}
 	
-	ubyte ToUByte(IFormatProvider provider = null)
-	{
+	ubyte ToUByte(IFormatProvider provider = null) {
 		return Convert.ToUByte(_value);
 	}
 	
-	short ToInt16(IFormatProvider provider = null)
-	{
+	short ToInt16(IFormatProvider provider = null) {
 		return _value;
 	}
 	
-	ushort ToUInt16(IFormatProvider provider = null)
-	{
+	ushort ToUInt16(IFormatProvider provider = null) {
 		return Convert.ToUInt16(_value);
 	}
 	
-	int ToInt32(IFormatProvider provider = null)
-	{
+	int ToInt32(IFormatProvider provider = null) {
 		return Convert.ToInt32(_value);
 	}
 	
-	uint ToUInt32(IFormatProvider provider = null)
-	{
+	uint ToUInt32(IFormatProvider provider = null) {
 		return Convert.ToUInt32(_value);
 	}
 	
-	long ToInt64(IFormatProvider provider = null)
-	{
+	long ToInt64(IFormatProvider provider = null) {
 		return Convert.ToInt64(_value);
 	}
 	
-	ulong ToUInt64(IFormatProvider provider = null)
-	{
+	ulong ToUInt64(IFormatProvider provider = null) {
 		return Convert.ToUInt64(_value);
 	}
 	
-	float ToFloat(IFormatProvider provider = null)
-	{
+	float ToFloat(IFormatProvider provider = null) {
 		return Convert.ToFloat(_value);
 	}
 	
-	double ToDouble(IFormatProvider provider = null)
-	{
+	double ToDouble(IFormatProvider provider = null) {
 		return Convert.ToDouble(_value);
 	}
 	
-	real ToReal(IFormatProvider provider = null)
-	{
+	real ToReal(IFormatProvider provider = null) {
 		return Convert.ToReal(_value);
 	}
 	
-	DateTime ToDateTime(IFormatProvider provider = null)
-	{
+	DateTime ToDateTime(IFormatProvider provider = null) {
 		throw new InvalidCastException(Environment.GetResourceString("InvalidCast_FromTo", "Int16", "DateTime"));
 	}
 
-	string ToString(IFormatProvider provider = null)
-	{
+	string ToString(IFormatProvider provider = null) {
 		Contract.Ensures(Contract.Result!string() !is null);
 		return Number.FormatInt32(_value, null, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	string ToString(string format, IFormatProvider provider = null)
-	{
+	string ToString(string format, IFormatProvider provider = null) {
 		Contract.Ensures(Contract.Result!string() !is null);
 		return ToString(format, provider ? NumberFormatInfo.GetInstance(provider) : NumberFormatInfo.CurrentInfo);
 	}
 	
-	string ToString(string format, NumberFormatInfo info)
-	{
+	string ToString(string format, NumberFormatInfo info) {
 		Contract.Ensures(Contract.Result!string() !is null);
 		
-		if (_value < 0 && format && format.Length > 0 && (format[0] == 'x' || format[0] == 'X'))
-		{
+		if (_value < 0 && format && format.Length > 0 && (format[0] == 'x' || format[0] == 'X')) {
 			uint temp = _value & 0xFFFF;
 			return Number.FormatInt32(temp, format, info);
 		}
@@ -244,8 +204,7 @@ public final class Int16 : IConvertible, IFormattable, IComparable!short, IEquat
 		return Number.FormatInt32(_value, format, info);
 	}
 
-	Object ToType(Type conversionType, IFormatProvider provider = null)
-	{
+	Object ToType(Type conversionType, IFormatProvider provider = null) {
 		return Convert.DefaultToType(this, conversionType, provider);
 	}
 }

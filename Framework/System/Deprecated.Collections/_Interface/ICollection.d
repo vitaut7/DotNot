@@ -4,10 +4,8 @@ import System;
 import System.Collections;
 
 
-public interface ICollection : IEnumerable
-{
-	@property
-	{
+public interface ICollection : IEnumerable {
+	@property {
 		int Count();
 		Object SyncRoot();
 		bool IsSynchronized();

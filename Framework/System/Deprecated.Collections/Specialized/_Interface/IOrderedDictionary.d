@@ -3,8 +3,7 @@
 import System.Collections;
 
 
-public interface IOrderedDictionary : IDictionary
-{
+public interface IOrderedDictionary : IDictionary {
 	void opIndexAssign(Object value, int index);
 	Object opIndex(int index);
 

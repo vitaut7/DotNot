@@ -1,8 +1,7 @@
 ﻿module System.Globalization._Enum.NumberStyles;
 
 
-public enum NumberStyles
-{
+public enum NumberStyles {
 	None                  = 0x00000000,
 	AllowLeadingWhite     = 0x00000001,
 	AllowTrailingWhite    = 0x00000002,

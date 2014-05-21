@@ -1,8 +1,7 @@
 ﻿module System.Reflection._Enum.TypeAttributes;
 
 
-public enum TypeAttributes
-{
+public enum TypeAttributes {
 	VisibilityMask     = 0x00000007,
 	NotPublic          = 0x00000000,
 	Public             = 0x00000001,

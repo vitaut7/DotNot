@@ -5,26 +5,21 @@ public import System.Globalization._Enum.NumberStyles;
 public import System.Globalization._Class.Calendar;
 
 
-class NumberFormatInfo
-{
+class NumberFormatInfo {
 	import System;
-	public static NumberFormatInfo GetInstance(IFormatProvider formatProvider)
-	{
+	public static NumberFormatInfo GetInstance(IFormatProvider formatProvider) {
 		assert(0);
 	}
 
-	@internal static void ValidateParseStyleInteger(NumberStyles style)
-	{
+	@internal static void ValidateParseStyleInteger(NumberStyles style) {
 		assert(0);
 	}
 
-	@property public static NumberFormatInfo CurrentInfo()
-	{
+	@property public static NumberFormatInfo CurrentInfo() {
 		assert(0);
 	}
 
-	@internal static void ValidateParseStyleFloatingPoint(NumberStyles style)
-	{
+	@internal static void ValidateParseStyleFloatingPoint(NumberStyles style) {
 		assert(0);
 	}
 

@@ -3,21 +3,18 @@
 import System;
 
 
-class Char
-{
+class Char {
 	public static const MaxValue = 123;
 	public static const MinValue = 0;
 
 	alias Value this;
 	private char _value;
 	
-	@property char Value()
-	{
+	@property char Value() {
 		return _value;
 	}
 	
-	@property void Value(char value)
-	{
+	@property void Value(char value) {
 		_value = value;
 	}
 	

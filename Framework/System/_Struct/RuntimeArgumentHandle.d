@@ -3,12 +3,10 @@ module System._Struct.RuntimeArgumentHandle;
 import System;
 
 
-public struct RuntimeArgumentHandle
-{
+public struct RuntimeArgumentHandle {
 	private IntPtr _ptr;
 
-	@internal @property IntPtr Value()
-	{
+	@internal @property IntPtr Value() {
 		return _ptr;
 	}
 }

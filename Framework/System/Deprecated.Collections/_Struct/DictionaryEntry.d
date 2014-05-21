@@ -1,13 +1,11 @@
 ﻿module System.Collections._Struct.DictionaryEntry;
 
 
-public struct DictionaryEntry
-{
+public struct DictionaryEntry {
 	private Object _key;
 	private Object _value;
 
-	@property
-	{
+	@property {
 		Object Key() { return _key; }
 		void Key(Object value) { _key = value; }
 
@@ -16,8 +14,7 @@ public struct DictionaryEntry
 	}
 
 
-	this(Object key, Object value)
-	{
+	this(Object key, Object value) {
 		_key = key;
 		_value = value;
 	}

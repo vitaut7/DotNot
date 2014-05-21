@@ -4,8 +4,7 @@ import System;
 import System.Reflection;
 
 
-public abstract class Binder
-{
+public abstract class Binder {
 	public MethodBase BindToMethod(BindingFlags bindingAttr, MethodBase[] match, ref Object[] args, 
                                    ParameterModifier[] modifiers,CultureInfo culture,String[] names, out Object state);
 

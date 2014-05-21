@@ -1,8 +1,7 @@
 module System._Enum.ConsoleColor;
 
 
-public enum ConsoleColor
-{
+public enum ConsoleColor {
 	Black       = 0,
 	DarkBlue    = 1,
 	DarkGreen   = 2,

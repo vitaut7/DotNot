@@ -1,8 +1,7 @@
 ﻿module System.Reflection._Enum.MethodAttributes;
 
 
-public enum MethodAttributes
-{
+public enum MethodAttributes {
 	// member access mask - Use this mask to retrieve accessibility information.
 	MemberAccessMask      = 0x0007,
 	PrivateScope          = 0x0000,     // Member not referenceable.

@@ -3,8 +3,7 @@ module System._Interface.IConvertible;
 import System;
 
 
-public interface IConvertible
-{
+public interface IConvertible {
 	TypeCode GetTypeCode();
 
 	bool ToBoolean(IFormatProvider provider = null);

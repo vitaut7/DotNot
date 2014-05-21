@@ -3,7 +3,6 @@
 import System.Runtime.Serialization;
 
 
-public interface IObjectReference
-{
+public interface IObjectReference {
 	Object GetRealObject(StreamingContext context);
 }
