@@ -8,8 +8,6 @@ import System.Reflection;
 
 public abstract class Type
 {
-	@internal static RuntimeType GetTypeFromHandleUnsafe(IntPtr handle) { return new RuntimeType();} // TODO extern
-
 	@property string FullName()
 	{
 		assert(0);
@@ -31,6 +29,11 @@ public abstract class Type
 	public bool IsAssignableFrom(Type c)
 	{
 		assert(0);
+	}
+
+	@internal static RuntimeType GetTypeFromHandleUnsafe(IntPtr handle)
+	{
+		throw new NotImplementedException();
 	}
 
 	public bool IsInstanceOfType(Object o) { assert(0); }

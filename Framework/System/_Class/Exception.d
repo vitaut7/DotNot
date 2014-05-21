@@ -17,10 +17,6 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		OutOfMemory = 3
 	}
 
-	private static /*extern*/ bool IsImmutableAgileException(Exception e) { return true; } //TODO
-	private static /*extern*/ IRuntimeMethodInfo GetMethodFromStackTrace(Object stackTrace) { return null; }
-	private /*extern*/ string StripFileInfo(string stackTrace, bool isRemoteStackTrace) { return "TODO"; } //TODO
-
 	private string _className;
 	private MethodBase _exceptionMethod;
 	private string _exceptionMethodString;
@@ -308,6 +304,21 @@ public class BaseException : Exception/*Throwable*/, _Exception, ISerializable
 		string ret;
 		GetMessageFromNativeResources(kind); //TODO
 		return ret;
+	}
+
+	private static bool IsImmutableAgileException(Exception e)
+	{
+		throw new NotImplementedException();
+	}
+
+	private static IRuntimeMethodInfo GetMethodFromStackTrace(Object stackTrace)
+	{
+		throw new NotImplementedException();
+	}
+
+	private string StripFileInfo(string stackTrace, bool isRemoteStackTrace)
+	{
+		throw new NotImplementedException();
 	}
 
 	private void Init()

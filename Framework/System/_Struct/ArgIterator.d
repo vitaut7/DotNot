@@ -5,20 +5,12 @@ import System;
 
 public struct ArgIterator
 {
-	private extern this(IntPtr arglist) {} // TODO
-	private extern this(IntPtr arglist, void* ptr) {} // TODO
-	private extern void FCallGetNextArg(void* result) {} //TODO
-	private extern void InternalGetNextArg(void* result, RuntimeType rt) {} //TODO
-	public extern int GetRemainingCount() {return 0;} //TODO
-	private extern void* _GetNextArgType() {return null;} //TODO
-
 	private IntPtr _argCookie;
 	private IntPtr _sigPtr;
 	private IntPtr _sigPtrLen;
 
 	private IntPtr _argPtr;
 	private int _remainingArgs;
-
 
 	public this(RuntimeArgumentHandle arglist)
 	{
@@ -30,6 +22,15 @@ public struct ArgIterator
 		this(arglist.Value, ptr);
 	}
 
+	private this(IntPtr arglist)
+	{
+		throw new NotImplementedException();
+	}
+	
+	private this(IntPtr arglist, void* ptr)
+	{
+		throw new NotImplementedException();
+	}
 
 	public TypedReference GetNextArg()
 	{
@@ -73,5 +74,25 @@ public struct ArgIterator
 	public bool Equals(Object o)
 	{
 		throw new NotSupportedException(Environment.GetResourceString("NotSupported_NYI"));
+	}
+
+	private void FCallGetNextArg(void* result)
+	{
+		throw new NotImplementedException();
+	}
+
+	private void InternalGetNextArg(void* result, RuntimeType rt)
+	{
+		throw new NotImplementedException();
+	}
+
+	public int GetRemainingCount()
+	{
+		throw new NotImplementedException();
+	}
+
+	private void* _GetNextArgType()
+	{
+		throw new NotImplementedException();
 	}
 }

@@ -10,7 +10,6 @@ import System.Runtime.InteropServices;
 
 public abstract class MarshalByRefObject
 {
-	@internal static /*extern*/ IntPtr GetComIUnknown(MarshalByRefObject o) { assert(0); } //TODO
 	private Object _identity;
 
 	@property Object Identity()
@@ -81,6 +80,11 @@ public abstract class MarshalByRefObject
 
 		bool fServer;
 		return GetIdentity(obj, fServer);
+	}
+
+	@internal static IntPtr GetComIUnknown(MarshalByRefObject o)
+	{
+		throw new NotImplementedException();
 	}
 
 	@internal ServerIdentity __RaceSetServerIdentity(ServerIdentity id)

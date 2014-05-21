@@ -227,6 +227,8 @@
     <Compile Include="System\Globalization\_Class\Calendar.d" />
     <Compile Include="System\Collection\package.d" />
     <Compile Include="System\Collection\_Interface\IEnumerator.d" />
+    <Compile Include="System\Reflection\_Enum\MethodImplAttributes.d" />
+    <Compile Include="System\Collection\_Interface\IEnumerable.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />

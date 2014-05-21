@@ -150,8 +150,7 @@ public final class SerializationInfo
 
 	@property SerializationInfoEnumerator GetEnumerator()
 	{
-		//TODO
-		assert(0);
+		return new SerializationInfoEnumerator(_members, _data, _types);
 	}
 
 	public void AddValue(string name, Object value, Type type)

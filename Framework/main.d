@@ -1,7 +1,6 @@
 ﻿/**
 Sealed  = final
 decimal = real
-Miesto Type pouzit TypeInfo
 miesto IHashCodeProvider pouzit IEqualityComparer
 Vyjebat sa na klasicke kolekce a pouzit iba generic
 
@@ -43,7 +42,6 @@ IConfigHandler
 _AppDomain
 
 _Class.Convert - Deklarovat vssetko ostatne
-_struct.ArgIterator - doplnit externy
 _Class.Exception - dorobit
 _Class.Guid
 serializationinfo - nejake detaily AssemblyName atd.

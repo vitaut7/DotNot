@@ -224,7 +224,6 @@ class FileStream {}
 class ManifestResourceInfo {}
 class ModuleResolveEventHandler {}
 class ParameterInfo {}
-class MethodImplAttributes {}
 class RuntimeMethodHandle {}
 class MethodAttributes {}
 interface ICustomAttributeProvider {}

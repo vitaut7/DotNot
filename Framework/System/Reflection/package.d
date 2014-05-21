@@ -3,6 +3,7 @@ module System.Reflection;
 public import System.Reflection._Enum.MemberTypes;
 public import System.Reflection._Enum.BindingFlags;
 public import System.Reflection._Enum.EventAttributes;
+public import System.Reflection._Enum.MethodImplAttributes;
 
 public import System.Reflection._Interface.ComInterfaces;
 

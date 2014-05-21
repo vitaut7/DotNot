@@ -39,7 +39,6 @@ public final class SerializationInfoEnumerator : IEnumerator!SerializationEntry
 	private string[] _members;
 	private Object[] _data;
 	private Type[] _types;
-	int _numItems;
 	int _currItem;
 	bool _current;
 
@@ -67,27 +66,22 @@ public final class SerializationInfoEnumerator : IEnumerator!SerializationEntry
 		return _types[_currItem];
 	}
 
-	@internal this(string[] members, Object[] info, Type[] types, int numItems)
+	@internal this(string[] members, Object[] info, Type[] types)
 	{
 		Contract.Assert(members !is null, "[SerializationInfoEnumerator.ctor]members!=null");
 		Contract.Assert(info !is null, "[SerializationInfoEnumerator.ctor]info!=null");
 		Contract.Assert(types !is null, "[SerializationInfoEnumerator.ctor]types!=null");
-		Contract.Assert(numItems >= 0, "[SerializationInfoEnumerator.ctor]numItems>=0");
-		Contract.Assert(members.Length >= numItems, "[SerializationInfoEnumerator.ctor]members.Length>=numItems");
-		Contract.Assert(info.Length >= numItems, "[SerializationInfoEnumerator.ctor]info.Length>=numItems");
-		Contract.Assert(types.Length >= numItems, "[SerializationInfoEnumerator.ctor]types.Length>=numItems");
 
 		_members = members;
 		_data = info;
 		_types = types;
-		_numItems = numItems - 1;
 		_currItem = -1;
 		_current = false;
 	}
 
 	public bool MoveNext()
 	{
-		if (_currItem < _numItems)
+		if (_currItem < _members.Length - 1)
 		{
 			_currItem++;
 			_current = true;
