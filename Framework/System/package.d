@@ -212,21 +212,14 @@ class Number
 
 
 class ConstructorInfo {}
-class TypeFilter {}
 class EventInfo {}
-class MemberFilter {}
-class InterfaceMapping {}
-class CallingConventions {}
-class TypeAttributes {}
+
 class AssemblyName {}
 class Stream {}
 class FileStream {}
-class ManifestResourceInfo {}
 class ModuleResolveEventHandler {}
 class ParameterInfo {}
 class RuntimeMethodHandle {}
-class MethodAttributes {}
-interface ICustomAttributeProvider {}
 class RuntimeFieldHandle {}
 class FieldAttributes {}
 class PropertyAttributes {}

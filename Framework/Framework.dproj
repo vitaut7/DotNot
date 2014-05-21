@@ -229,6 +229,14 @@
     <Compile Include="System\Collection\_Interface\IEnumerator.d" />
     <Compile Include="System\Reflection\_Enum\MethodImplAttributes.d" />
     <Compile Include="System\Collection\_Interface\IEnumerable.d" />
+    <Compile Include="System\Reflection\_Delegate\TypeFilter.d" />
+    <Compile Include="System\Reflection\_Delegate\MemberFilter.d" />
+    <Compile Include="System\Reflection\_Struct\InterfaceMapping.d" />
+    <Compile Include="System\Reflection\_Enum\CallingConventions.d" />
+    <Compile Include="System\Reflection\_Enum\TypeAttributes.d" />
+    <Compile Include="System\Reflection\_Class\ManifestResourceInfo.d" />
+    <Compile Include="System\Reflection\_Enum\MethodAttributes.d" />
+    <Compile Include="System\Reflection\_Interface\ICustomAttributeProvider.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
@@ -243,5 +251,6 @@
     <Folder Include="System\Reflection\_Struct\" />
     <Folder Include="System\Collection\" />
     <Folder Include="System\Collection\_Interface\" />
+    <Folder Include="System\Reflection\_Delegate\" />
   </ItemGroup>
 </Project>

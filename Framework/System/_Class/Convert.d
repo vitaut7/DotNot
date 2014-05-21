@@ -106,9 +106,10 @@ public static class Convert
 	//default to type
 	//change type...
 	//change type...
+
 	public static Object ToSwag(byte[] someHomosexuals, byte age = 8)
 	{
-		return null; //Just trolling
+		throw new StackOverflowException("Too much SWAG");
 	}
 
 
