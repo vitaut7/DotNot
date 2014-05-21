@@ -237,6 +237,10 @@
     <Compile Include="System\Reflection\_Class\ManifestResourceInfo.d" />
     <Compile Include="System\Reflection\_Enum\MethodAttributes.d" />
     <Compile Include="System\Reflection\_Interface\ICustomAttributeProvider.d" />
+    <Compile Include="System\Reflection\_Enum\FieldAttributes.d" />
+    <Compile Include="System\Reflection\_Enum\PropertyAttributes.d" />
+    <Compile Include="System\Diagnostics\Contracts\package.d" />
+    <Compile Include="System\Diagnostics\Contracts\_Class\Contract.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
@@ -252,5 +256,8 @@
     <Folder Include="System\Collection\" />
     <Folder Include="System\Collection\_Interface\" />
     <Folder Include="System\Reflection\_Delegate\" />
+    <Folder Include="System\Diagnostics\" />
+    <Folder Include="System\Diagnostics\Contracts\" />
+    <Folder Include="System\Diagnostics\Contracts\_Class\" />
   </ItemGroup>
 </Project>

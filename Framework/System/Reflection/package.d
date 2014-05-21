@@ -6,9 +6,11 @@ public import System.Reflection._Delegate.MemberFilter;
 public import System.Reflection._Enum.MemberTypes;
 public import System.Reflection._Enum.BindingFlags;
 public import System.Reflection._Enum.TypeAttributes;
+public import System.Reflection._Enum.FieldAttributes;
 public import System.Reflection._Enum.EventAttributes;
 public import System.Reflection._Enum.MethodAttributes;
 public import System.Reflection._Enum.CallingConventions;
+public import System.Reflection._Enum.PropertyAttributes;
 public import System.Reflection._Enum.MethodImplAttributes;
 
 public import System.Reflection._Interface.ComInterfaces;

@@ -125,6 +125,7 @@ abstract class CultureInfo : IFormatProvider
 	@property public static CultureInfo CurrentCulture() { assert(0); }
 }
 
+/*
 class Contract
 {
 	public static void EndContractBlock() { }
@@ -133,7 +134,7 @@ class Contract
 	public static void Requires(bool condition, string userMessage) {}
 
 	public static void Assert(bool condition, string userMessage) { assert(condition, userMessage); }
-}
+}*/
 
 string ToString(T)(T value)
 {
@@ -213,7 +214,7 @@ class Number
 
 class ConstructorInfo {}
 class EventInfo {}
-
+class Attribute {}
 class AssemblyName {}
 class Stream {}
 class FileStream {}
@@ -221,8 +222,6 @@ class ModuleResolveEventHandler {}
 class ParameterInfo {}
 class RuntimeMethodHandle {}
 class RuntimeFieldHandle {}
-class FieldAttributes {}
-class PropertyAttributes {}
 
 //UDA
 public const enum internal = "Internal";
