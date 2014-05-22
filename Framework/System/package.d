@@ -116,7 +116,6 @@ public import System._Class.DBNull;
 }
 
 string[] Split(string str, char[] vals) {assert (0); }
-interface IDictionary {};//(TKey, TValue) {}
 
 abstract class CultureInfo : IFormatProvider {
 	@property public static CultureInfo InvariantCulture() { assert(0); }
