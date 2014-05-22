@@ -241,6 +241,11 @@
     <Compile Include="System\Reflection\_Enum\PropertyAttributes.d" />
     <Compile Include="System\Diagnostics\Contracts\package.d" />
     <Compile Include="System\Diagnostics\Contracts\_Class\Contract.d" />
+    <Compile Include="System\Collection\_Interface\ICollection.d" />
+    <Compile Include="System\Collection\_Struct\KeyValuePair.d" />
+    <Compile Include="System\Collection\_Interface\IDictionary.d" />
+    <Compile Include="System\Collection\_Interface\IList.d" />
+    <Compile Include="System\Collection\_Interface\ISet.d" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\" />
@@ -259,5 +264,6 @@
     <Folder Include="System\Diagnostics\" />
     <Folder Include="System\Diagnostics\Contracts\" />
     <Folder Include="System\Diagnostics\Contracts\_Class\" />
+    <Folder Include="System\Collection\_Struct\" />
   </ItemGroup>
 </Project>

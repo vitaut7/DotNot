@@ -127,6 +127,24 @@ string ToString(T)(T value) {
 	return value.stringof; //TODO
 }
 
+class StringBuilder {
+	static const int DefaultCapacity = 16;
+	public StringBuilder Append(String value) {
+		assert(0);
+	}
+}
+
+class StringBuilderCache {
+	//TODO easy
+	public static StringBuilder Acquire(int capacity = StringBuilder.DefaultCapacity) {
+		assert(0);
+	}
+
+	public static string GetStringAndRelease(StringBuilder sb) {
+		assert(0);
+	}
+}
+
 @property {
 	public string Trim(string str) { return str; }
 }

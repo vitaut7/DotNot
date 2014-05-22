@@ -3,7 +3,7 @@
 import System.Collection;
 
 
-interface IEnumerable(T) {
+public interface IEnumerable(T) {
 	IEnumerator!T GetEnumerator();
 
 	final int opApply(int delegate(T) dg) {
